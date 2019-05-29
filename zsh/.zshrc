@@ -44,9 +44,9 @@ alias vim='nvim'
 
 export coding="$HOME/Coding"
 
-# bindkey -e
-# bindkey '^[w' forward-word
-# bindkey '^[b' backward-word
+bindkey -e
+bindkey '^[w' forward-word
+bindkey '^[b' backward-word
 
 export PATH="$PATH:$HOME/.activator/bin"
 
