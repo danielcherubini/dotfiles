@@ -17,4 +17,5 @@ Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()

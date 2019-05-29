@@ -43,6 +43,7 @@ USER=daniel
 alias vim='nvim'
 
 export coding="$HOME/Coding"
+export go="$HOME/Coding/Go/github.com/danielcherubini"
 
 bindkey -e
 bindkey '^[w' forward-word
