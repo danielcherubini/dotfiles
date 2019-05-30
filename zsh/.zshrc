@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/danielcherubini/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="spaceship"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -43,7 +43,7 @@ USER=daniel
 alias vim='nvim'
 
 export coding="$HOME/Coding"
-export go="$HOME/Coding/Go/github.com/danielcherubini"
+export go="$HOME/go/src/github.com/danielcherubini"
 
 bindkey -e
 bindkey '^[w' forward-word
@@ -55,7 +55,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # added by travis gem
-[ -f /Users/danielcherubini/.travis/travis.sh ] && source /Users/danielcherubini/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 unsetopt share_history
 setopt no_share_history
@@ -66,8 +66,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export GOPATH=$HOME/Coding/Go
-export PATH=$PATH:$GOPATH/bin
+# export GOROOT=/usr/local/go
+export GOPATH=$HOME/go:$HOME/Coding/Go
+export PATH=$PATH:$HOME/go/bin
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
