@@ -13,3 +13,6 @@ sync:
 spec:
   ~/.zshrc: zsh/.zshrc
   ~/.config/nvim: nvim
+  ~/.chunkwmrc: chunkwm/chunkwmrc
+  ~/.chunkwm_plugins: chunkwm/plugins
+  ~/.skhdrc: skhd/skhdrc
