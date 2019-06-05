@@ -70,7 +70,7 @@
 # default, test < cmd - return : open -na /Applications/Terminal.app
 
 # open terminal, blazingly fast compared to iTerm/Hyper
-cmd - return : open -na /Applications/iTerm.app
+# cmd - return : open -na /Applications/iTerm.app
 
 # open qutebrowser
 cmd + shift - return : ~/Scripts/qtb.sh
