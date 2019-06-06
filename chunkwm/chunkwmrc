@@ -40,13 +40,13 @@ chunkc core::hotload 0
 
 chunkc set custom_bar_enabled            0
 chunkc set custom_bar_all_monitors       0
-chunkc set custom_bar_offset_top         22
+chunkc set custom_bar_offset_top         0
 chunkc set custom_bar_offset_bottom      0
 chunkc set custom_bar_offset_left        0
 chunkc set custom_bar_offset_right       0
 
 chunkc set global_desktop_mode           bsp
-chunkc set global_desktop_offset_top     38
+chunkc set global_desktop_offset_top     24
 chunkc set global_desktop_offset_bottom  8
 chunkc set global_desktop_offset_left    8
 chunkc set global_desktop_offset_right   8
@@ -137,3 +137,4 @@ chunkc tiling::rule --owner Finder --name Copy --state float &
 chunkc tiling::rule --owner \"App Store\" --state float &
 chunkc tiling::rule --owner Emacs --except "^$" --state tile &
 chunkc tiling::rule --owner \"Aviatrix VPN Client\" --state float &
+chunkc tiling::rule --owner Dashlane --state float &
