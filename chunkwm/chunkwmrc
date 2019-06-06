@@ -84,7 +84,7 @@ chunkc set mouse_resize_window           \"fn 2\"
 chunkc set mouse_motion_interval         35
 
 chunkc set preselect_border_color        0xffd75f5f
-chunkc set preselect_border_width        5
+chunkc set preselect_border_width        0
 chunkc set preselect_border_outline      0
 
 #
@@ -125,7 +125,7 @@ chunkc set ffm_disable_autoraise         0
 # NOTE: specify plugins to load when chunkwm starts.
 #
 
-chunkc core::load border.so
+# chunkc core::load border.so
 chunkc core::load tiling.so
 chunkc core::load ffm.so
 
