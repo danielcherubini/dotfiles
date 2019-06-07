@@ -13,3 +13,5 @@ sync:
 spec:
   ~/.zshrc: zsh/.zshrc
   ~/.config/nvim: nvim
+  ~/.i3: i3
+  ~/.Xresources: X11/Xresources
