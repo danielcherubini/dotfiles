@@ -15,4 +15,4 @@ spec:
   ~/.config/nvim: nvim
   ~/.i3: i3
   ~/.Xresources: X11/Xresources
-  ~/.config/kitty: kitty
+  ~/.config/termite: termite
