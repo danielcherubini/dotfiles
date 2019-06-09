@@ -16,3 +16,4 @@ spec:
   ~/.i3: i3
   ~/.Xresources: X11/Xresources
   ~/.config/termite: termite
+  ~/.config/polybar: polybar
