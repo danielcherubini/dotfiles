@@ -69,6 +69,7 @@ export GOROOT="/usr/local/opt/go/libexec"
 export GOPATH="$HOME/.go:$HOME/Coding/Go"
 export GO111MODULE="on"
 export PATH="$PATH:$GOROOT/bin"
+export PATH="$PATH:$HOME/.go/bin"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
