@@ -83,5 +83,3 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/gettext/lib"
 
 export CPPFLAGS="-I/usr/local/opt/gettext/include"
-export MOZ_ENABLE_WAYLAND=1
-export LIBVA_DRIVER_NAME=i965
