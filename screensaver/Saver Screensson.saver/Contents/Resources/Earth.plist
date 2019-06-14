@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>colors</key>
+	<array>
+		<string>963432</string>
+		<string>524D4A</string>
+		<string>966E4F</string>
+		<string>4C4134</string>
+		<string>A8813F</string>
+		<string>928977</string>
+		<string>AAA07B</string>
+		<string>BDB8A0</string>
+		<string>66634F</string>
+		<string>EBEADC</string>
+		<string>A5A595</string>
+		<string>C2C6B9</string>
+		<string>2B3025</string>
+		<string>737F70</string>
+		<string>D0D8CF</string>
+		<string>343A39</string>
+		<string>191A1A</string>
+		<string>676B6C</string>
+		<string>89B9C8</string>
+		<string>6A9AAC</string>
+
+
+	</array>
+	<key>name</key>
+	<string>Earth</string>
+</dict>
+</plist>

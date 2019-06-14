@@ -1,8 +1,8 @@
 /* pecan is a bar for Ubersicht */
-/* written by daniel neemann (@zzzeyez) */
+/* written by daniel neemann (@daniel) */
 
 /* import colors */
-@import "/Users/zzzeyez/.cache/wal/colors.scss";
+@import "/Users/danielcherubini/.cache/wal/colors.scss";
 
 :root {
 
@@ -15,7 +15,7 @@
 	--pecan-bg-pecanclock: var(--pecan-bg);
 	--pecan-xanthia-bg: var(--pecan-bg);
 	--pecan-xanthia-image-bg: var(--pecan-bg);
-	
+
 /* foreground colors */
 	--pecan-fg-pecanworkspace: #{$color0};
 	--pecan-fg-pecannetwork: #{$color1};
@@ -23,7 +23,7 @@
 	--pecan-fg-pecanbattery: #{$color3};
 	--pecan-fg-pecanclock: #{$color4};
 	--pecan-xanthia-fg: #{$color5};
-	
+
 /* size */
 	--pecan-height: 16px;
 	--pecan-xanthia-max-width: 1000px;
@@ -38,8 +38,8 @@
 	--pecan-opacity-inner: 1;
 	--pecan-opacity-center: 1;
 	--pecan-xanthia-opacity: 1;
-	--pecan-xanthia-image-opacity: 1;	
-			
+	--pecan-xanthia-image-opacity: 1;
+
 /* alignment */
 	--pecan-alignment-top: 0;
 	--pecan-alignment-right: 0;
@@ -53,12 +53,12 @@
 	--pecan-xanthia-image-alignment-right: 0;
 	--pecan-xanthia-image-alignment-bottom: auto;
 	--pecan-xanthia-image-alignment-left: auto;
-	
+
 /* padding */
 	--pecan-padding-left: 0px;
 	--pecan-padding-right: var(--pecan-padding-left);
 	--pecan-padding-v: var(--pecan-padding-left);
-	--pecan-xanthia-padding-h: calc(var(--pecan-padding-right) + calc(var(--pecan-text-padding) * 4) + 14ch + calc(3 * var(--pecan-border))); 
+	--pecan-xanthia-padding-h: calc(var(--pecan-padding-right) + calc(var(--pecan-text-padding) * 4) + 14ch + calc(3 * var(--pecan-border)));
 	--pecan-xanthia-padding-v: calc(var(--pecan-border) + var(--pecan-padding-v));
 	--pecan-xanthia-image-padding-v: calc(var(--pecan-height) + var(--pecan-xanthia-image-padding-h));
 	--pecan-xanthia-image-padding-h: 6px;
@@ -68,7 +68,7 @@
 	--pecan-shadow-inner: 0px 1px 1px 1px rgba(0,0,0,0.0);
 	--pecan-xanthia-shadow: var(--pecan-shadow-inner);
 	--pecan-xanthia-image-shadow: var(--pecan-shadow);
-	
+
 /* border */
 	--pecan-border: 0px;
 	--pecan-border-radius: 0px;
@@ -78,7 +78,7 @@
 	--pecan-xanthia-image-border-radius-left: var(--pecan-border-radius-inner);
 	--pecan-xanthia-image-border-radius-right: var(--pecan-border-radius-inner);
 	--pecan-xanthia-image-border: 0px;
-	
+
 /* typography */
 	--pecan-font: scientifica, SF Mono, Menlo, Monospace;
 	--pecan-font-size: 11px;

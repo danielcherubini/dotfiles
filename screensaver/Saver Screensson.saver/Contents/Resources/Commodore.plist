@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>colors</key>
+	<array>
+		<string>000000</string>
+		<string>ffffff</string>
+		<string>883932</string>
+		<string>67b6bd</string>
+		<string>8b3f96</string>
+		<string>55a049</string>
+		<string>40318d</string>
+		<string>bfce72</string>
+		<string>8b5429</string>
+		<string>574200</string>
+		<string>b86962</string>
+		<string>505050</string>
+		<string>787878</string>
+		<string>94e089</string>
+		<string>7869c4</string>
+		<string>9f9f9f</string>
+
+	</array>
+	<key>name</key>
+	<string>Commodore</string>
+</dict>
+</plist>

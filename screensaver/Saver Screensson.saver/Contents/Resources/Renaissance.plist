@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>colors</key>
+	<array>
+		<string>EDDDB0</string>
+		<string>D29F59</string>
+		<string>AD895A</string>
+		<string>373A33</string>
+		<string>262822</string>
+		<string>D89A75</string>
+		<string>C07061</string>
+		<string>9F4C40</string>
+		<string>673C2F</string>
+		<string>9CA17E</string>
+		<string>789052</string>
+		<string>5C7538</string>
+		<string>63A0A8</string>
+		<string>668CAA</string>
+		<string>68737C</string>
+	</array>
+	<key>name</key>
+	<string>Renaissance</string>
+</dict>
+</plist>

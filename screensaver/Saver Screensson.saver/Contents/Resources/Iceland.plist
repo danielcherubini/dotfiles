@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>colors</key>
+	<array>
+		<string> 5E4628 </string>
+		<string> 81653D </string>
+		<string> 988153 </string>
+		<string> C0B38C </string>
+		<string> 988D6B </string>
+		<string> A89E75 </string>
+		<string> 5D5B40 </string>
+		<string> 7A7954 </string>
+		<string> 373729 </string>
+		<string> 14150F </string>
+		<string> 65675C </string>
+		<string> 434738 </string>
+		<string> 26291F </string>
+		<string> 747B77 </string>
+		<string> 4B5B63 </string>
+		<string> ACD2F3 </string>
+		<string> 90C4F4 </string>
+		<string> 7DAEE6 </string>
+		<string> AFC4DC </string>
+		<string> CEDBEC </string>
+
+
+	</array>
+	<key>name</key>
+	<string>Iceland</string>
+</dict>
+</plist>
