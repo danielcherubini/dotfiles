@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>colors</key>
+	<array>
+		<string>F3C29E</string>
+		<string>A87338</string>
+		<string>E1AC27</string>
+		<string>B19D27</string>
+		<string>3B5032</string>
+		<string>6D9A91</string>
+		<string>22373A</string>
+		<string>21687C</string>
+
+
+	</array>
+	<key>name</key>
+	<string>Wald</string>
+</dict>
+</plist>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>colors</key>
+	<array>
+		<string>9E1F0E</string>
+		<string>003364</string>
+		<string>4E155A</string>
+		<string>53561B</string>
+		<string>494948</string>
+		<string>2B2826</string>
+		<string>1A1A18</string>
+		<string>1B342E</string>
+		<string>3B3E40</string>
+		<string>002747</string>
+		<string>402A00</string>
+		<string>712606</string>
+	</array>
+	<key>name</key>
+	<string>Dunkel</string>
+</dict>
+</plist>

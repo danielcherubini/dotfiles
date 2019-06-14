@@ -43,7 +43,6 @@ USER=daniel
 alias vim='nvim'
 
 export coding="$HOME/Coding"
-export go="$HOME/go/src/github.com/danielcherubini"
 
 bindkey -e
 bindkey '^[C' forward-word
@@ -66,9 +65,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# export GOROOT=/usr/local/go
-export GOPATH=$HOME/go:$HOME/Coding/Go
-export PATH=$PATH:$HOME/go/bin
+export GOROOT="/usr/local/opt/go/libexec"
+export GOPATH="$HOME/.go:$HOME/Coding/Go"
+export GO111MODULE="on"
+export PATH="$PATH:$GOROOT/bin"
+export PATH="$PATH:$HOME/.go/bin"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -80,6 +81,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/gettext/lib"
+
 export CPPFLAGS="-I/usr/local/opt/gettext/include"
 export MOZ_ENABLE_WAYLAND=1
 export LIBVA_DRIVER_NAME=i965
