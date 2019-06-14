@@ -18,4 +18,5 @@ else
 	ICON="🔇"
 fi
 
-echo "$ICON $VOLUME"
+echo $ICON
+echo $VOLUME

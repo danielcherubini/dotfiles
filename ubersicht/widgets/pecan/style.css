@@ -3,7 +3,7 @@
 /* import colors */
 :root {
   /* background colors */
-  --pecan-bg: #202020;
+  --pecan-bg: rgba(32, 32, 32, 0.75);
   --pecan-bg-pecanworkspace: #FDD7FB;
   --pecan-bg-pecannetwork: var(--pecan-bg);
   --pecan-bg-pecandate: var(--pecan-bg);
@@ -15,7 +15,7 @@
   /* foreground colors */
   --pecan-fg-pecanworkspace: #202020;
   --pecan-fg-pecannetwork: #FDD7FB;
-  --pecan-fg-pecandate: #484848;
+  --pecan-fg-pecandate: #B7DCE3;
   --pecan-fg-pecanbattery: #D2D6FE;
   --pecan-fg-pecanclock: #B7DCE3;
   --pecan-fg-pecanvolume: #B7DCE3;
@@ -29,7 +29,7 @@
   --pecan-xanthia-image-size: 100px;
   --pecan-chunkwm-bar: 16px;
   /* opacity */
-  --pecan-opacity: 1;
+  --pecan-opacity: 0.75;
   /* this value affects --pecan-border */
   --pecan-opacity-inner: 1;
   --pecan-opacity-center: 1;
@@ -71,7 +71,7 @@
   --pecan-xanthia-image-border-radius-right: var(--pecan-border-radius-inner);
   --pecan-xanthia-image-border: 0px;
   /* typography */
-  --pecan-font: scientifica, SF Mono, Menlo, Monospace;
+  --pecan-font: Dank Mono, SF Mono, Menlo, Monospace;
   --pecan-font-size: 11px;
   --pecan-font-style: regular;
   --pecan-line-height: calc(var(--pecan-height) - calc(var(--pecan-border) * 2));
@@ -162,7 +162,7 @@
   font: var(--pecan-font-size) var(--pecan-font);
   font-style: var(--pecan-font-style);
   color: var(--pecan-fg-pecandate);
-  background-color: var(--pecan-bg-pecandate);
+  /* background-color: var(--pecan-bg-pecandate); */
   opacity: var(--pecan-opacity-center);
   position: absolute;
   display: inline-block;
@@ -189,7 +189,7 @@
   color: var(--pecan-fg-pecannetwork);
   display: inline-block;
   position: absolute;
-  background-color: var(--pecan-bg-pecannetwork);
+  /* background-color: var(--pecan-bg-pecannetwork); */
   opacity: var(--pecan-opacity-inner);
   padding: 0 var(--pecan-text-padding);
   top: var(--pecan-alignment-top);
@@ -215,7 +215,7 @@
   color: var(--pecan-fg-pecanvolume);
   display: inline-block;
   position: absolute;
-  background-color: var(--pecan-bg-pecanvolume);
+  /* background-color: var(--pecan-bg-pecanvolume); */
   opacity: var(--pecan-opacity-inner);
   padding: 0 var(--pecan-text-padding);
   top: var(--pecan-alignment-top);
@@ -241,7 +241,7 @@
   color: var(--pecan-fg-pecanbattery);
   display: inline-block;
   position: absolute;
-  background-color: var(--pecan-bg-pecanbattery);
+  /* background-color: var(--pecan-bg-pecanbattery); */
   opacity: var(--pecan-opacity-inner);
   padding: 0 var(--pecan-text-padding);
   top: var(--pecan-alignment-top);
@@ -266,7 +266,7 @@
   color: var(--pecan-fg-pecanclock);
   display: inline-block;
   position: absolute;
-  background-color: var(--pecan-bg-pecanclock);
+  /* background-color: var(--pecan-bg-pecanclock); */
   opacity: var(--pecan-opacity-inner);
   padding: 0 var(--pecan-text-padding);
   margin: var(--pecan-border);
