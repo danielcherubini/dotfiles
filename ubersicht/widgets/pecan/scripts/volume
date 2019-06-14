@@ -1,0 +1,21 @@
+#!/bin/bash
+
+VOLUME=$(osascript -e 'set ovol to output volume of (get volume settings)')
+ICON="🔈"
+
+if [ "$VOLUME" = "missing value" ]; then
+	VOLUME=0
+	ICON="🔇"
+fi
+
+if (( $VOLUME > 66 )); then
+	ICON="🔊"
+elif (( $VOLUME > 33 )); then
+	ICON="🔉"
+elif (( $VOLUME > 0 )); then
+	ICON="🔈"
+else
+	ICON="🔇"
+fi
+
+echo "$ICON $VOLUME"
