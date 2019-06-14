@@ -46,8 +46,8 @@ export coding="$HOME/Coding"
 export go="$HOME/go/src/github.com/danielcherubini"
 
 bindkey -e
-bindkey '^[w' forward-word
-bindkey '^[b' backward-word
+bindkey '^[C' forward-word
+bindkey '^[D' backward-word
 
 export PATH="$PATH:$HOME/.activator/bin"
 
@@ -81,3 +81,5 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/gettext/lib"
 export CPPFLAGS="-I/usr/local/opt/gettext/include"
+export MOZ_ENABLE_WAYLAND=1
+export LIBVA_DRIVER_NAME=i965

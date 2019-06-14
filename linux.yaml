@@ -14,6 +14,8 @@ spec:
   ~/.zshrc: zsh/.zshrc
   ~/.config/nvim: nvim
   ~/.i3: i3
+  ~/.config/sway: sway
   ~/.Xresources: X11/Xresources
   ~/.config/termite: termite
   ~/.config/polybar: polybar
+  ~/.config/compton.conf: compton/compton.conf
