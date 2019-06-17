@@ -2,7 +2,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
-#
+
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
 
@@ -213,7 +213,6 @@ for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
-for_window [class="Firefox"] border none
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -343,11 +342,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
   # client.background       #2B2C2B
 
-# class                 border  backgr. text    indicator
-client.focused #664477 #664477 #cccccc #e7d8b1
-client.focused_inactive #e7d8b1 #e7d8b1 #181715 #A074C4
-client.unfocused #222133 #222133 #AAAAAA #A074C4
-client.urgent #CE4045 #CE4045 #e7d8b1 #DCCD69
+# $i3-theme-window
 
 #############################
 ### settings for i3-gaps: ###
