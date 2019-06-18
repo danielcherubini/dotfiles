@@ -4,7 +4,7 @@
 :root {
   /* background colors */
   --pecan-bg: rgba(32, 32, 32, 0.75);
-  --pecan-bg-pecanworkspace: #FDD7FB;
+  --pecan-bg-pecanworkspace: var(--pecan-bg);
   --pecan-bg-pecannetwork: var(--pecan-bg);
   --pecan-bg-pecandate: var(--pecan-bg);
   --pecan-bg-pecanbattery: var(--pecan-bg);
@@ -13,7 +13,7 @@
   --pecan-xanthia-bg: var(--pecan-bg);
   --pecan-xanthia-image-bg: var(--pecan-bg);
   /* foreground colors */
-  --pecan-fg-pecanworkspace: #202020;
+  --pecan-fg-pecanworkspace: #B7DCE3;
   --pecan-fg-pecannetwork: #FDD7FB;
   --pecan-fg-pecandate: #B7DCE3;
   --pecan-fg-pecanbattery: #D2D6FE;
@@ -139,7 +139,6 @@
   color: var(--pecan-fg-pecanworkspace);
   display: inline-block;
   position: absolute;
-  background-color: var(--pecan-bg-pecanworkspace);
   opacity: var(--pecan-opacity-inner);
   top: var(--pecan-alignment-top);
   right: auto;
@@ -175,6 +174,30 @@
   margin: var(--pecan-border);
   line-height: var(--pecan-line-height);
   text-align: center;
+  border-top-left-radius: var(--pecan-border-radius-inner);
+  border-top-right-radius: var(--pecan-border-radius-inner);
+  border-bottom-right-radius: var(--pecan-border-radius-inner);
+  border-bottom-left-radius: var(--pecan-border-radius-inner);
+  box-shadow: var(--pecan-shadow-inner);
+}
+
+.weather {
+  font: var(--pecan-font-size) var(--pecan-font);
+  font-style: var(--pecan-font-style);
+  color: var(--pecan-fg-pecannetwork);
+  display: inline-block;
+  position: absolute;
+  /* background-color: var(--pecan-bg-pecannetwork); */
+  opacity: var(--pecan-opacity-inner);
+  padding: 0 var(--pecan-text-padding);
+  top: var(--pecan-alignment-top);
+  right: 0px;
+  bottom: var(--pecan-alignment-bottom);
+  left: auto;
+  margin-top: calc(var(--pecan-padding-v) + var(--pecan-border));
+  margin-right: calc(var(--pecan-padding-right) + calc(var(--pecan-text-padding) * 1) + 44ch + calc(var(--pecan-border) * 2));
+  margin-bottom: calc(var(--pecan-padding-v) + var(--pecan-border));
+  line-height: var(--pecan-line-height);
   border-top-left-radius: var(--pecan-border-radius-inner);
   border-top-right-radius: var(--pecan-border-radius-inner);
   border-bottom-right-radius: var(--pecan-border-radius-inner);
