@@ -1,0 +1,19 @@
+#!/bin/bash
+
+BREW_INSTALL_THESE="golang ifstat neofetch ripgrep"
+
+
+# Setup Bonclay
+if hash bonclay 2>/dev/null; then
+	bonclay sync mac.yaml
+else
+	sh -c "$(curl -sL git.io/getbonclay)"
+fi
+
+if hash brew 2>/dev/null; then
+	brew install $BREW_INSTALL_THESE
+else
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	brew install $BREW_INSTALL_THESE
+fi
+
