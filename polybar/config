@@ -57,9 +57,9 @@ font-2 = siji:pixelsize=12;1
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = cpu memory eth battery temperature date powermenu
+modules-right = pulseaudio cpu memory eth battery temperature date powermenu
 
-tray-position = right
+tray-position = none
 tray-padding = 0
 ;tray-background = #0063ff
 
