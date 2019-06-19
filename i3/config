@@ -8,12 +8,10 @@ set $mod Mod4
 
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 2
-new_float normal
+default_border pixel 2
 
-# exec --no-startup-id "/usr/bin/xrandr --output eDP1 --dpi 165"
 # Hide borders
-hide_edge_borders none
+hide_edge_borders smart
 
 # change borders
 bindsym $mod+u border none
@@ -38,6 +36,7 @@ bindsym Mod1+space exec --no-startup-id dmenu_recency
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
+
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -289,6 +288,7 @@ exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id /usr/bin/alternating_layouts.py
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -346,10 +346,10 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
   # client.background       #2B2C2B
 
 # class                 border  backgr. text    indicator
-client.focused #664477 #664477 #cccccc #e7d8b1
-client.focused_inactive #e7d8b1 #e7d8b1 #181715 #A074C4
-client.unfocused #222133 #222133 #AAAAAA #A074C4
-client.urgent #CE4045 #CE4045 #e7d8b1 #DCCD69
+client.focused		#664477 #664477 #cccccc #e7d8b1 #664477
+client.focused_inactive #e7d8b1 #e7d8b1 #181715 #A074C4 #000000
+client.unfocused 	#222133 #222133 #AAAAAA #A074C4 #664477
+client.urgent 		#CE4045 #CE4045 #e7d8b1 #DCCD69 #664477
 
 #############################
 ### settings for i3-gaps: ###
