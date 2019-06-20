@@ -18,7 +18,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
+background = #222222
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
@@ -57,7 +57,7 @@ font-2 = siji:pixelsize=12;1
 
 modules-left = bspwm i3
 modules-center = mpd
-modules-right = pulseaudio cpu memory eth battery temperature date powermenu
+modules-right = wlan pulseaudio cpu memory eth battery temperature date powermenu
 
 tray-position = none
 tray-padding = 0
@@ -276,11 +276,13 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = %percentage%%
+label-volume = 
 label-volume-foreground = ${root.foreground}
+format-volume-underline = #55aa55
 
 label-muted = 🔇 muted
 label-muted-foreground = #666
+format-muted-underline = #55aa55
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
