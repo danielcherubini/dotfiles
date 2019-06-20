@@ -1,0 +1,4 @@
+rofi.combi-modi:    run,drun,ssh
+rofi.theme:         solarized
+rofi.font:          DankMono 18
+rofi.modi:          drun
