@@ -52,8 +52,8 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = fixed:pixelsize=12;1
-font-1 = unifont:fontformat=truetype:size=10:antialias=false;0
-font-2 = siji:pixelsize=12;1
+font-1 = unifont:fontformat=truetype:size=20:antialias=false;0
+font-2 = siji:pixelsize=24;1
 
 modules-left = bspwm i3
 modules-center = mpd
@@ -276,7 +276,7 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = 
+label-volume =
 label-volume-foreground = ${root.foreground}
 format-volume-underline = #55aa55
 
