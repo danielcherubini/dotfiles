@@ -3,7 +3,8 @@ xwayland disable
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
-
+gaps outer 16
+gaps inner 0
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -211,4 +212,4 @@ bar {
     }
 }
 
-include /etc/sway/config.d/*
+# include /etc/sway/config.d/*
