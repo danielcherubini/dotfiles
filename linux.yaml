@@ -16,6 +16,7 @@ spec:
   ~/.i3: i3
   ~/.config/rofi: rofi
   ~/.config/sway: sway
+  ~/.config/dunst: dunst
   ~/.Xresources: X11/Xresources
   ~/.config/termite: termite
   ~/.config/polybar: polybar
