@@ -1,0 +1,90 @@
+#!/usr/bin/env node
+const { EOL, hostname } = require( "os" );
+const { spawn } = require('child_process');
+
+const ifstat = spawn( "ifstat", [ "-nzw" ] );
+
+ifstat.on( "error", function( err ){
+	if( err.code == "ENOENT" ){
+		console.error( "You don't have ifstat available; Try installing it." );
+		process.exit(1);
+	}else{
+		console.error(err);
+		process.exit(1);
+	}
+} );
+
+function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+}
+
+let currentState = {
+	interfaces: [
+
+	]
+};
+
+const handleHeaderLines = function( dataLines ){
+
+	let _interfaces = dataLines[0].split(/\s/).filter( onlyUnique );
+
+	_interfaces.splice(0,2);
+
+	currentState.interfaces = _interfaces;
+};
+
+const inOut = function( inOutArray ){
+	return {
+		in: inOutArray[0],
+		out: inOutArray[1]
+	};
+};
+
+const handleDataLines = function( dataLines ){
+
+	let _columns = dataLines[0].split(/\s/).filter( function( v ){ return v !== '' } );
+
+	// Yes I know we could get the time directly from the damn ifstat, but I
+	// don't want to bother to parse the hours minutes and seconds into a proper
+	// date object right now. It'll be < 1second off, which is good enough for me.
+
+	// If you feel like this should be changed, create a PR.
+	const time = new Date( );
+
+	_columns.shift();
+
+	let _obj = {
+		hostname: hostname(),
+		date: time,
+		interfaces: {
+		}
+	};
+	for( var interfaceCounter=0; interfaceCounter<currentState.interfaces.length; interfaceCounter++ ){
+		_obj.interfaces[currentState.interfaces[interfaceCounter]] = inOut( _columns.splice(0,2).map( function( v ){ return parseFloat(v); } ) );
+	}
+	console.log( JSON.stringify( _obj ) );
+};
+
+ifstat.stdout.on( "data", function( dataBuffer ){
+
+	const dataString = dataBuffer.toString();
+
+	let dataLines = dataString.split( EOL );
+
+	// Discard trailing newline.
+	dataLines.pop();
+
+	if( dataLines.length == 3 ){
+		handleHeaderLines( dataLines );
+	}else{
+		handleDataLines( dataLines );
+	}
+} );
+
+ifstat.on( "close", function( code ){
+	process.exit(code);
+} );
+
+process.on( "SIGINT", function( ){
+	ifstat.kill( );
+} );
