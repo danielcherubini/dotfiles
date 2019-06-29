@@ -14,5 +14,6 @@ spec:
   ~/.zshrc: zsh/.zshrc
   ~/.config/nvim: nvim
   ~/.chunkwmrc: chunkwm/chunkwmrc
+  ~/.yabairc: yabai/yabairc
   ~/.chunkwm_plugins: chunkwm/plugins
   ~/.skhdrc: skhd/skhdrc
