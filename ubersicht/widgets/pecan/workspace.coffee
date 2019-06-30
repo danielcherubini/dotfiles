@@ -1,4 +1,4 @@
-command: "bash pecan/scripts/ws"
+command: "bash pecan/scripts/yab-ws"
 
 refreshFrequency: 1000 # ms
 
