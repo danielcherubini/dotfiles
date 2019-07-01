@@ -16,4 +16,4 @@ spec:
   ~/.chunkwmrc: chunkwm/chunkwmrc
   ~/.yabairc: yabai/yabairc
   ~/.chunkwm_plugins: chunkwm/plugins
-  ~/.skhdrc: skhd/skhdrc
+  ~/.skhdrc: skhd/skhdrc-chunkwm
