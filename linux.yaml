@@ -21,4 +21,4 @@ spec:
   ~/.config/termite: termite
   ~/.config/polybar: polybar
   ~/.config/compton.conf: compton/compton.conf
-  /etc/X11/xorg.conf.d/00-touchpad.conf: X11/00-touchpad.conf
+  ~/.config/libinput-gestures.conf: libinput/libinput-gestures.conf

@@ -1,4 +1,4 @@
 rofi.combi-modi:    run,drun,ssh
-rofi.theme:         solarized
+rofi.theme:         klorax.dracula
 rofi.font:          DankMono 18
 rofi.modi:          drun

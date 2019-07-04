@@ -1,0 +1,254 @@
+/*-*- mode: css; -*-*/
+
+/* klorax.dracula.rasi --- Dracula Theme for Rofi */
+
+/*
+ * Copyright © 2019 Klorax.
+ *
+ * This file is part of Dracula for Rofi by Klorax.
+ *
+ * Dracula for Rofi by Klorax is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or (at your
+ * option) any later version.
+ *
+ * Dracula for Rofi by Klorax is distributed in the hope that it will be
+ * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+ * Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * Dracula for Rofi by Klorax.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
+/*
+ * Dracula for Rofi by Klorax is an implementation of the Dracula color theme
+ * for Rofi.
+ *
+ * Dracula color theme can be found here: https://draculatheme.com/
+ *
+ * Author: Klorax
+ * Maintainer: Klorax
+ * Created: 2019-03-15
+ * Updated: 2019-04-27
+ * Version: 1.0.0
+ * Homepage: https://gitlab.com/klorax/linux_ui_config
+ */
+
+
+/* Clobal Properties */
+* {
+    /* Settings */
+    highlight: bold #f1fa8c;
+    scrollbar: false;
+
+    /* Dracula Colors */
+    color-dK: #282a36;
+    color-bK: #44475a;
+    color-dW: #bfbfbf;
+    color-bW: #f8f8f2;
+    color-dR: #ff5555;
+    color-bR: #ff6e67;
+    color-dG: #50fa7b;
+    color-bG: #5af78e;
+    color-dB: #bd93f9;
+    color-bB: #caa9fa;
+    color-dC: #8be9fd;
+    color-bC: #9aedfe;
+    color-dM: #ff79c6;
+    color-bM: #ff92d0;
+    color-dY: #f1fa8c;
+    color-bY: #f4f99d;
+
+    /* Color Definitions */
+    background:                  @color-dK;
+    foreground:                  @color-bW;
+    accent:                      @color-dB;
+    selected:                    @color-dB;
+    complement:                  @color-dY;
+    alternate:                   #373844;
+    borders:                     #000000;
+
+    /* Global Colors */
+    background-color:            @background;
+    border-color:                @borders;
+    separator-color:             @accent;
+    scrollbar-color:             @background;
+    scrollbar-handle:            @accent;
+
+    /* Normal */
+    normal-background:           @background;
+    normal-foreground:           @foreground;
+    alternate-normal-background: @alternate;
+    alternate-normal-foreground: @foreground;
+    selected-normal-background:  @selected;
+    selected-normal-foreground:  @foreground;
+
+    /* Active */
+    active-background:           @color-bK;
+    active-foreground:           @foreground;
+    alternate-active-background: @active-background;
+    alternate-active-foreground: @active-foreground;
+    selected-active-background:  @accent;
+    selected-active-foreground:  @complement;
+
+    /* Urgent */
+    urgent-background:           @complement;
+    urgent-foreground:           @background;
+    alternate-urgent-background: @urgent-background;
+    alternate-urgent-foreground: @urgent-foreground;
+    selected-urgent-background:  @accent;
+    selected-urgent-foreground:  @complement;
+}
+
+
+/* Element Themes */
+window {
+    margin:                      0px;
+    border:                      1px;
+    padding:                     0px;
+    background-color:            @background;
+}
+
+mainbox {
+    margin:                      0px;
+    border:                      0px;
+    padding:                     0px;
+}
+
+message {
+    margin:                      0px;
+    border:                      0px;
+    padding:                     0px;
+}
+
+textbox {
+    margin:                      2px;
+    border:                      1px;
+    padding:                     8px;
+    background-color:            @background;
+    border-color:                @complement;
+    text-color:                  @accent;
+    highlight:                   @accent;
+}
+
+listview {
+    margin:                      0px;
+    border:                      1px 0 0 0;
+    padding:                     4px 0 0 0;
+    spacing:                     0px;
+    border-color:                @separator-color;
+    scrollbar:                   @scrollbar;
+}
+
+element {
+    border:                      0px;
+    padding:                     0.3em;
+    border-color:                @normal-background;
+}
+
+element.normal.normal {
+    background-color:            @normal-background;
+    text-color:                  @normal-foreground;
+}
+
+element.normal.active {
+    background-color:            @active-background;
+    text-color:                  @active-foreground;
+}
+
+element.normal.urgent {
+    background-color:            @urgent-background;
+    text-color:                  @urgent-foreground;
+}
+
+element.alternate.normal {
+    background-color:            @alternate-normal-background;
+    text-color:                  @alternate-normal-foreground;
+}
+
+element.alternate.active {
+    background-color:            @alternate-active-background;
+    text-color:                  @alternate-active-foreground;
+}
+
+element.alternate.urgent {
+    background-color:            @alternate-urgent-background;
+    text-color:                  @alternate-urgent-foreground;
+}
+
+element.selected {
+    border-color:                @accent;
+}
+
+element.selected.normal {
+    background-color:            @selected-normal-background;
+    text-color:                  @selected-normal-foreground;
+}
+
+element.selected.active {
+    background-color:            @selected-active-background;
+    text-color:                  @selected-active-foreground;
+}
+
+element.selected.urgent {
+    background-color:            @selected-urgent-background;
+    text-color:                  @selected-urgent-foreground;
+}
+
+scrollbar {
+    margin:                      1px;
+    border:                      0px;
+    padding:                     0px;
+    handle-width:                6px;
+    background-color:            @scrollbar-color;
+    handle-color:                @scrollbar-handle;
+}
+
+inputbar {
+    spacing:                     0;
+    text-color:                  @foreground;
+    padding:                     8px;
+    children:                    [prompt, textbox-prompt-sep, entry,
+                                  case-indicator];
+}
+
+prompt, entry {
+    font:                        "Exo2 48";
+    spacing:                     0;
+    text-color:                  @foreground;
+}
+
+case-indicator {
+    spacing:                     0;
+    text-color:                  @accent;
+}
+
+sidebar {
+    margin:                      0px;
+    border:                      1px 0 0 0;
+    padding:                     4px 0 0 0;
+    border-color:                @separator-color;
+}
+
+button {
+    margin:                      0px;
+    border:                      1px;
+    padding:                     2px;
+    spacing:                     0;
+    text-color:                  @accent;
+}
+
+button.selected {
+    border-color:                @accent;
+    background-color:            @selected-normal-background;
+    text-color:                  @selected-normal-foreground;
+}
+
+textbox-prompt-sep {
+    expand:                      false;
+    str:                         "";
+    text-color:                  @accent;
+    margin:                      0 0.3em 0 0;
+}
