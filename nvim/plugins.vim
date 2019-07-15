@@ -16,6 +16,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'pangloss/vim-javascript'
+Plug 'elzr/vim-json'
 Plug 'posva/vim-vue'
 Plug 'jiangmiao/auto-pairs'
 call plug#end()
