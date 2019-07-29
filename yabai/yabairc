@@ -39,4 +39,12 @@ yabai -m config left_padding                 8
 yabai -m config right_padding                8
 yabai -m config window_gap                   8
 
+yabai -m rule --add app=Dashlane manage=off
+yabai -m rule --add app=Finder --name Copy manage=off
+yabai -m rule --add app="App Store" manage=off
+yabai -m rule --add app="Aviatrix VPN Client" manage=off
+yabai -m rule --add app=Dashlane manage=off
+yabai -m rule --add app="The Unarchiver" manage=off
+yabai -m rule --add app=FaceTime manage=off
+
 echo "yabai configuration loaded.."

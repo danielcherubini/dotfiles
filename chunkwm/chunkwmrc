@@ -139,3 +139,4 @@ chunkc tiling::rule --owner Emacs --except "^$" --state tile &
 chunkc tiling::rule --owner \"Aviatrix VPN Client\" --state float &
 chunkc tiling::rule --owner Dashlane --state float &
 chunkc tiling::rule --owner \"The Unarchiver\" --state float &&
+chunkc tiling::rule --owner FaceTime --state float &&
