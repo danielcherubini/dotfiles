@@ -23,8 +23,6 @@ let g:coc_global_extensions = [
 	\ 'coc-syntax',
 	\ 'coc-ultisnips',
 	\ 'coc-json',
-	\ 'coc-tslint',
-	\ 'coc-tsserver',
 	\ 'coc-gocode',
 	\ 'coc-pairs',
 	\ 'coc-java'
