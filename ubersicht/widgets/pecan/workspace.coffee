@@ -1,6 +1,6 @@
-command: "bash pecan/scripts/ws"
+command: "bash pecan/scripts/yab-ws"
 
-refreshFrequency: 1000 # ms
+refreshFrequency: 500 # ms
 
 render: (output) ->
   "<div class='screen'><div class='pecanworkspace'>#{output}</div></div>"
