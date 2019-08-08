@@ -190,7 +190,7 @@
   position: absolute;
   /* background-color: var(--pecan-bg-pecannetwork); */
   opacity: var(--pecan-opacity-inner);
-  padding: 0 var(--pecan-text-padding);
+  padding: 1 var(--pecan-text-padding);
   top: var(--pecan-alignment-top);
   right: 0px;
   bottom: var(--pecan-alignment-bottom);
