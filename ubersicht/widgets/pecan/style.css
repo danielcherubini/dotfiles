@@ -1,6 +1,7 @@
 /* pecan is a bar for Ubersicht */
 /* written by daniel neemann (@zzzeyez) */
 /* import colors */
+@import 'fontawesome/css/all.css';
 :root {
   /* background colors */
   --pecan-bg: rgba(32, 32, 32, 0.75);
@@ -195,7 +196,7 @@
   bottom: var(--pecan-alignment-bottom);
   left: auto;
   margin-top: calc(var(--pecan-padding-v) + var(--pecan-border));
-  margin-right: calc(var(--pecan-padding-right) + calc(var(--pecan-text-padding) * 1) + 44ch + calc(var(--pecan-border) * 2));
+  margin-right: calc(var(--pecan-padding-right) + calc(var(--pecan-text-padding) * 1) + 32ch + calc(var(--pecan-border) * 2));
   margin-bottom: calc(var(--pecan-padding-v) + var(--pecan-border));
   line-height: var(--pecan-line-height);
   border-top-left-radius: var(--pecan-border-radius-inner);
@@ -220,7 +221,7 @@
   bottom: var(--pecan-alignment-bottom);
   left: auto;
   margin-top: calc(var(--pecan-padding-v) + var(--pecan-border));
-  margin-right: calc(var(--pecan-padding-right) + calc(var(--pecan-text-padding) * 1) + 28ch + calc(var(--pecan-border) * 2));
+  margin-right: calc(var(--pecan-padding-right) + calc(var(--pecan-text-padding) * 1) + 23.5ch + calc(var(--pecan-border) * 2));
   margin-bottom: calc(var(--pecan-padding-v) + var(--pecan-border));
   line-height: var(--pecan-line-height);
   border-top-left-radius: var(--pecan-border-radius-inner);
@@ -246,7 +247,7 @@
   bottom: var(--pecan-alignment-bottom);
   left: auto;
   margin-top: calc(var(--pecan-padding-v) + var(--pecan-border));
-  margin-right: calc(var(--pecan-padding-right) + calc(var(--pecan-text-padding) * 1) + 18ch + calc(var(--pecan-border) * 2));
+  margin-right: calc(var(--pecan-padding-right) + calc(var(--pecan-text-padding) * 1) + 16.5ch + calc(var(--pecan-border) * 2));
   margin-bottom: calc(var(--pecan-padding-v) + var(--pecan-border));
   line-height: var(--pecan-line-height);
   border-top-left-radius: var(--pecan-border-radius-inner);
@@ -272,7 +273,7 @@
   bottom: var(--pecan-alignment-bottom);
   left: auto;
   margin-top: calc(var(--pecan-padding-v) + var(--pecan-border));
-  margin-right: calc(var(--pecan-padding-right) + calc(var(--pecan-text-padding) * 1) + 10ch + calc(var(--pecan-border) * 2));
+  margin-right: calc(var(--pecan-padding-right) + calc(var(--pecan-text-padding) * 1) + 9ch + calc(var(--pecan-border) * 2));
   margin-bottom: calc(var(--pecan-padding-v) + var(--pecan-border));
   line-height: var(--pecan-line-height);
   border-top-left-radius: var(--pecan-border-radius-inner);

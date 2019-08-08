@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+LATITUDE="59.913868"
+LONGITUDE="10.752245"
+MY_LOCATION="Oslo, Norway"
+APIKEY="2417458ef150eaf10d47462cbddc78b3"
+LANG="en"
+UNITS="ca"
+
+URL="https://api.darksky.net/forecast/${APIKEY}/${LATITUDE},${LONGITUDE}?lang=${LANG}&units=${UNITS}&exclude=minutely,hourly"
+
+curl -s $URL

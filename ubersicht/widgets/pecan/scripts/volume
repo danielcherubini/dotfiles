@@ -5,17 +5,17 @@ ICON="🔈"
 
 if [ "$VOLUME" = "missing value" ]; then
 	VOLUME=0
-	ICON="🔇"
+	ICON="<i class='fas fa-volume-off'></i>"
 fi
 
 if (( $VOLUME > 66 )); then
-	ICON="🔊"
+	ICON="<i class='fas fa-volume-up'></i>"
 elif (( $VOLUME > 33 )); then
-	ICON="🔉"
+	ICON="<i class='fas fa-volume-down'></i>"
 elif (( $VOLUME > 0 )); then
-	ICON="🔈"
+	ICON="<i class='fas fa-volume-off'></i>"
 else
-	ICON="🔇"
+	ICON="<i class='fas fa-volume-mute'></i>"
 fi
 
 echo $ICON

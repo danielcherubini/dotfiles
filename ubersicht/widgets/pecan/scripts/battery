@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if pmset -g batt | grep AC &> /dev/null; then
-    echo "⚡"
+    echo "<i class='fas fa-heart-broken'></i>"
 else
-    echo "♥"
+    echo "<i class='far fa-heart'></i>"
 fi
 
 battery="$(pmset -g batt | grep -o '[0-9]*%')"
