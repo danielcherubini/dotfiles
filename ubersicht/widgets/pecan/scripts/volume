@@ -1,21 +1,22 @@
 #!/bin/bash
 
 VOLUME=$(osascript -e 'set ovol to output volume of (get volume settings)')
+MUTE=$(osascript -e 'output muted of (get volume settings)')
 ICON="🔈"
 
-if [ "$VOLUME" = "missing value" ]; then
+if [ "$MUTE" = "true" ]; then
 	VOLUME=0
-	ICON="<i class='fas fa-volume-off'></i>"
-fi
-
-if (( $VOLUME > 66 )); then
-	ICON="<i class='fas fa-volume-up'></i>"
-elif (( $VOLUME > 33 )); then
-	ICON="<i class='fas fa-volume-down'></i>"
-elif (( $VOLUME > 0 )); then
-	ICON="<i class='fas fa-volume-off'></i>"
+	ICON="<i class='fas fa-volume-mute' style='padding-right:5px'></i>"
 else
-	ICON="<i class='fas fa-volume-mute'></i>"
+	if (( $VOLUME > 66 )); then
+		ICON="<i class='fas fa-volume-up'></i>"
+	elif (( $VOLUME > 33 )); then
+		ICON="<i class='fas fa-volume-down'style='padding-right:2px'></i>"
+	elif (( $VOLUME > 0 )); then
+		ICON="<i class='fas fa-volume-off' style='padding-right:5px'></i>"
+	else
+		ICON="<i class='fas fa-volume-mute'></i>"
+	fi
 fi
 
 echo $ICON
