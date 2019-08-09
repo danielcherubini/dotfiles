@@ -25,7 +25,8 @@ let g:coc_global_extensions = [
 	\ 'coc-json',
 	\ 'coc-gocode',
 	\ 'coc-pairs',
-	\ 'coc-java'
+	\ 'coc-java',
+	\ 'coc-eslint'
 \ ]
 
 " Show all diagnostics

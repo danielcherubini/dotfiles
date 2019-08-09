@@ -4,7 +4,7 @@ VOLUME=$(osascript -e 'set ovol to output volume of (get volume settings)')
 MUTE=$(osascript -e 'output muted of (get volume settings)')
 ICON="🔈"
 
-if [ "$MUTE" = "true" ]; then
+if [ "$VOLUME" = 'missing value' ] || [ "$MUTE" = "true" ]; then
 	VOLUME=0
 	ICON="<i class='fas fa-volume-mute' style='padding-right:5px'></i>"
 else
