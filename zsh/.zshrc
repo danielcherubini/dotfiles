@@ -42,7 +42,7 @@ USER=daniel
 
 alias vim='nvim'
 
-export coding="$HOME/Coding"
+export co="$HOME/Coding"
 
 bindkey -e
 bindkey '^[C' forward-word
