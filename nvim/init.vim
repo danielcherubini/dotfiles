@@ -113,6 +113,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCompactSexyComs = 1
 let g:NERDToggleCheckAllLines = 1
+let NERDTreeShowHidden=1
 let g:NERDTreeHighlightFolders = 1
 let g:NERDTreeHighlightFoldersFullName = 1
 let NERDTreeMinimalUI = 1
