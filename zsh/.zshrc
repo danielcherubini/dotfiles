@@ -40,8 +40,6 @@ USER=daniel
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias vim='nvim'
-
 export co="$HOME/Coding"
 
 bindkey -e
