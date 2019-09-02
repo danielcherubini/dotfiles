@@ -113,10 +113,15 @@ let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCompactSexyComs = 1
 let g:NERDToggleCheckAllLines = 1
+let g:NERDTreeHighlightFolders = 1
+let g:NERDTreeHighlightFoldersFullName = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git$']
 " let g:nerdtree_tabs_open_on_console_startup = 1
 augroup nerdtreegroup
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup end
+
 " ===============================================================
 " Airline
 " ===============================================================
