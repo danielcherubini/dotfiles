@@ -26,7 +26,9 @@ let g:coc_global_extensions = [
 	\ 'coc-gocode',
 	\ 'coc-pairs',
 	\ 'coc-java',
-	\ 'coc-eslint'
+	\ 'coc-eslint',
+	\ 'coc-tsserver',
+	\ 'coc-tslint-plugin'
 \ ]
 
 " Show all diagnostics
