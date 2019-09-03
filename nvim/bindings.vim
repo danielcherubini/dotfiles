@@ -49,3 +49,7 @@ noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 nmap <C-n> :NERDTreeToggle<CR>
 nmap <C-p> :FZF<CR>
 nmap <C-f> :Find<space>
+
+"" Vmap for maintain Visual Mode after shifting > and <
+vmap < <gv
+vmap > >gv
