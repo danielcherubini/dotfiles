@@ -119,6 +119,7 @@ let g:NERDTreeShowHidden=1
 let g:NERDTreeHighlightFolders = 1
 let g:NERDTreeHighlightFoldersFullName = 1
 let g:NERDTreeMinimalUI = 1
+let g:NERDTreeMapOpenInTab='\r'
 let g:NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git$']
 let g:NERDTreeQuitOnOpen=1
 " let g:nerdtree_tabs_open_on_console_startup = 1

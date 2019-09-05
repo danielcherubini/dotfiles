@@ -2,7 +2,7 @@
 " Javascript Config
 " ===============================================================
 :call extend(g:ale_linters, {
-\   'javascript': ['eslint']
+\   'javascript': ['eslint', 'tsserver']
 \})
 
 :call extend(g:ale_fixers, {

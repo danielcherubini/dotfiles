@@ -1,5 +1,5 @@
 {
-  "coc.preferences.jumpCommand": "tab drop",
+  "coc.preferences.jumpCommand": "tabe",
   "tslint.jsEnable": true,
   "tslint.autoFixOnSave": true,
  "languageserver": {

@@ -85,3 +85,18 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/gettext/lib"
 
 export CPPFLAGS="-I/usr/local/opt/gettext/include"
+alias tf=terraform
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/danielcherubini/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/danielcherubini/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/danielcherubini/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/danielcherubini/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/danielcherubini/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/danielcherubini/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/slss.zsh
+
+alias gproxy='ssh -f -nNT gitproxy'
+alias gproxy-status='ssh -O check gitproxy'
+alias gproxy-off='ssh -O exit gitproxy'
