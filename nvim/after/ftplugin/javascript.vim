@@ -1,6 +1,9 @@
 " ===============================================================
 " Javascript Config
 " ===============================================================
+
+set nowrap nolinebreak list
+
 :call extend(g:ale_linters, {
 \   'javascript': ['eslint', 'tsserver']
 \})

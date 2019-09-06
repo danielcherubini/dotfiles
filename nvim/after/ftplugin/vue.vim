@@ -2,6 +2,8 @@
 " Vue Config
 " ===============================================================
 
+set nowrap nolinebreak list
+
 :call extend(g:ale_linters, {
 \   'vue': ['eslint']
 \})
