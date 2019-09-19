@@ -1,4 +1,4 @@
-" ===============================================================
+"===============================================================
 " Keyboard Config
 " ===============================================================
 " With a map leader it's possible to do extra key combinations
@@ -11,6 +11,8 @@ inoremap {<CR> {<CR>}<Esc>O
 nmap <leader>w :w!<cr>
 " easier quit
 nmap <leader>q :q<cr>
+
+nmap <leader>x :w<cr>:bp<bar>sp<bar>bn<bar>bd<cr>
 
 "" Split
 noremap <Leader>h :<C-u>split<CR>
@@ -46,7 +48,7 @@ noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 "" Opens a tab edit command with the path of the currently edited file filled
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-nmap <C-n> :NERDTreeToggle<CR>
+nmap <C-n> :NERDTreeTabsToggle<CR>
 nmap <C-p> :FZF<CR>
 nmap <C-f> :Find<space>
 

@@ -9,12 +9,34 @@ source $VIMUSERRUNTIME/bindings.vim
 " ===============================================================
 " FZF Config
 " ===============================================================
+let $FZF_DEFAULT_OPTS='--layout=reverse'
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+
+  let height = &lines - 3
+  let width = float2nr(&columns - (&columns * 2 / 10))
+  let col = float2nr((&columns - width) / 2)
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': 1,
+        \ 'col': col,
+        \ 'width': width,
+        \ 'height': height
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
+
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 set grepprg=rg\ --vimgrep
-" let g:fzf_layout = { 'window': '-tabnew' }
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
+let g:fzf_action = { 'enter': 'tab split' }
 
 " ===============================================================
 " COC.VIM
@@ -119,10 +141,12 @@ let g:NERDTreeShowHidden=1
 let g:NERDTreeHighlightFolders = 1
 let g:NERDTreeHighlightFoldersFullName = 1
 let g:NERDTreeMinimalUI = 1
-let g:NERDTreeMapOpenInTab='\r'
+let g:NERDTreeMapOpenInTab='\t'
+autocmd VimEnter * call NERDTreeAddKeyMap({ 'key': '<2-LeftMouse>', 'scope': "FileNode", 'callback': "OpenInTab", 'override':1 })
+    function! OpenInTab(node)
+	call a:node.activate({'reuse': 'all', 'where': 't'})
+    endfunction
 let g:NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git$']
-let g:NERDTreeQuitOnOpen=1
-" let g:nerdtree_tabs_open_on_console_startup = 1
 augroup nerdtreegroup
 	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 augroup end
