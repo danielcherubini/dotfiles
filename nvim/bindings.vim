@@ -12,8 +12,6 @@ nmap <leader>w :w!<cr>
 " easier quit
 nmap <leader>q :q<cr>
 
-nmap <leader>x :w<cr>:bp<bar>sp<bar>bn<bar>bd<cr>
-
 "" Split
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
