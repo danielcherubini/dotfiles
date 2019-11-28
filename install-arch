@@ -1,13 +1,15 @@
 #!/bin/bash
 
-INSTALL_THESE="i3-gaps i3lock i3status polybar rofi dunst nitrogen termite zsh zsh-completions neovim go python python2 ruby neofetch ripgrep"
+INSTALL_THESE="rofi dunst nitrogen termite zsh zsh-completions neovim go python python2 ruby neofetch ripgrep"
 AUR_INSTALL_THESE="compton-tryone-git"
 
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-cd ..
-rm -rf yay
+if hash yay 2>/dev/null; then
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
+	makepkg -si
+	cd ..
+	rm -rf yay
+fi
 
 # Setup Bonclay
 if hash bonclay 2>/dev/null; then
@@ -17,21 +19,22 @@ else
 	bonclay sync linux.yaml
 fi
 
-brew install $INSTALL_THESE
+sudo pacman -Sy $INSTALL_THESE
 yay -S $AUR_INSTALL_THESE
 
 # Setup NVM
 if hash nvm 2>/dev/null; then
-	nvm install 8
+	nvm install 10
 else
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-	nvm install 8
+	source ~/.zshrc
+	nvm install 10
 fi
 
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt"
-
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
