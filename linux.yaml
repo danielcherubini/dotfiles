@@ -21,5 +21,3 @@ spec:
   ~/.Xresources: X11/Xresources
   ~/.config/termite: termite
   ~/.config/polybar: polybar
-  ~/.config/compton.conf: compton/compton.conf
-  ~/.config/libinput-gestures.conf: libinput/libinput-gestures.conf
