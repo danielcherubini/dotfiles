@@ -288,20 +288,15 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-exec --no-startup-id firefox
-exec --no-startup-id termite
-exec --no-startup-id polymail
+exec firefox
+exec termite
 exec --no-startup-id libinput-gestures-setup start
-# exec --no-startup-id blueman-applet
-# exec_always --no-startup-id sbxkb
-# exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker "mantablockscreen -cc"
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id alternating_layouts.py
-exec sranrdrd autorandr --change --default
+exec --no-startup-id screenrotator
+# exec sranrdrd autorandr --change --default
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:

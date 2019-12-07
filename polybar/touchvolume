@@ -1,0 +1,21 @@
+[module/touchvolmute]
+;; Mute
+type=custom/text
+content="  "
+content-foreground=#fff
+click-left=pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+[module/touchvoldown]
+;; Volume down
+type=custom/text
+content="  "
+content-foreground=#fff
+click-left=pactl set-sink-volume @DEFAULT_SINK@ -5% 
+
+[module/touchvolup]
+;; Volume up
+type=custom/text
+content="    "
+content-foreground=#fff
+click-left=pactl set-sink-volume @DEFAULT_SINK@ +5% 
+
