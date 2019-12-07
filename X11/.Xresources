@@ -1,13 +1,13 @@
-Xft.dpi:       165
-Xft.antialias: true
-Xft.hinting:   true
-Xft.rgba:      rgb
-Xft.autohint:  false
-Xft.hintstyle: hintslight
-Xft.lcdfilter: lcddefault
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.hinting:    true
+Xft.rgba:       rgb
+Xft.autohint:   false
+Xft.hintstyle:  hintfull
+Xft.lcdfilter:  lcddefault
 
-XTerm*background:        #222D31
-XTerm*foreground:        #d8d8d8
+XTerm*background:        #282A36
+XTerm*foreground:        #F8F8F2
 XTerm*pointerColor:      #1ABB9B
 XTerm*faceName:          Fixed
 XTerm*faceSize:          11
@@ -40,20 +40,19 @@ XTerm*selectToClipboard: true
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
 
-Xcursor.theme: xcursor-breeze
+
+Xcursor.theme: Adwaita
 Xcursor.size:                     0
 
-URxvt.font:                       xft:DankMono:size=10:Regular
-URxvt.boldFont:                   xft:DankMono:size=10:Bold
-URxvt.ItalicFont:                 xft:DankMono:size=10:Italic
-
+URxvt.font:                       xft:Dank Mono:size=12
+URxvt.bold.font:                  xft:Dank Mono:style=Bold:size=12
 ! alternative font settings with 'terminus':
 ! URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
 ! URxvt.bold.font: -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
 !! terminus names see end of file!
 
 URxvt.depth:                      32
-URxvt.background:                 [80]#222D31
+URxvt.background:                 [100]#222D31
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true

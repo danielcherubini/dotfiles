@@ -18,6 +18,7 @@ spec:
   ~/.config/sway: sway
   ~/.config/dunst: dunst
   ~/.config/deadd: deadd
-  ~/.Xresources: X11/Xresources
+  ~/.Xresources: X11/.Xresources
+  ~/.config/compton: compton
   ~/.config/termite: termite
   ~/.config/polybar: polybar
