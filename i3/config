@@ -128,7 +128,7 @@ bindsym $mod+Shift+s sticky toggle
 bindsym $mod+a focus parent
 
 # move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
+# bindsym $mod+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
@@ -234,6 +234,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
+
 # exit i3 (logs you out of your X session)
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -254,7 +255,17 @@ mode "$mode_system" {
 		bindsym Escape mode "default"
 }
 
+bindsym $mod+Shift+m mode "Switch Screens"
+mode "Switch Screens" {
+	bindsym Left exec --no-startup-id ~/.screenlayout/default.sh, mode "default"
+	bindsym Right exec --no-startup-id ~/.screenlayout/2screens.sh, mode "default"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+
 # Resize window (you can also use the mouse for that)
+
 bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -283,7 +294,7 @@ bindsym $mod+Shift+Escape exec --no-startup-id "mantablockscreen -cc"
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id nitrogen --restore; sleep 1; picom
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
@@ -296,7 +307,7 @@ exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id alternating_layouts.py
 exec --no-startup-id screenrotator
-# exec sranrdrd autorandr --change --default
+exec sranrdrd autorandr --change --default
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
