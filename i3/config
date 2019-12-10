@@ -37,6 +37,7 @@ bindsym Mod4+space exec --no-startup-id "rofi -modi run,drun -show drun"
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
 
+bindsym $mod+Shift+m exec autorandr --change && $HOME/dotfiles/polybar/launch.sh && nitrogen --restore
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -255,13 +256,6 @@ mode "$mode_system" {
 		bindsym Escape mode "default"
 }
 
-bindsym $mod+Shift+m mode "Switch Screens"
-mode "Switch Screens" {
-	bindsym Left exec --no-startup-id ~/.screenlayout/default.sh, mode "default"
-	bindsym Right exec --no-startup-id ~/.screenlayout/2screens.sh, mode "default"
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-}
 
 
 # Resize window (you can also use the mouse for that)
@@ -307,7 +301,7 @@ exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id alternating_layouts.py
 exec --no-startup-id screenrotator
-exec sranrdrd autorandr --change --default
+# exec sranrdrd autorandr --change ; $HOME/.config/polybar/launch.sh ; nitrogen --restore
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
