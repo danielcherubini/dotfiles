@@ -145,7 +145,7 @@ bindsym $mod+Ctrl+Left workspace prev
 #                 set $ws2 2:
 set $ws1 1:tty
 set $ws2 2:web
-set $ws3 3:mail
+set $ws3 3:
 set $ws4 4
 set $ws5 5
 set $ws6 6:

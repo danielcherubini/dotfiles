@@ -1,6 +1,7 @@
 #!/bin/bash
 
-INSTALL_THESE="rofi termite zsh neovim go python python2 ruby neofetch ripgrep fzf"
+INSTALL_THESE="rofi termite zsh neovim go python python2 ruby neofetch ripgrep fzf noto-fonts-emoji powerline-fonts"
+AUR_THESE="nvm polybar picom-git ttf-fira-code ttf-fira-sans ttf-fira-mono ttf-fira-go"
 
 if hash yay 2>/dev/null; then
 	git clone https://aur.archlinux.org/yay.git
@@ -19,15 +20,11 @@ else
 fi
 
 sudo pacman -Sy $INSTALL_THESE
+yay -S $YAY_THESE
 
-# Setup NVM
-if hash nvm 2>/dev/null; then
-	nvm install 10
-else
-	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-	source ~/.zshrc
-	nvm install 10
-fi
+nvm install 10
+
+sudo cp -r fonts/Dank /usr/share/fonts
+sudo cp -r fonts/icomoon /usr/share/fonts
 
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
