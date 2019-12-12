@@ -3,7 +3,7 @@
 INSTALL_THESE="rofi termite zsh neovim go python python2 ruby neofetch ripgrep fzf noto-fonts-emoji powerline-fonts"
 AUR_THESE="nvm polybar picom-git ttf-fira-code ttf-fira-sans ttf-fira-mono ttf-fira-go"
 
-if hash yay 2>/dev/null; then
+if !hash yay 2>/dev/null; then
 	git clone https://aur.archlinux.org/yay.git
 	cd yay
 	makepkg -si
@@ -20,7 +20,7 @@ else
 fi
 
 sudo pacman -Sy $INSTALL_THESE
-yay -S $YAY_THESE
+yay -S $AUR_THESE
 
 nvm install 10
 

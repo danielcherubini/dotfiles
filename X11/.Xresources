@@ -44,6 +44,7 @@ XTerm*selectToClipboard: true
 Xcursor.theme: Adwaita
 Xcursor.size:                     0
 
+st.font:                       xft:Dank Mono:size=12
 URxvt.font:                       xft:Dank Mono:size=12
 URxvt.bold.font:                  xft:Dank Mono:style=Bold:size=12
 ! alternative font settings with 'terminus':
