@@ -55,8 +55,8 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-mute 0 false ;
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-mute 0 false ; pactl set-sink-volume 0 -5%"
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10"
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -195,9 +195,8 @@ bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 # assign [class="Thunderbird"] $ws1
 assign [class="Termite"] $ws1
 assign [class="Firefox"] $ws2
-assign [class="polymail"] $ws3
 assign [class="Pcmanfm"] $ws4
-# assign [class="Skype"] $ws5
+assign [class="GitKraken"] $ws10
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1

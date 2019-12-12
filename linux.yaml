@@ -17,6 +17,7 @@ spec:
   ~/.config/bspwm: bspwm
   ~/.config/sxhkd: sxhkd
   ~/.config/rofi: rofi
+  ~/.config/ranger: ranger
   ~/.config/sway: sway
   ~/.config/dunst: dunst
   ~/.config/deadd: deadd
