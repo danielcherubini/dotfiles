@@ -40,5 +40,6 @@ bspc rule -a Termite desktop=^1
 bspc rule -a firefox desktop=^2
 bspc rule -a GitKraken desktop=^10
 
-$HOME/dotfiles/polybar/launch.sh
+$HOME/dotfiles/polybar/launch.sh &
+screenrotator &
 nitrogen --restore
