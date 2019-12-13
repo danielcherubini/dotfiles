@@ -30,5 +30,15 @@ bspc query -N -n .hidden >/dev/null || setsid $TERMINAL -n "$dropdownname" -e dr
 bspc rule -a St:$dropdownname hidden=on
 bspc rule -a St:$dropdownname sticky=on
 bspc rule -a St:$dropdownname state=floating
-
 bspc config external_rules_command "$(which floaters)"
+
+bspc rule -a pauvcontrol state=floating
+bspc rule -a Nitrogen state=floating
+bspc rule -a Lxappearance state=floating
+
+bspc rule -a Termite desktop=^1
+bspc rule -a firefox desktop=^2
+bspc rule -a GitKraken desktop=^10
+
+$HOME/dotfiles/polybar/launch.sh
+nitrogen --restore
