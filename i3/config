@@ -26,7 +26,7 @@ font xft:DankMono 14
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -285,7 +285,7 @@ mode "resize" {
 }
 
 # Lock screen
-bindsym $mod+Shift+Escape exec --no-startup-id "mantablockscreen -cc"
+bindsym $mod+Shift+Backspace exec --no-startup-id "mantablockscreen -cc"
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

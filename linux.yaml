@@ -25,4 +25,5 @@ spec:
   ~/.config/compton: compton
   ~/.config/picom: picom
   ~/.config/termite: termite
+  ~/.config/kitty: kitty
   ~/.config/polybar: polybar
