@@ -38,7 +38,7 @@ set autoindent
 " http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
 if has('unnamedplus')
 	set clipboard^=unnamed
-	set clipboard^=unnamedplus
+	set clipboard+=unnamedplus
 end
 
 " COC.vim SETUP

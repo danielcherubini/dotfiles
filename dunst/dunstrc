@@ -1,5 +1,5 @@
 [global]
-    font = Ubuntu 8
+    font = Dank Mono 12
 
     # allow a small subset of html markup:
     # <b>bold</b>
