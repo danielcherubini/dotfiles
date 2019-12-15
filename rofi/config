@@ -1,4 +1,6 @@
-rofi.combi-modi:    run,drun,ssh
+rofi.combi-modi:    drun,window
 rofi.theme:         klorax.dracula
 rofi.font:          DankMono 12
-rofi.modi:          drun
+rofi.modi:          combi
+rofi.terminal:      termite
+rofi.show:          combi
