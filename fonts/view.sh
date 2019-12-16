@@ -14,7 +14,7 @@ showfont()
 {
 	rows='19'
 	cols='34'
-	font='./icomoon/icomoon-feather.ttf'
+	font='-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1'
 
 	xfd_color solarized_dark
 

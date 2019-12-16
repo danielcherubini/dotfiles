@@ -38,6 +38,11 @@ super + y
 super + g
 	bspc node -s biggest
 
+super + shift + m
+	autorandr --change ;\
+	nitrogen --restore ;\
+	$HOME/dotfiles/polybar/launch.sh
+
 #
 # state/flags
 #
