@@ -1,6 +1,6 @@
 rofi.combi-modi:    drun,window
 rofi.theme:         klorax.dracula
 rofi.font:          DankMono 12
-rofi.modi:          combi
+rofi.modi:          drun
 rofi.terminal:      termite
-rofi.show:          combi
+rofi.show:          drun
