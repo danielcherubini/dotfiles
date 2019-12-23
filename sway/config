@@ -1,5 +1,5 @@
 # Default config for sway
-xwayland disable
+xwayland enable
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
@@ -19,7 +19,7 @@ set $term termite
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu bemenu
+set $menu rofi
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg $HOME/dotfiles/wallpaper/beach.jpg fill
 #

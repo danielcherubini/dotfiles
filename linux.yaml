@@ -27,3 +27,4 @@ spec:
   ~/.config/termite: termite
   ~/.config/kitty: kitty
   ~/.config/polybar: polybar
+  ~/.config/autorandr: autorandr

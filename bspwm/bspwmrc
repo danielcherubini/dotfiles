@@ -6,6 +6,7 @@ nitrogen --restore &
 compton &
 dunst &
 sxhkd &
+screenrotator &
 
 # If refreshing bspwm, remove all previous rules to prevent doubling up.
 bspc rule -r "*"
@@ -13,11 +14,18 @@ bspc rule -r "*"
 # We look for a non-laptop monitor to use for default, but use the laptop
 # screen (LVDS) if there's nothing else. This is because I assume that if you
 # have an extra screen attached to a laptop, you want to use that.
-mainmonitor="$(bspc query --monitors --names | grep -v eDP-1 | head -n 1)"
+monitors=0
+for m in $(xrandr --listactivemonitors | grep "DP" | cut -d " " -f6); do
+	((monitors++))
+done
 
-# Start workspaces on the main monitor.
-bspc monitor $mainmonitor -d tty web mail file chat 6 7 8 dev git
-bspc desktop -f 1
+echo $monitors
+if (( "$monitors" > "1" )); then
+	bspc monitor DP-2 -d tty web mail file 5
+	bspc monitor eDP-1 -d chat 7 8 dev git
+else
+	bspc monitor eDP-1 -d tty web mail file 5 chat 7 8 dev git
+fi
 
 # If you want a multi-monitor display or something else, I leave that to you to
 # arrange. I have this sensible default for most people's use cases.
@@ -41,8 +49,7 @@ bspc rule -a Lxappearance state=floating
 
 bspc rule -a Termite desktop=^1
 bspc rule -a firefox desktop=^2
+bspc rule -a electron-mail desktop=^3
+bspc rule -a pcmanfm desktop=^4
+bspc rule -a Slack desktop=^6
 bspc rule -a GitKraken desktop=^10
-
-$HOME/dotfiles/polybar/launch.sh &
-screenrotator &
-nitrogen --restore

@@ -41,10 +41,10 @@ include-file = ~/.config/polybar/bars.ini
 ; If unspecified, the application will pick the first one it finds.
 ; $ polybar -m | cut -d ':' -f 1
 ; $ xrandr -q | grep " connected" | cut -d ' ' -f1
-monitor = eDP-1
+monitor = ${env:MONITOR:}
 
 ; Use the specified monitor as a fallback if the main one is not found.
-monitor-fallback = DP-2
+monitor-fallback =
 
 ; Require the monitor to be in connected state
 ; XRandR sometimes reports my monitor as being disconnected (when in use)
@@ -165,7 +165,7 @@ font-5 = FontAwesome5Brands:style=Regular:pixelsize=10;2
 
 modules-left = bspwm
 modules-center =
-modules-right = backlight-acpi pulseaudio network battery temperature cpu memory date
+modules-right = backlight-acpi pulseaudio network temperature cpu memory battery date
 
 ; The separator will be inserted between the output of each module
 separator =
@@ -335,3 +335,5 @@ pseudo-transparency = false
 ;;	/_____/\____/_/
 ;;
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+/* vim: set filetype=dosini : */
