@@ -19,6 +19,7 @@ spec:
   ~/.config/rofi: rofi
   ~/.config/ranger: ranger
   ~/.config/sway: sway
+  ~/.config/waybar: waybar
   ~/.config/dunst: dunst
   ~/.config/deadd: deadd
   ~/.Xresources: X11/.Xresources
@@ -28,3 +29,4 @@ spec:
   ~/.config/kitty: kitty
   ~/.config/polybar: polybar
   ~/.config/autorandr: autorandr
+  ~/.config/libinput-gestures.conf: libinput/libinput-gestures.conf
