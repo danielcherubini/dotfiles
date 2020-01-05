@@ -3,10 +3,11 @@
 xsetroot -cursor_name left_ptr
 $HOME/dotfiles/polybar/launch.sh
 nitrogen --restore &
-compton &
+picom &
 dunst &
 sxhkd &
 screenrotator &
+pulseeffects --gapplication-service &
 
 # If refreshing bspwm, remove all previous rules to prevent doubling up.
 bspc rule -r "*"
