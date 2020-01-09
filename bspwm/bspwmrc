@@ -22,9 +22,11 @@ done
 
 echo $monitors
 if (( "$monitors" > "1" )); then
+	autorandr docked
 	bspc monitor DP-2 -d tty web mail file 5
 	bspc monitor eDP-1 -d chat 7 8 dev git
 else
+	autorandr one
 	bspc monitor eDP-1 -d tty web mail file 5 chat 7 8 dev git
 fi
 
@@ -51,6 +53,8 @@ bspc rule -a Lxappearance state=floating
 bspc rule -a Termite desktop=^1
 bspc rule -a firefox desktop=^2
 bspc rule -a electron-mail desktop=^3
-bspc rule -a pcmanfm desktop=^4
+bspc rule -a Pcmanfm desktop=^4
+bspc rule -a thunar desktop=^4
 bspc rule -a Slack desktop=^6
+bspc rule -a firefoxdeveloperedition desktop=^9
 bspc rule -a GitKraken desktop=^10
