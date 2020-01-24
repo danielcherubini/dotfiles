@@ -15,25 +15,38 @@ bspc rule -r "*"
 # We look for a non-laptop monitor to use for default, but use the laptop
 # screen (LVDS) if there's nothing else. This is because I assume that if you
 # have an extra screen attached to a laptop, you want to use that.
+declare -a monitorarr
 monitors=0
 for m in $(xrandr --listactivemonitors | grep "DP" | cut -d " " -f6); do
+	monitorarr[$monitors]=$m
 	((monitors++))
 done
 
-echo $monitors
-if (( "$monitors" > "1" )); then
-	autorandr docked
-	bspc monitor DP-2 -d tty web mail file 5
-	bspc monitor eDP-1 -d chat 7 8 dev git
-else
-	autorandr one
-	bspc monitor eDP-1 -d tty web mail file 5 chat 7 8 dev git
-fi
-
-# If you want a multi-monitor display or something else, I leave that to you to
-# arrange. I have this sensible default for most people's use cases.
-
-
+case "$monitors" in
+	"1" )
+		echo "1"
+		echo ${monitorarr[0]}
+		bspc monitor ${monitorarr[0]} -d 1 2 3 4 5 6 7 8 9 0
+		;;
+	"2" )
+		echo "2"
+		bspc monitor ${monitorarr[0]} -d 1 2 3 4 5
+		bspc monitor ${monitorarr[1]} -d 6 7 8 9 0
+		;;
+	"3" )
+		echo "3"
+		bspc monitor ${monitorarr[0]} -d 1 2 3 4 5
+		bspc monitor ${monitorarr[1]} -d 6 7 8 9
+		bspc monitor ${monitorarr[2]} -d 0
+		;;
+esac
+# if (( "$monitors" > "1" )); then
+#         # autorandr docked
+#         bspc monitor DP-2 -d tty web mail file 5
+#         bspc monitor eDP-1 -d chat 7 8 dev git
+# else
+#         # autorandr one
+# fi
 bspc config border_width 0
 bspc config window_gap 16
 bspc config top_padding 32	# top_padding I set equal to polybar's height
@@ -55,6 +68,9 @@ bspc rule -a firefox desktop=^2
 bspc rule -a electron-mail desktop=^3
 bspc rule -a Pcmanfm desktop=^4
 bspc rule -a thunar desktop=^4
+bspc rule -a Mellowplayer desktop=^5
 bspc rule -a Slack desktop=^6
 bspc rule -a firefoxdeveloperedition desktop=^9
 bspc rule -a GitKraken desktop=^10
+
+
