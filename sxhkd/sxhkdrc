@@ -131,6 +131,10 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 
+# Change Monitor Outputs
+super + P
+ 	autorandr -l one
+
 # Media Keys
 XF86AudioMute
 	amixer -q -D pulse sset Master toggle
