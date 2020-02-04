@@ -4,6 +4,8 @@ source $VIMUSERRUNTIME/plugins.vim
 
 source $VIMUSERRUNTIME/general.vim
 
+source $VIMUSERRUNTIME/lazygit.vim
+
 source $VIMUSERRUNTIME/bindings.vim
 
 " ===============================================================

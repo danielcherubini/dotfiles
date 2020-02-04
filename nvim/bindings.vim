@@ -53,3 +53,6 @@ nmap <C-f> :Find<space>
 "" Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
 vmap > >gv
+
+" Lazygit
+nnoremap <silent> <Leader>lg :call ToggleLazyGit()<CR>
