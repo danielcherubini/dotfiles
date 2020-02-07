@@ -38,9 +38,13 @@ super + y
 super + g
 	bspc node -s biggest
 
-super + shift + m
+# Change Monitor Outputs
+super + shift + p
 	autorandr --change ;\
 	nitrogen --restore
+
+super + P
+# 	autorandr -l one
 
 super + shift + plus
 	flameshot gui -d 500
@@ -131,9 +135,6 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 
-# Change Monitor Outputs
-super + P
- 	autorandr -l one
 
 # Media Keys
 XF86AudioMute
