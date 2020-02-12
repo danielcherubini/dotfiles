@@ -20,4 +20,5 @@ Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json'
 Plug 'posva/vim-vue'
 Plug 'jiangmiao/auto-pairs'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()

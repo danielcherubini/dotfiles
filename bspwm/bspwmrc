@@ -8,6 +8,7 @@ dunst &
 sxhkd &
 screenrotator &
 pulseeffects --gapplication-service &
+amixer -q -c 0 sset Master 100% &
 
 # If refreshing bspwm, remove all previous rules to prevent doubling up.
 bspc rule -r "*"
