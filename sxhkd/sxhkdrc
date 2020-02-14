@@ -41,6 +41,7 @@ super + g
 # Change Monitor Outputs
 super + shift + p
 	autorandr --change ;\
+	$HOME/dotfiles/polybar/launch.sh;\
 	nitrogen --restore
 
 super + P

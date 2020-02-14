@@ -2,7 +2,7 @@
   "coc.preferences.jumpCommand": "tabe",
   "tslint.jsEnable": true,
   "tslint.autoFixOnSave": true,
- "languageserver": {
+  "languageserver": {
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
