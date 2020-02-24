@@ -1,10 +1,11 @@
 configuration {
-	combi-modi:    "drun,window";
 	theme:         "klorax.dracula";
 	font:          "DankMono 12";
-	modi:          "combi";
+	modi:          "drun,run,window";
 	terminal:      "termite";
-	show:          "combi";
+	show:          "drun";
+	sidebar-mode:	true;
+	show-icons:	true;
 }
 
 /* vim:ft=css
