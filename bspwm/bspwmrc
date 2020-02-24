@@ -8,6 +8,7 @@ deadd-notification-center &
 sxhkd &
 screenrotator &
 pulseeffects --gapplication-service &
+xset r rate 300 50 &
 amixer -q -c 0 sset Master 100% &
 
 # If refreshing bspwm, remove all previous rules to prevent doubling up.
