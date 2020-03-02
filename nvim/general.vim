@@ -65,7 +65,7 @@ let g:session_command_aliases = 1
 set completeopt-=preview
 
 
-let g:fzf_preview_command = 'bat --color=always --style=grid --theme=Dracula {-1}'
+let g:fzf_preview_command = 'bat --color=always --style=grid {-1}'
 " let g:fzf_preview_filelist_command = "rg --files --hidden --follow"
 let g:fzf_preview_grep_preview_cmd = 'preview_fzf_grep' " Original Script
 let g:fzf_preview_filelist_postprocess_command = 'xargs exa --color=always'
