@@ -4,7 +4,7 @@ xsetroot -cursor_name left_ptr
 $HOME/dotfiles/polybar/launch.sh
 nitrogen --restore &
 picom &
-deadd-notification-center &
+dunst &
 sxhkd &
 screenrotator &
 pulseeffects --gapplication-service &

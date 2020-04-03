@@ -1,7 +1,7 @@
 configuration {
 	theme:         "klorax.dracula";
 	font:          "DankMono 12";
-	modi:          "drun,run,window";
+	modi:          "drun,run,window,calc";
 	terminal:      "termite";
 	show:          "drun";
 	sidebar-mode:	true;

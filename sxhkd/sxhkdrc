@@ -139,15 +139,13 @@ super + {Left,Down,Up,Right}
 
 # Media Keys
 XF86AudioMute
-	amixer -q -D pulse sset Master toggle
+	$HOME/dotfiles/utils/volume.sh mute
 XF86AudioRaiseVolume
-	amixer -q -D pulse sset Master on;\
-	amixer -q -D pulse sset Master 5%+
+	$HOME/dotfiles/utils/volume.sh up
 XF86AudioLowerVolume
-	amixer -q -D pulse sset Master on;\
-	amixer -q -D pulse sset Master 5%-
+	$HOME/dotfiles/utils/volume.sh down
 
 XF86MonBrightnessUp
-	xbacklight -inc 10
+	$HOME/dotfiles/utils/brightness.sh up
 XF86MonBrightnessDown
-	xbacklight -dec 10
+	$HOME/dotfiles/utils/brightness.sh down
