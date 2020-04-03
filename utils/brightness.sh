@@ -14,12 +14,16 @@ function get_brightness {
 
 function send_notification {
   icon=""
+  # icon='video-display'
   brightness=$(get_brightness)
   # Make the bar with the special character ─ (it's not dash -)
   # https://en.wikipedia.org/wiki/Box-drawing_character
   bar=$(seq -s "─" 0 $((brightness / 5)) | sed 's/[0-9]//g')
   # Send the notification
-  dunstify -i "$icon" -r 5555 -u normal "$icon    $bar"
+  dunstify -i "none" -r 5555 -u normal "$icon      $bar"
+  # $HOME/.local/bin/notify-send.py "      $bar" \
+  #         -a "" -i $icon\
+  #         --replaces-process "brightness-popup"
 }
 
 case $1 in

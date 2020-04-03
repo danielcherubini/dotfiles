@@ -38,9 +38,10 @@
     show_indicators = yes
     icon_position = left
     max_icon_size = 48
-    icon_path = /usr/share/icons/Adwaita/48x48/status/:/usr/share/icons/Adwaita/48x48/devices/:/usr/share/icons/Adwaita/48x48/apps/
+    # icon_path = /usr/share/icons/Adwaita/48x48/status/:/usr/share/icons/Adwaita/48x48/devices/:/usr/share/icons/Adwaita/48x48/apps/
     # icon_path = /usr/share/icons/Papirus/48x48/status/:/usr/share/icons/Papirus/48x48/devices/:/usr/share/icons/Numix-Circle/48x48/apps/
     # icon_path = /usr/share/icons/Adwaita/status/:/usr/share/icons/Adwaita/devices/:/usr/share/icons/Numix-Circle/48/apps/
+    icon_path = /usr/share/icons/Arc/status/24@2x/:/usr/share/icons/Arc/devices/24@2x/:/usr/share/icons/Numix-Circle/24/apps/
     sticky_history = yes
     history_length = 20
     always_run_script = true

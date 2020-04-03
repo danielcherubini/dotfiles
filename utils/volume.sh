@@ -20,15 +20,22 @@ function is_mute {
 function send_notification {
   iconSound=""
   iconMuted=""
+  # iconSund="audio-speakers"
+  # iconMuted="audio-speakers"
   if is_mute ; then
-    dunstify -i $iconMuted -r 2593 -u normal "$iconMuted"
+    dunstify -i "none" -r 2593 -u normal "$iconMuted"
+    # $HOME/.local/bin/notify-send.py "" -i $iconMuted --replaces-process "volume-popup"
   else
     volume=$(get_volume)
     # Make the bar with the special character ─ (it's not dash -)
     # https://en.wikipedia.org/wiki/Box-drawing_character
     bar=$(seq --separator="─" 0 "$((volume / 5))" | sed 's/[0-9]//g')
     # Send the notification
-    dunstify -i $iconSound -r 2593 -u normal "$iconSound    $bar"
+    dunstify -i "none" -r 2593 -u normal "$iconSound      $bar"
+    # $HOME/.local/bin/notify-send.py "      $bar"\
+    #     -i $iconSound -a ""\
+    #     --hint boolean:transient:true \
+    #     --replaces-process "volume-popup"
   fi
 }
 

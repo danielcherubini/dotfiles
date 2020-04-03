@@ -122,3 +122,5 @@ alias tf=terraform
 alias gproxy='ssh -f -nNT gitproxy'
 alias gproxy-status='ssh -O check gitproxy'
 alias gproxy-off='ssh -O exit gitproxy'
+
+export PATH="$HOME/.local/bin:$PATH"
