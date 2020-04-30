@@ -17,3 +17,4 @@ spec:
   ~/.yabairc: yabai/yabairc
   ~/.chunkwm_plugins: chunkwm/plugins
   ~/.skhdrc: skhd/skhdrc
+  ~/.config/kitty: kitty
