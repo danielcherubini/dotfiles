@@ -24,4 +24,5 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'ryanoasis/vim-devicons'
 Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'aquova/vim-pico8-syntax'
+Plug 'hashivim/vim-terraform'
 call plug#end()
