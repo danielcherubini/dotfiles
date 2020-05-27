@@ -18,3 +18,4 @@ spec:
   ~/.chunkwm_plugins: chunkwm/plugins
   ~/.skhdrc: skhd/skhdrc
   ~/.config/kitty: kitty
+  ~/.tmux.conf: tmux/tmux.conf
