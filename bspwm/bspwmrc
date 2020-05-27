@@ -64,13 +64,14 @@ bspc config external_rules_command "$(which floaters)"
 bspc rule -a pauvcontrol state=floating
 bspc rule -a Nitrogen state=floating
 bspc rule -a Lxappearance state=floating
+bspc rule -a firefox:Toolkit state=floating
 
 bspc rule -a Termite desktop=^1
 bspc rule -a firefox desktop=^2
 bspc rule -a electron-mail desktop=^3
 bspc rule -a Pcmanfm desktop=^4
 bspc rule -a thunar desktop=^4
-bspc rule -a Mellowplayer3:MellowPlayer desktop=^5
+bspc rule -a Mellowplayer3:\* desktop=^5
 bspc rule -a Slack desktop=^6
 bspc rule -a discord desktop=^6
 bspc rule -a firefoxdeveloperedition desktop=^9

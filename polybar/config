@@ -164,8 +164,8 @@ font-5 = FontAwesome5Brands:style=Regular:pixelsize=10;2
 ;volume brightness battery_bar
 
 modules-left = bspwm
-modules-center =
-modules-right = network temperature cpu memory battery date
+modules-center = date
+modules-right = network temperature cpu memory battery
 
 ; The separator will be inserted between the output of each module
 separator =
