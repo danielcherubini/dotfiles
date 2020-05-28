@@ -31,3 +31,4 @@ spec:
   ~/.config/polybar: polybar
   ~/.config/autorandr: autorandr
   ~/.config/libinput-gestures.conf: libinput/libinput-gestures.conf
+  ~/.tmux.conf: tmux/tmux.conf

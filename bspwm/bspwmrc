@@ -14,9 +14,7 @@ amixer -q -c 0 sset Master 100% &
 # If refreshing bspwm, remove all previous rules to prevent doubling up.
 bspc rule -r "*"
 
-# We look for a non-laptop monitor to use for default, but use the laptop
-# screen (LVDS) if there's nothing else. This is because I assume that if you
-# have an extra screen attached to a laptop, you want to use that.
+
 declare -a monitorarr
 monitors=0
 for m in $(xrandr --listactivemonitors | grep "DP" | cut -d " " -f6); do
@@ -28,38 +26,23 @@ case "$monitors" in
 	"1" )
 		echo "1"
 		echo ${monitorarr[0]}
-		bspc monitor ${monitorarr[0]} -d 1 2 3 4 5 6 7 8 9 0
+		bspc monitor -d I II III IV V VI VII VIII IX X
 		;;
 	"2" )
 		echo "2"
-		bspc monitor ${monitorarr[0]} -d 1 2 3 4 5
-		bspc monitor ${monitorarr[1]} -d 6 7 8 9 0
-		;;
-	"3" )
-		echo "3"
-		bspc monitor ${monitorarr[0]} -d 1 2 3 4 5
-		bspc monitor ${monitorarr[1]} -d 6 7 8 9
-		bspc monitor ${monitorarr[2]} -d 0
+		bspc monitor ${monitorarr[0]} -d I II III IV V
+		bspc monitor ${monitorarr[1]} -d VI VII VIII IX X
 		;;
 esac
-# if (( "$monitors" > "1" )); then
-#         # autorandr docked
-#         bspc monitor DP-2 -d tty web mail file 5
-#         bspc monitor eDP-1 -d chat 7 8 dev git
-# else
-#         # autorandr one
-# fi
+
 bspc config border_width 0
 bspc config window_gap 16
 bspc config top_padding 32	# top_padding I set equal to polybar's height
 bspc config focus_follows_pointer true
 
-dropdownname="dropdown"
-bspc query -N -n .hidden >/dev/null || setsid $TERMINAL -n "$dropdownname" -e dropdown >/dev/null 2>&1 &
-bspc rule -a St:$dropdownname hidden=on
-bspc rule -a St:$dropdownname sticky=on
-bspc rule -a St:$dropdownname state=floating
-bspc config external_rules_command "$(which floaters)"
+bscp config remove_disabled_monitors true
+bspc config remove_unplugged_monitor true
+bspc config pointer_follows_monitor true
 
 bspc rule -a pauvcontrol state=floating
 bspc rule -a Nitrogen state=floating
@@ -74,5 +57,4 @@ bspc rule -a thunar desktop=^4
 bspc rule -a Mellowplayer3:\* desktop=^5
 bspc rule -a Slack desktop=^6
 bspc rule -a discord desktop=^6
-bspc rule -a firefoxdeveloperedition desktop=^9
 bspc rule -a GitKraken desktop=^10

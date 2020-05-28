@@ -40,12 +40,10 @@ super + g
 
 # Change Monitor Outputs
 super + p
-	autorandr --change ;\
-	$HOME/dotfiles/polybar/launch.sh;\
-	nitrogen --restore
+	$HOME/dotfiles/bspwm/swap-monitors.sh
 
 super + P
-# 	autorandr -l one
+	$HOME/dotfiles/bspwm/swap-monitors.sh
 
 super + shift + plus
 	flameshot gui -d 500
