@@ -49,7 +49,7 @@ bspc rule -a Nitrogen state=floating
 bspc rule -a Lxappearance state=floating
 bspc rule -a firefox:Toolkit state=floating
 
-bspc rule -a Termite desktop=^1
+bspc rule -a kitty desktop=^1
 bspc rule -a firefox desktop=^2
 bspc rule -a electron-mail desktop=^3
 bspc rule -a Pcmanfm desktop=^4
