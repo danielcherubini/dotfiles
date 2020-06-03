@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# move $2 to $1
+# move $1 to $2
 
 for desktop in $(bspc query -D -m $1)
 do
@@ -9,5 +9,5 @@ done
 
 
 bspc query -D -m --names
-bspc monitor $1 -r
+# bspc monitor $1 -r
 bspc desktop Desktop -r

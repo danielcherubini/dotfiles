@@ -14,24 +14,33 @@ amixer -q -c 0 sset Master 100% &
 # If refreshing bspwm, remove all previous rules to prevent doubling up.
 bspc rule -r "*"
 
+# $HOME/dotfiles/bspwm/monitors.sh
 
 declare -a monitorarr
 monitors=0
-for m in $(xrandr --listactivemonitors | grep "DP" | cut -d " " -f6); do
+monitor_order=""
+# for m in $(xrandr --listactivemonitors | grep "DP" | cut -d " " -f6); do
+for m in $(bspc query -M); do
 	monitorarr[$monitors]=$m
+	monitor_order+="$m "
 	((monitors++))
 done
+
 
 case "$monitors" in
 	"1" )
 		echo "1"
-		echo ${monitorarr[0]}
-		bspc monitor -d I II III IV V VI VII VIII IX X
+		echo $monitor_order
+		bspc monitor ${monitorarr[0]} -d 1 2 3 4 5 6 7 8 9 10
 		;;
 	"2" )
 		echo "2"
-		bspc monitor ${monitorarr[0]} -d I II III IV V
-		bspc monitor ${monitorarr[1]} -d VI VII VIII IX X
+		echo $monitor_order
+
+		xrandr --output ${monitorarr[0]} --auto --primary --output ${monitorarr[1]} --auto --output ${monitorarr[1]} --left-of ${monitorarr[0]}
+		bspc monitor ${monitorarr[0]} -d 1 2 3 4 5
+		bspc monitor ${monitorarr[1]} -d 6 7 8 9 10
+		# bspc monitor ${monitorarr[0]} -s ${monitorarr[1]}
 		;;
 esac
 
@@ -40,9 +49,10 @@ bspc config window_gap 16
 bspc config top_padding 32	# top_padding I set equal to polybar's height
 bspc config focus_follows_pointer true
 
-bscp config remove_disabled_monitors true
-bspc config remove_unplugged_monitor true
-bspc config pointer_follows_monitor true
+# bscp config remove_disabled_monitors true
+# bspc config remove_unplugged_monitor true
+# bspc config merge_overlapping_monitors true
+# bspc config pointer_follows_monitor true
 
 bspc rule -a pauvcontrol state=floating
 bspc rule -a Nitrogen state=floating
@@ -54,7 +64,7 @@ bspc rule -a firefox desktop=^2
 bspc rule -a electron-mail desktop=^3
 bspc rule -a Pcmanfm desktop=^4
 bspc rule -a thunar desktop=^4
-bspc rule -a Mellowplayer3:\* desktop=^5
+bspc rule -a MellowPlayer3 desktop=^10
 bspc rule -a Slack desktop=^6
 bspc rule -a discord desktop=^6
-bspc rule -a GitKraken desktop=^10
+bspc rule -a TelegramDesktop desktop=^6

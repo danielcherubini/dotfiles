@@ -28,6 +28,7 @@ spec:
   ~/.config/picom: picom
   ~/.config/termite: termite
   ~/.config/kitty: kitty
+  ~/.config/alacritty: alacritty
   ~/.config/polybar: polybar
   ~/.config/autorandr: autorandr
   ~/.config/libinput-gestures.conf: libinput/libinput-gestures.conf

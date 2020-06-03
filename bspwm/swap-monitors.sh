@@ -1,12 +1,15 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 $HOME/dotfiles/autorandr/autorandr-cycle
 
-if [[ $(autorandr --current) == "big" ]]; then
-	$HOME/dotfiles/bspwm/monitor.sh eDP-1 DP-2
-else
-	$HOME/dotfiles/bspwm/monitor.sh DP-2 eDP-1
-fi
+query=`bspc query -M`
+read -a monitors <<<$query
 
-$HOME/dotfiles/polybar/launch.sh
-nitrogen --restore
+for monitor in ${monitors[@]}; do
+	bspc monitor ${monitor} -r
+done
+
+bspc desktop Desktop -r
+bspc wm -r
+
+bspc wm -o

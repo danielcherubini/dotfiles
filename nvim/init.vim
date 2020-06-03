@@ -177,3 +177,6 @@ let g:ale_fix_on_save = 1
 let g:ale_set_baloons = 1
 
 :call extend(g:ale_fixers, {'*': ['remove_trailing_lines', 'trim_whitespace']})
+
+set t_ZH=^[[3m
+set t_ZR=^[[23m

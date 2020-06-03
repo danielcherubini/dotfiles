@@ -129,3 +129,5 @@ autoload -Uz compinit
 compinit
 # Completion for kitty
 kitty + complete setup zsh | source /dev/stdin
+
+# alias tmux="env TERM=screen-256color tmux -2"
