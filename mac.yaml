@@ -18,4 +18,5 @@ spec:
   ~/.chunkwm_plugins: chunkwm/plugins
   ~/.skhdrc: skhd/skhdrc
   ~/.config/kitty: kitty
+  ~/.config/alacritty: alacritty
   ~/.tmux.conf: tmux/tmux.conf
