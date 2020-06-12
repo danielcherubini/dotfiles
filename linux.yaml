@@ -33,3 +33,4 @@ spec:
   ~/.config/autorandr: autorandr
   ~/.config/libinput-gestures.conf: libinput/libinput-gestures.conf
   ~/.tmux.conf: tmux/tmux.conf
+  ~/.config/clight.conf: clight/clight.conf

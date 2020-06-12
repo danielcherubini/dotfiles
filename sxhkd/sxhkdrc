@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	alacritty
+	kitty
 
 # program launcher
 super + @space
@@ -39,11 +39,11 @@ super + g
 	bspc node -s biggest
 
 # Change Monitor Outputs
-super + p
-	$HOME/dotfiles/bspwm/swap-monitors.sh
+# super + p
+	# $HOME/dotfiles/bspwm/swap-monitors.sh
 
-super + P
-	$HOME/dotfiles/bspwm/swap-monitors.sh
+# super + P
+	# $HOME/dotfiles/bspwm/swap-monitors.sh
 
 super + shift + plus
 	flameshot gui -d 500

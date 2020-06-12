@@ -6,6 +6,7 @@ nitrogen --restore &
 picom &
 dunst &
 sxhkd &
+clight &
 screenrotator &
 pulseeffects --gapplication-service &
 xset r rate 300 50 &
@@ -14,35 +15,7 @@ amixer -q -c 0 sset Master 100% &
 # If refreshing bspwm, remove all previous rules to prevent doubling up.
 bspc rule -r "*"
 
-# $HOME/dotfiles/bspwm/monitors.sh
-
-declare -a monitorarr
-monitors=0
-monitor_order=""
-# for m in $(xrandr --listactivemonitors | grep "DP" | cut -d " " -f6); do
-for m in $(bspc query -M); do
-	monitorarr[$monitors]=$m
-	monitor_order+="$m "
-	((monitors++))
-done
-
-
-case "$monitors" in
-	"1" )
-		echo "1"
-		echo $monitor_order
-		bspc monitor ${monitorarr[0]} -d 1 2 3 4 5 6 7 8 9 10
-		;;
-	"2" )
-		echo "2"
-		echo $monitor_order
-
-		xrandr --output ${monitorarr[0]} --auto --primary --output ${monitorarr[1]} --auto --output ${monitorarr[1]} --left-of ${monitorarr[0]}
-		bspc monitor ${monitorarr[0]} -d 1 2 3 4 5
-		bspc monitor ${monitorarr[1]} -d 6 7 8 9 10
-		# bspc monitor ${monitorarr[0]} -s ${monitorarr[1]}
-		;;
-esac
+$HOME/dotfiles/bspwm/monitors.sh
 
 bspc config border_width 0
 bspc config window_gap 16
@@ -63,7 +36,7 @@ bspc rule -a kitty desktop=^1
 bspc rule -a firefox desktop=^2
 bspc rule -a electron-mail desktop=^3
 bspc rule -a Pcmanfm desktop=^4
-bspc rule -a thunar desktop=^4
+bspc rule -a Thunar desktop=^4
 bspc rule -a MellowPlayer3 desktop=^10
 bspc rule -a Slack desktop=^6
 bspc rule -a discord desktop=^6
