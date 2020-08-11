@@ -1,18 +1,23 @@
 #!/bin/sh
 
+function run_once() {
+	echo $1 $2
+	pgrep -x $1 >/dev/null && echo "running" || ${1,,} $2 &
+}
+
 xsetroot -cursor_name left_ptr
 $HOME/dotfiles/polybar/launch.sh
 nitrogen --restore &
-picom &
-dunst &
-sxhkd &
-clight &
-screenrotator &
-pulseeffects --gapplication-service &
+run_once picom
+run_once dunst
+run_once sxhkd
+# run_once clight
+run_once screenrotator
+run_once pulseeffects --gapplication-service
 xset r rate 300 50 &
 amixer -q -c 0 sset Master 100% &
 
-# If refreshing bspwm, remove all previous rules to prevent doubling up.
+# If refreshing brspwm, remove all previous rules to prevent doubling up.
 bspc rule -r "*"
 
 $HOME/dotfiles/bspwm/monitors.sh
@@ -34,10 +39,16 @@ bspc rule -a firefox:Toolkit state=floating
 
 bspc rule -a kitty desktop=^1
 bspc rule -a firefox desktop=^2
-bspc rule -a electron-mail desktop=^3
-bspc rule -a Pcmanfm desktop=^4
+bspc rule -a Thunderbird desktop=^3
 bspc rule -a Thunar desktop=^4
+bspc rule -a discord desktop=^5
 bspc rule -a MellowPlayer3 desktop=^10
 bspc rule -a Slack desktop=^6
-bspc rule -a discord desktop=^6
 bspc rule -a TelegramDesktop desktop=^6
+
+# start programs
+run_once kitty
+run_once firefox
+run_once thunderbird
+run_once thunar
+run_once Discord

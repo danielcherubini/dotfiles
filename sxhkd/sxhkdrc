@@ -39,8 +39,8 @@ super + g
 	bspc node -s biggest
 
 # Change Monitor Outputs
-# super + p
-	# $HOME/dotfiles/bspwm/swap-monitors.sh
+super + p
+	$HOME/dotfiles/bspwm/swap-monitors.sh
 
 # super + P
 	# $HOME/dotfiles/bspwm/swap-monitors.sh

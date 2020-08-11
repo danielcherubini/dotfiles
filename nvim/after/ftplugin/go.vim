@@ -25,6 +25,7 @@ let g:go_highlight_generate_tags = 1
 
 let g:go_gocode_unimported_packages = 1
 
+let g:go_doc_popup_window = 1
 augroup go
   autocmd!
 

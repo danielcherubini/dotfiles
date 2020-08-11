@@ -1,6 +1,6 @@
 #!/bin/sh
 
-$HOME/dotfiles/autorandr/autorandr-cycle
+ $HOME/dotfiles/autorandr/autorandr-cycle
 
 query=`bspc query -M`
 read -a monitors <<<$query

@@ -2,10 +2,11 @@ configuration {
 	theme:         "klorax.dracula";
 	font:          "DankMono 12";
 	modi:          "drun,run,window,calc";
-	terminal:      "termite";
+	terminal:      "kitty";
 	show:          "drun";
 	sidebar-mode:	true;
 	show-icons:	true;
+	disable-history: false;
 }
 
 /* vim:ft=css

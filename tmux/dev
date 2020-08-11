@@ -1,0 +1,4 @@
+new-window
+selectp -t 0
+splitw -v -p 25
+selectp -t 0
