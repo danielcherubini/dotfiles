@@ -47,7 +47,7 @@ noremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 nmap <C-n> :NERDTreeTabsToggle<CR>
-nmap <C-p> :CocCommand fzf-preview.DirectoryFiles<CR>
+nmap <C-p> :FzfPreviewGitFiles<CR>
 nmap <Leader>f :Find<space>
 
 "" Vmap for maintain Visual Mode after shifting > and <

@@ -20,3 +20,4 @@ spec:
   ~/.config/kitty: kitty
   ~/.config/alacritty: alacritty
   ~/.tmux.conf: tmux/tmux.conf
+  ~/.tmux/dev: tmux/dev

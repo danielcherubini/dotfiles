@@ -2,6 +2,8 @@
   "coc.preferences.jumpCommand": "tabe",
   "tslint.jsEnable": true,
   "tslint.autoFixOnSave": true,
+  "yaml.format.enable": true,
+  "yaml.format.singleQuote": true,
   "languageserver": {
     "golang": {
       "command": "gopls",

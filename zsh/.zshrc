@@ -59,31 +59,35 @@ setopt no_share_history
 
 SPACESHIP_USER_SHOW=false
 
-source /usr/share/nvm/init-nvm.sh
+if [ "$(uname)" = "Linux" ]; then
+	source /usr/share/nvm/init-nvm.sh
+else
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+	autoload -U add-zsh-hook
+	load-nvmrc() {
+	  local node_version="$(nvm version)"
+	  local nvmrc_path="$(nvm_find_nvmrc)"
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# autoload -U add-zsh-hook
-# load-nvmrc() {
-#   local node_version="$(nvm version)"
-#   local nvmrc_path="$(nvm_find_nvmrc)"
+	  if [ -n "$nvmrc_path" ]; then
+	    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
 
-#   if [ -n "$nvmrc_path" ]; then
-#     local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+	    if [ "$nvmrc_node_version" = "N/A" ]; then
+	      nvm install
+	    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+	      nvm use
+	    fi
+	  elif [ "$node_version" != "$(nvm version default)" ]; then
+	    echo "Reverting to nvm default version"
+	    nvm use default
+	  fi
+	}
+	# add-zsh-hook chpwd load-nvmrc
+	# load-nvmrc
 
-#     if [ "$nvmrc_node_version" = "N/A" ]; then
-#       nvm install
-#     elif [ "$nvmrc_node_version" != "$node_version" ]; then
-#       nvm use
-#     fi
-#   elif [ "$node_version" != "$(nvm version default)" ]; then
-#     echo "Reverting to nvm default version"
-#     nvm use default
-#   fi
-# }
-# add-zsh-hook chpwd load-nvmrc
-# load-nvmrc
+	# alias python=/usr/local/bin/python3
+fi
 
 if [ "$(uname)" = "Linux" ]; then
 	export GOROOT="/usr/lib/go"
@@ -98,7 +102,11 @@ export PATH="$PATH:$HOME/.go/bin"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+--color=dark
+--color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
+--color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
+'
 # Add colors to Terminal
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -111,13 +119,13 @@ alias tf=terraform
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/danielcherubini/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/danielcherubini/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/serverless.zsh
+[[ -f /Users/daniel/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/daniel/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/serverless.zsh
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/danielcherubini/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/danielcherubini/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/sls.zsh
+[[ -f /Users/daniel/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/daniel/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/sls.zsh
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/danielcherubini/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/danielcherubini/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/slss.zsh
+[[ -f /Users/daniel/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/daniel/Coding/DNB/consent-management-service/node_modules/tabtab/.completions/slss.zsh
 
 alias gproxy='ssh -f -nNT gitproxy'
 alias gproxy-status='ssh -O check gitproxy'

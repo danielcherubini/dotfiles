@@ -52,7 +52,6 @@ let g:coc_global_extensions = [
 	\ 'coc-eslint',
 	\ 'coc-tsserver',
 	\ 'coc-tslint-plugin',
-	\ 'coc-fzf-preview',
 	\ 'coc-rls'
 \ ]
 
