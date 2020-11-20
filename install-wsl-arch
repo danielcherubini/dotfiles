@@ -1,0 +1,28 @@
+#!/bin/bash
+
+INSTALL_THESE="zsh neovim go python python2 ruby neofetch ripgrep fzf"
+AUR_THESE="nvm"
+
+# Setup Bonclay
+if hash bonclay 2>/dev/null; then
+	bonclay sync linux.yaml
+else
+	sh -c "$(curl -sL git.io/getbonclay)"
+	bonclay sync linux.yaml
+fi
+
+# Setup Yay
+if !hash yay 2>/dev/null; then
+	git clone https://aur.archlinux.org/yay.git
+	cd yay
+	makepkg -si
+	cd ..
+	rm -rf yay
+fi
+
+sudo pacman -Sy $INSTALL_THESE
+yay -S $AUR_THESE
+
+nvm install 10
+
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
