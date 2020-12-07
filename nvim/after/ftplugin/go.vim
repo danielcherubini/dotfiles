@@ -26,51 +26,7 @@ let g:go_highlight_generate_tags = 1
 let g:go_gocode_unimported_packages = 1
 
 let g:go_doc_popup_window = 1
-augroup go
-  autocmd!
 
-  " Show by default 4 spaces for a tab
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-
-  " :GoBuild and :GoTestCompile
-  autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-
-  " :GoTest
-  autocmd FileType go nmap <leader>t  <Plug>(go-test)
-
-  " :GoRun
-  autocmd FileType go nmap <leader>r  <Plug>(go-run)
-
-  " :GoDoc
-  autocmd FileType go nmap <Leader>d <Plug>(go-doc)
-
-  " :GoCoverageToggle
-  autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-
-  " :GoInfo
-  autocmd FileType go nmap <Leader>i <Plug>(go-info)
-
-  " :GoDebugBreakpoint
-  autocmd FileType go nmap <Leader>b :GoDebugBreakpoint <CR>
-
-	" :GoMetaLinter
-  autocmd FileType go nmap <Leader>l <Plug>(go-metalinter)
-
-  " Get rid of that dang tab mapping
-  autocmd FileType go nunmap <buffer> <C-t>
-  autocmd FileType go nmap gy <Plug>(go-def-type)
-
-  " :GoDef but opens in a vertical split
-  autocmd FileType go nmap <Leader>v <Plug>(go-def-vertical)
-  " :GoDef but opens in a horizontal split
-  autocmd FileType go nmap <Leader>s <Plug>(go-def-split)
-
-  " :GoAlternate  commands :A, :AV, :AS and :AT
-  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-  autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-augroup END
 
 " build_go_files is a custom function that builds or compiles the test file.
 " It calls :GoBuild if its a Go file, or :GoTestCompile if it's a test file
@@ -84,7 +40,17 @@ function! s:build_go_files()
 endfunction
 
 let g:go_highlight_debug = 1
-" let g:go_debug_windows = {
-"         \ 'out':   'botright 10new',
-"         \ 'vars':  'leftabove 60vnew',
-"         \ }
+
+let g:go_debug_windows = {
+	\ 'vars':       'leftabove 90vnew',
+	\ 'goroutines': 'botright 10new',
+	\ 'out':        'botright 5new',
+\}
+
+let g:go_debug_mappings = {
+	\ '(go-debug-breakpoint)': {'key': 'b', 'arguments': '<nowait>'},
+	\ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
+	\ '(go-debug-stop)': {'key': 'q'},
+	\ '(go-debug-next)': {'key': 'n', 'arguments': '<nowait>'},
+	\ '(go-debug-step)': {'key': 's'},
+\}
