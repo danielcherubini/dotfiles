@@ -16,6 +16,7 @@ set hidden
 set nowrap
 set cursorline
 set nopaste
+set pastetoggle=<F2>
 
 
 syntax on
@@ -32,7 +33,7 @@ else
 	set mouse=a
 endif
 
-set autoindent
+set smartindent
 
 " Enable to copy to clipboard for operations like yank, delete, change and put
 " http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
