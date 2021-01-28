@@ -1,0 +1,18 @@
+#!/bin/bash
+
+INSTALL_THESE="curl zsh neovim go python python2 ruby neofetch ripgrep fzf"
+
+sudo apt install $INSTALL_THESE
+
+# Setup Bonclay
+if hash bonclay 2>/dev/null; then
+	bonclay sync linux.yaml
+else
+	get-bonclay
+	bonclay sync linux.yaml
+fi
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
+nvm install 10
+
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
