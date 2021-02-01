@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="spaceship"
+# ZSH_THEME="spaceship"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -99,7 +99,8 @@ export PATH="$PATH:$HOME/.go/bin"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=dark
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
@@ -137,3 +138,5 @@ compinit
 # kitty + complete setup zsh | source /dev/stdin
 
 # alias tmux="env TERM=screen-256color tmux -2"
+
+eval "$(starship init zsh)"

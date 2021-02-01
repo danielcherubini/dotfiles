@@ -1,0 +1,33 @@
+- defaults:
+    link:
+      relink: true
+
+- link:
+    ~/.zshrc: zsh/.zshrc
+    ~/.config/nvim: nvim
+    ~/.i3: i3
+    ~/.config/bspwm: bspwm
+    ~/.config/sxhkd: sxhkd
+    ~/.config/rofi: rofi
+    ~/.config/ranger: ranger
+    ~/.config/sway: sway
+    ~/.config/waybar: waybar
+    ~/.config/dunst: dunst
+    ~/.config/deadd: deadd
+    ~/.Xresources: X11/.Xresources
+    ~/.xinitrc: X11/.xinitrc
+    ~/.config/compton.conf: compton/compton.conf
+    ~/.config/picom: picom
+    ~/.config/termite: termite
+    ~/.config/kitty: kitty
+    ~/.config/alacritty: alacritty
+    ~/.config/polybar: polybar
+    ~/.config/autorandr: autorandr
+    ~/.config/libinput-gestures.conf: libinput/libinput-gestures.conf
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux/dev: tmux/dev
+    ~/.config/clight.conf: clight/clight.conf
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
