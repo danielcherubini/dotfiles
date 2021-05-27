@@ -15,5 +15,6 @@ return require('packer').startup(function()
   use { 'lukas-reineke/indent-blankline.nvim', branch="lua" }
   use 'tpope/vim-commentary'
   use 'kdheepak/lazygit.nvim'
+  use 'jiangmiao/auto-pairs'
 end)
 
