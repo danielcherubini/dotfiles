@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/danielcherubini/.vim-config/nvim'
+let g:netrw_dirhist_2='/Users/danielcherubini/.vim-config/nvim/after'
+let g:netrw_dirhist_3='/Users/danielcherubini/.vim-config/nvim/after/ftplugin'
+let g:netrw_dirhist_4='/Users/danielcherubini/.vim-config/nvim/after'
+let g:netrw_dirhist_5='/Users/danielcherubini/.vim-config/nvim'
+let g:netrw_dirhist_6='/Users/danielcherubini/.vim-config/nvim/plugged'
+let g:netrw_dirhist_7='/Users/danielcherubini/.vim-config/nvim'
+let g:netrw_dirhist_8='/Users/danielcherubini/.vim-config/nvim/after'
+let g:netrw_dirhist_9='/Users/danielcherubini/.vim-config/nvim/after/ftplugin'
