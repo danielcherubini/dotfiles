@@ -1,37 +1,16 @@
-require('compe').setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
 
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = true;
-    ultisnips = true;
-  };
+-- Compe setup
+require'compe'.setup {
+	enabled = true;
+	preselect = 'always';
+	source = {
+		path = true;
+		nvim_lsp = true;
+		vsnip = true;
+		ultisnips = true;
+		buffer = true;
+	};
 }
-
-vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", {noremap=true,expr=true,silent=true})
-vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", {noremap=true,expr=true,silent=true})
--- vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", {noremap=true,expr=true,silent=true})
--- vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", {noremap=true,expr=true,silent=true})
--- vim.api.nvim_set_keymap("i", "<C-Space>", "compe#complete()", {noremap=true,expr=true,silent=true})
--- inoremap <silent><expr> <CR>      compe#confirm('<CR>')
--- inoremap <silent><expr> <C-e>     compe#close('<C-e>')
--- inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
--- inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
@@ -76,3 +55,10 @@ vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
+-- NOTE: Order is important. You can't lazy loading lexima.vim.
+vim.g.lexima_no_default_rules = true
+vim.cmd[[call lexima#set_default_rules()]]
+local compeopts = {noremap=true,silent=true,expr=true}
+vim.api.nvim_set_keymap('i', '<c-space>', 'compe#complete()', compeopts)
+vim.api.nvim_set_keymap("i", "<C-y>", "compe#confirm(lexima#expand('<LT>CR>', 'i'))", {expr = true})
+vim.api.nvim_set_keymap("i", "<CR>", "<C-y>", {})
