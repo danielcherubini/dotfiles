@@ -6,11 +6,10 @@ require'compe'.setup {
 		path = true;
 		nvim_lsp = true;
 		vsnip = true;
+		ultisnips = true;
 		buffer = true;
 	};
 }
-
-
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)

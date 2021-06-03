@@ -50,6 +50,12 @@ return require('packer').startup(function()
 			{ 'rafamadriz/friendly-snippets' }
 		}
 	}
+	use {
+		'SirVer/ultisnips',
+		requires = {
+			{ 'honza/vim-snippets' }
+		}
+	}
 	use 'ray-x/lsp_signature.nvim'
 
 end)

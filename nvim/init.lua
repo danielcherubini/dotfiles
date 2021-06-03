@@ -67,4 +67,3 @@ require("modules/_lightline")
 require("modules/_telescope")
 require("modules/_lsp")
 require("modules/_compe")
-

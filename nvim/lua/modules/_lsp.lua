@@ -1,7 +1,12 @@
 -- LSP settings
 local nvim_lsp = require('lspconfig')
 local on_attach = function(_client, bufnr)
-	require "lsp_signature".on_attach()
+	require "lsp_signature".on_attach({
+		bind = true,
+		handler_opts = {
+			border = "none"
+		}
+	})
 
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	
