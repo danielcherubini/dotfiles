@@ -8,10 +8,7 @@ return require('packer').startup(function()
 	-- Theme
 	use 'dracula/vim'
 	use 'itchyny/lightline.vim'
-	use { 
-		'lukas-reineke/indent-blankline.nvim', 
-		branch="lua" 
-	}
+	use 'lukas-reineke/indent-blankline.nvim'
 
 	-- General
 	use 'tpope/vim-commentary'
