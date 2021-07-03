@@ -4,8 +4,8 @@ local on_attach = function(_client, bufnr)
 	require "lsp_signature".on_attach({
 		bind = true,
 		handler_opts = {
-			border = "none"
-		}
+			border = "single"
+}
 	})
 
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -41,7 +41,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 
 local opts = { noremap=true, silent=true }
 -- Enable the following language servers
-local servers = { 'clangd', 'rust_analyzer', 'gopls', 'tsserver' }
+local servers = { 'clangd', 'rust_analyzer', 'gopls', 'tsserver', 'pyright' }
 for _, lsp in ipairs(servers) do
 	nvim_lsp[lsp].setup { 
 		on_attach = on_attach,

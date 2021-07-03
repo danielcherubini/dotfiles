@@ -58,5 +58,7 @@ return require('packer').startup(function()
 	}
 	use 'ray-x/lsp_signature.nvim'
 
+	-- Linting
+	use 'sbdchd/neoformat'
 end)
 
