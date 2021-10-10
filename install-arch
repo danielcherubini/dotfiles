@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTALL_THESE="rofi termite zsh neovim go python python2 ruby neofetch ripgrep fzf noto-fonts-emoji powerline-fonts"
+INSTALL_THESE="alacritty zsh neovim go python python2 ruby neofetch ripgrep fzf noto-fonts-emoji powerline-fonts"
 AUR_THESE="nvm ttf-fira-code ttf-fira-sans ttf-fira-mono ttf-fira-go"
 
 if !hash yay 2>/dev/null; then
@@ -9,14 +9,6 @@ if !hash yay 2>/dev/null; then
 	makepkg -si
 	cd ..
 	rm -rf yay
-fi
-
-# Setup Bonclay
-if hash bonclay 2>/dev/null; then
-	bonclay sync linux.yaml
-else
-	sh -c "$(curl -sL git.io/getbonclay)"
-	bonclay sync linux.yaml
 fi
 
 sudo pacman -Sy $INSTALL_THESE
