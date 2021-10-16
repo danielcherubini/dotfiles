@@ -4,7 +4,7 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
 	-- Package managment
 	use 'wbthomason/packer.nvim'
-	
+
 	-- Theme
 	use 'dracula/vim'
 	use 'itchyny/lightline.vim'
@@ -12,7 +12,7 @@ return require('packer').startup(function()
 
 	-- General
 	use 'tpope/vim-commentary'
-	use 'cohama/lexima.vim'
+	use 'jiangmiao/auto-pairs'
 
 	-- File Managment
 	use {
@@ -20,7 +20,7 @@ return require('packer').startup(function()
 		requires = {
 			{'nvim-lua/popup.nvim'}, 
 			{'nvim-lua/plenary.nvim'}
-		} 
+		}
 	}
 
 	-- Git stuff
@@ -39,6 +39,7 @@ return require('packer').startup(function()
 	}
 	use 'nvim-treesitter/playground'
 	use 'neovim/nvim-lspconfig'
+	use 'williamboman/nvim-lsp-installer'
 	use 'hrsh7th/nvim-compe'
 	use {
 		'hrsh7th/vim-vsnip',

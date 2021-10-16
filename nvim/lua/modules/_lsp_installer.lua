@@ -1,9 +1,5 @@
--- LSP settings
-local nvim_lsp = require('lspconfig')
 local lsp_installer = require("nvim-lsp-installer")
-
-function common_on_attach(client, bufnr)
-	-- ... set up buffer keymaps, etc.
+function common_on_attach(_, bufnr)
 	require "lsp_signature".on_attach({
 		bind = true,
 		handler_opts = {
@@ -12,7 +8,6 @@ function common_on_attach(client, bufnr)
 	})
 
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-	
 	local opts = { noremap=true, silent=true }
 	vim.api.nvim_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 	vim.api.nvim_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -33,21 +28,9 @@ function common_on_attach(client, bufnr)
 
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    'documentation',
-    'detail',
-    'additionalTextEdits',
-  }
-}
-
-
 lsp_installer.on_server_ready(function(server)
 	local opts = {
 		on_attach = common_on_attach,
-		capabilities = capabilities,
 	}
 	-- (optional) Customize the options passed to the server
 	-- if server.name == "tsserver" then

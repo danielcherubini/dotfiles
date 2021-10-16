@@ -23,7 +23,8 @@
     ~/.config/alacritty: alacritty
     ~/.config/polybar: polybar
     ~/.config/autorandr: autorandr
-    ~/.config/libinput-gestures.conf: libinput/libinput-gestures.conf
+    ~/.config/fusuma: fusuma
+    # ~/.config/libinput-gestures.conf: libinput/libinput-gestures.conf
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux/dev: tmux/dev
     ~/.config/clight.conf: clight/clight.conf

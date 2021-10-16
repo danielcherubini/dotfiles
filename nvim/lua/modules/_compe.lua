@@ -54,10 +54,3 @@ vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
--- NOTE: Order is important. You can't lazy loading lexima.vim.
-vim.g.lexima_no_default_rules = true
-vim.cmd[[call lexima#set_default_rules()]]
-local compeopts = {noremap=true,silent=true,expr=true}
-vim.api.nvim_set_keymap('i', '<c-space>', 'compe#complete()', compeopts)
-vim.api.nvim_set_keymap("i", "<C-y>", "compe#confirm(lexima#expand('<LT>CR>', 'i'))", {expr = true})
-vim.api.nvim_set_keymap("i", "<CR>", "<C-y>", {})

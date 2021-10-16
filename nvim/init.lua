@@ -65,6 +65,7 @@ vim.api.nvim_exec([[
 require("modules/_lazygit")
 require("modules/_lightline")
 require("modules/_telescope")
-require("modules/_lsp")
+-- require("modules/_lsp")
+require("modules/_lsp_installer")
 require("modules/_compe")
 require("modules/_neoformat")
