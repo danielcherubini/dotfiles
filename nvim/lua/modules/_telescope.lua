@@ -1,10 +1,17 @@
 -- Telescope
-require'telescope'.setup {
+local telescope = require("telescope")
+local trouble = require("trouble.providers.telescope")
+
+telescope.setup {
   defaults = {
     mappings = {
       i = {
-        ["<C-u>"] = false,
+	["<C-u>"] = false,
         ["<C-d>"] = false,
+	["<c-t>"] = trouble.open_with_trouble,
+      },
+      n = {
+	["<c-t>"] = trouble.open_with_trouble,
       },
     },
     generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
@@ -25,3 +32,4 @@ vim.api.nvim_set_keymap('n', '<leader>gc', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<cr>]], { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>gs', [[<cmd>lua require('telescope.builtin').git_status()<cr>]], { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>gp', [[<cmd>lua require('telescope.builtin').git_bcommits()<cr>]], { noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>pp', [[<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>]], { noremap = true, silent = true})

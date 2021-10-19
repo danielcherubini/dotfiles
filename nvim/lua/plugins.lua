@@ -16,9 +16,9 @@ return require('packer').startup(function()
 
 	-- File Managment
 	use {
-		'nvim-telescope/telescope.nvim', 
+		'nvim-telescope/telescope.nvim',
 		requires = {
-			{'nvim-lua/popup.nvim'}, 
+			{'nvim-lua/popup.nvim'},
 			{'nvim-lua/plenary.nvim'}
 		}
 	}
@@ -26,16 +26,16 @@ return require('packer').startup(function()
 	-- Git stuff
 	use 'kdheepak/lazygit.nvim'
 	use {
-		'lewis6991/gitsigns.nvim', 
+		'lewis6991/gitsigns.nvim',
 		requires = {
 			'nvim-lua/plenary.nvim'
-		} 
+		}
 	}
 
 	-- Tree Sitter and LSP
-	use { 
-		'nvim-treesitter/nvim-treesitter', 
-		run = ':TSUpdate' 
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate'
 	}
 	use 'nvim-treesitter/playground'
 	use 'neovim/nvim-lspconfig'
@@ -58,5 +58,15 @@ return require('packer').startup(function()
 
 	-- Linting
 	use 'sbdchd/neoformat'
+
+
+	-- Trouble
+	use {
+	  "folke/trouble.nvim",
+	  requires = {
+		"kyazdani42/nvim-web-devicons",
+		'runiq/telescope-trouble.nvim'
+	  }
+	}
 end)
 

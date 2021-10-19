@@ -2,7 +2,6 @@
     link:
       relink: true
       create: true
-
 - link:
     ~/.zshrc: zsh/.zshrc
     ~/.config/nvim: nvim
@@ -29,7 +28,6 @@
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux/dev: tmux/dev
     ~/.config/clight.conf: clight/clight.conf
-
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
 

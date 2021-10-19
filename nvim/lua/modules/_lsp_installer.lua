@@ -1,5 +1,5 @@
 local lsp_installer = require("nvim-lsp-installer")
-function common_on_attach(_, bufnr)
+function Common_on_attach(_, bufnr)
 	require "lsp_signature".on_attach({
 		bind = true,
 		handler_opts = {
@@ -30,7 +30,7 @@ end
 
 lsp_installer.on_server_ready(function(server)
 	local opts = {
-		on_attach = common_on_attach,
+		on_attach = Common_on_attach,
 	}
 	-- (optional) Customize the options passed to the server
 	-- if server.name == "tsserver" then
