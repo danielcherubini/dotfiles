@@ -66,6 +66,7 @@ if [ "$(uname)" = "Linux" ]; then
 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completionM
 	# source /usr/share/nvm/init-nvm.sh
 	export GOROOT="/usr/lib/go"
+	# alias ssh="kitty +kitten ssh"
 else
 	export NVM_DIR="$HOME/.nvm"
 	[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm

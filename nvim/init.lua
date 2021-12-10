@@ -3,6 +3,9 @@ require('plugins')
 --Incremental live completion
 vim.o.inccommand = "nosplit"
 
+--Clipboard
+vim.o.clipboard = "unnamedplus"
+
 --Set highlight on search
 vim.o.hlsearch = false
 vim.o.incsearch = true
