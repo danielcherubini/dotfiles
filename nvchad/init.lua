@@ -36,14 +36,14 @@ hooks.add("install_plugins", function(use)
     after = "nvim-lspconfig"
   }
   use {
-    'kdheepak/lazygit.nvim'
+    'kdheepak/lazygit.nvim',
   }
   use { 
     "simrat39/rust-tools.nvim",
     after = "nvim-lspconfig",
     config = function()
       require('custom.plugins.rust-tools').setup()
-    end
+    end,
   }
 end)
 
