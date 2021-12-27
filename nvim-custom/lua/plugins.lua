@@ -40,21 +40,28 @@ return require('packer').startup(function()
 	use 'nvim-treesitter/playground'
 	use 'neovim/nvim-lspconfig'
 	use 'williamboman/nvim-lsp-installer'
-	use 'hrsh7th/nvim-compe'
+	use 'hrsh7th/nvim-cmp'
+	use 'hrsh7th/cmp-nvim-lsp'
+	use 'hrsh7th/cmp-vsnip'
+	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-buffer'
 	use {
 		'hrsh7th/vim-vsnip',
 		requires = {
-			{ 'hrsh7th/vim-vsnip-integ' },
-			{ 'rafamadriz/friendly-snippets' }
+			{ 'hrsh7th/cmp-vsnip' },
+			{ 'hrsh7th/vim-vsnip' },
 		}
 	}
-	use {
-		'SirVer/ultisnips',
-		requires = {
-			{ 'honza/vim-snippets' }
-		}
-	}
+	-- use {
+	-- 	'SirVer/ultisnips',
+	-- 	requires = {
+	-- 		{ 'honza/vim-snippets' }
+	-- 	}
+	-- }
 	use 'ray-x/lsp_signature.nvim'
+
+	-- Rust
+	use 'simrat39/rust-tools.nvim'
 
 	-- Linting
 	use 'sbdchd/neoformat'
