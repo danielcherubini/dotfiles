@@ -4,9 +4,9 @@
       create: true
 - link:
     ~/.zshrc: zsh/.zshrc
-    ~/.config/nvim: nvim
-   ~/.config/kitty: kitty
-   ~/.config/fusuma: fusuma
+    ~/.config/nvim/lua/custom: nvchad
+    ~/.config/kitty: kitty
+    ~/.config/fusuma: fusuma
     # ~/.config/libinput-gestures.conf: libinput/libinput-gestures.conf
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux/dev: tmux/dev
