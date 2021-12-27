@@ -13,13 +13,13 @@ M.setup = function()
             other_hints_prefix = "",
         },
     },
-
     -- all the opts to send to nvim-lspconfig
     -- these override the defaults set by rust-tools.nvim
     -- see https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#rust_analyzer
     server = {
         -- on_attach is a callback called when the language server attachs to the buffer
         on_attach = function(client)
+          require'completion'.on_attach(client)
           client.resolved_capabilities.document_formatting = false
           client.resolved_capabilities.document_range_formatting = false
         end,

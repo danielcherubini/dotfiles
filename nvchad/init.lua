@@ -9,10 +9,11 @@ local hooks = require "core.hooks"
 -- MAPPINGS
 -- To add new plugins, use the "setup_mappings" hook,
 
--- hooks.add("setup_mappings", function(map)
---    map("n", "<leader>cc", ":Telescope <CR>", opt)
---    map("n", "<leader>q", ":q <CR>", opt)
--- end)
+hooks.add("setup_mappings", function(map)
+   map("n", "<leader>lg", ":LazyGit<CR>")
+   -- map("n", "<leader>cc", ":Telescope <CR>", opt)
+   -- map("n", "<leader>q", ":q <CR>", opt)
+end)
 
 -- NOTE : opt is a variable  there (most likely a table if you want multiple options),
 -- you can remove it if you dont have any custom options
@@ -29,6 +30,13 @@ hooks.add("install_plugins", function(use)
     config = function()
       require("custom.plugins.null-ls").setup()
     end,
+  }
+  use { 
+    'nvim-lua/completion-nvim',
+    after = "nvim-lspconfig"
+  }
+  use {
+    'kdheepak/lazygit.nvim'
   }
   use { 
     "simrat39/rust-tools.nvim",
