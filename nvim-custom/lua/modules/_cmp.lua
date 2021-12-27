@@ -1,5 +1,5 @@
 -- Setup nvim-cmp.
-vim.g.completeopt='menuone,noinsert,noselect'
+vim.o.completeopt='menuone,noinsert,noselect'
 
 local cmp = require'cmp'
 cmp.setup({

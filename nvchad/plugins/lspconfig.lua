@@ -3,15 +3,31 @@ local M = {}
 M.setup_lsp = function(attach, capabilities)
   local lspconfig = require "lspconfig"
 
-  local servers = { "rust_analyzer", "gopls" }
-  for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup {
-      on_attach = function(client)
-        client.resolved_capabilities.document_formatting = false
-        client.resolved_capabilities.document_range_formatting = false
-      end,
-    }   
-  end
+
+  -- lspconfig.rust_analyzer.setup {
+  --   on_attach = function(client)
+  --     require'completion'.on_attach(client)
+  --     client.resolved_capabilities.document_formatting = false
+  --     client.resolved_capabilities.document_range_formatting = false
+  --   end,
+  --   settings = {
+  --     ["rust-analyzer"] = {
+  --       assist = {
+  --         importGranularity = "module",
+  --         importPrefix = "by_self",
+  --       },
+  --       cargo = {
+  --         loadOutDirsFromCheck = true
+  --       },
+  --       procMacro = {
+  --      enable = true
+  --       },
+  --     }
+  --   }
+  -- }
+
+
+  lspconfig.gopls.setup {}
 end
 
 return M
