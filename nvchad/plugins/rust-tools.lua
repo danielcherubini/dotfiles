@@ -6,7 +6,7 @@ M.setup = function()
   rust_tools.setup {
     tools = {
       hover_actions = {
-        auto_focus = true,
+        -- auto_focus = true,
       },
     -- all the opts to send to nvim-lspconfig
     -- these override the defaults set by rust-tools.nvim
