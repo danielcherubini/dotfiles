@@ -1,13 +1,13 @@
-local hooks = require "core.hooks"
+local map = require("core.utils").map
 
-hooks.add("setup_mappings", function(map)
-   map("n", "<leader>lg", ":LazyGit<CR>")
-   map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-end)
+ map("n", "<leader>lg", ":LazyGit<CR>")
+ map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
 
-hooks.add("install_plugins", function(use)
+local customPlugins = require "core.customPlugins"
+
+customPlugins.add(function(use)
   use {
-    'kdheepak/lazygit.nvim',
+    "kdheepak/lazygit.nvim",
   }
   use {
     "williamboman/nvim-lsp-installer",   
