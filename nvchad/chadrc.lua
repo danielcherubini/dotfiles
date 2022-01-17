@@ -8,6 +8,7 @@ local M = {}
 
 M.ui = {
    theme = "chadracula",
+   italic_comments = true,
 }
 
 M.plugins = {

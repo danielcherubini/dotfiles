@@ -5,12 +5,14 @@ local map = require("core.utils").map
 
 local customPlugins = require "core.customPlugins"
 
+
+
 customPlugins.add(function(use)
   use {
     "kdheepak/lazygit.nvim",
   }
   use {
-    "williamboman/nvim-lsp-installer",   
+    "williamboman/nvim-lsp-installer",
   }
   use {
     "jose-elias-alvarez/null-ls.nvim",
@@ -24,3 +26,4 @@ customPlugins.add(function(use)
     after = "nvim-lspconfig",
   }
 end)
+
