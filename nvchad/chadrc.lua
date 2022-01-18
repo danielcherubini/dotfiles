@@ -8,7 +8,7 @@ local M = {}
 
 M.ui = {
    theme = "chadracula",
-   italic_comments = true,
+   hl_override = "custom.highlights",
 }
 
 M.plugins = {
