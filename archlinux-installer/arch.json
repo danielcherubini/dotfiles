@@ -29,7 +29,10 @@
         "nic": "Use NetworkManager (necessary to configure internet graphically in GNOME and KDE)"
     },
     "ntp": true,
-    "packages": [],
+    "packages": [
+      "neovim", 
+      "sof-firmware"
+    ],
     "profile": {
         "path": "/usr/lib/python3.10/site-packages/archinstall/profiles/desktop.py"
     },
