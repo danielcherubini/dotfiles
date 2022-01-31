@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INSTALL_THESE="alacritty zsh neovim go python python2 ruby neofetch ripgrep fzf noto-fonts-emoji powerline-fonts"
+INSTALL_THESE="kitty kitty-terminfo zsh neovim go python python2 ruby neofetch ripgrep fzf noto-fonts-emoji powerline-fonts"
 AUR_THESE="nvm ttf-fira-code ttf-fira-sans ttf-fira-mono ttf-fira-go"
 
 if !hash yay 2>/dev/null; then
