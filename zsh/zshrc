@@ -1,0 +1,11 @@
+eval "$(starship init zsh)"
+
+alias l='ls -lah --color=auto'
+
+# Add colors to Terminal
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
+# Setup Programming languages here
+export PATH="$HOME/.cargo/bin:$PATH"
+export GOPATH="$HOME/.go"

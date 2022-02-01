@@ -3,8 +3,8 @@
       relink: true
       create: true
 - link:
-    ~/.zshrc: zsh/.zshrc
-    ~/.zshenv: zsh/.zshenv
+    ~/.zshrc: zsh/zshrc
+    ~/.zshenv: zsh/zshenv
     ~/.config/environment.d: environment.d
     ~/.config/nvim/lua/custom: nvchad
     ~/.config/kitty: kitty
