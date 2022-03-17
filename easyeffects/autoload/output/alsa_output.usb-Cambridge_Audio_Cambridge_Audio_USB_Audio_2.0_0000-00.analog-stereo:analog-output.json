@@ -1,0 +1,6 @@
+{
+    "device": "alsa_output.usb-Cambridge_Audio_Cambridge_Audio_USB_Audio_2.0_0000-00.analog-stereo",
+    "device-description": "DacMagic Plus Analog Stereo",
+    "device-profile": "analog-output",
+    "preset-name": "none"
+}
