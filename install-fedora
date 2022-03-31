@@ -1,0 +1,10 @@
+#!/bin/bash
+
+INSTALL_THESE="curl zsh neovim golang python python2 ruby neofetch ripgrep fzf"
+
+sudo dnf install $INSTALL_THESE -y
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
+nvm install 10
+
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

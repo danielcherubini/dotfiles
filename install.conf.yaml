@@ -12,6 +12,8 @@
     ~/.config/fusuma: fusuma
     # ~/.config/libinput-gestures.conf: libinput/libinput-gestures.conf
     ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux/tmux.remote.conf: tmux/tmux.remote.conf
+    ~/.tmux/yank.sh: tmux/yank.sh
     ~/.tmux/dev: tmux/dev
     ~/.config/clight.conf: clight/clight.conf
 - shell:
