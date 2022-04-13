@@ -1,0 +1,6 @@
+{
+    "device": "alsa_input.usb-Audio_Technica_Corp_ATR2500x-USB_Microphone-00.analog-stereo",
+    "device-description": "ATR2500x-USB Microphone Analog Stereo",
+    "device-profile": "analog-input-mic",
+    "preset-name": "none"
+}
