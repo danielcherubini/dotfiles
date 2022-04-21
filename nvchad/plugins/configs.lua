@@ -23,4 +23,12 @@ M.nvimtree = {
    },
 }
 
+local cmp = require("cmp")
+M.cmp = {
+  mapping = {
+    ["<Up>"] = cmp.mapping.select_prev_item(),
+    ["<Down>"] = cmp.mapping.select_next_item(),
+  },
+}
+
 return M
