@@ -14,14 +14,12 @@ M.plugins = {
          setup_lspconf = "custom.plugins.lspconfig",
       },
    },
-   status = {
-      dashboard = true,
+   override = {
+     ["nvim-treesitter/nvim-treesitter"] = plugin_conf.treesitter,
+     ["kyazdani42/nvim-tree.lua"] = plugin_conf.nvimtree,
+     ["hrsh7th/nvim-cmp"] = plugin_conf.cmp,
    },
-   default_plugin_config_replace = {
-     nvim_treesitter = plugin_conf.treesitter,
-     nvim_tree = plugin_conf.nvimtree,
-   },
-   install = userPlugins,
+   user = userPlugins,
 }
 
 return M

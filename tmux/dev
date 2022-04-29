@@ -1,4 +1,4 @@
-new-window
+new-window -c "#{pane_current_path}"
 selectp -t 0
-splitw -v -p 25
+splitw -v -p 25 -c "#{pane_current_path}"
 selectp -t 0
