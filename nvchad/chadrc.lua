@@ -2,10 +2,11 @@ local M = {}
 
 local plugin_conf = require "custom.plugins.configs"
 local userPlugins = require "custom.plugins"
+local highlights = require "custom.highlights"
 
 M.ui = {
    theme = "chadracula",
-   hl_override = "custom.highlights",
+   hl_override = highlights,
 }
 
 M.plugins = {
