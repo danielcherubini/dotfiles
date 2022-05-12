@@ -1,7 +1,7 @@
 return {
   [ "kdheepak/lazygit.nvim" ] = {},
   [ "williamboman/nvim-lsp-installer" ] = {},
-  [ "jose-elias-alvarez/null-ls.nvim" ] = { 
+  [ "jose-elias-alvarez/null-ls.nvim" ] = {
       after = "nvim-lspconfig",
       config = function()
         require("custom.plugins.null-ls").setup()
