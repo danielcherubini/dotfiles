@@ -10,6 +10,7 @@ M.setup_lsp = function(attach, capabilities)
     "gopls",
     "tsserver",
     "yamlls",
+    "jdtls",
   }
 
   for _, server in ipairs(servers) do
