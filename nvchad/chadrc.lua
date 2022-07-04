@@ -3,6 +3,7 @@ local M = {}
 local plugin_conf = require "custom.plugins.configs"
 local userPlugins = require "custom.plugins"
 local highlights = require "custom.highlights"
+local mappings = require "custom.mappings"
 
 M.ui = {
    theme = "chadracula",
@@ -22,5 +23,7 @@ M.plugins = {
    },
    user = userPlugins,
 }
+
+M.mappings = mappings
 
 return M
