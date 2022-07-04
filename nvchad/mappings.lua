@@ -1,13 +1,14 @@
 local M = {}
 
-M.lazygit {
+M.lazygit = {
   n = {
-    ["<leader>lg"] = { "<cmd>LazyGit<CR>" }
-  }
+    ["<leader>lg"] = { "<cmd>LazyGit<CR>", "   Lazygit"},
+  },
+}
+M.lsp = {
+  n = {
+    ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "   HOVER"},
+  },
 }
 
-M.lsp {
-  n = {
-    ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>" }
-  }
-}
+return M
