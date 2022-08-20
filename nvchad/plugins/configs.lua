@@ -24,16 +24,14 @@ M.nvimtree = {
    },
 }
 
-local status, cmp = pcall(require, "cmp")
-if (status) then
-  M.cmp = {
+M.cmp = function()
+local cmp = require "cmp"
+  return {
     mapping = {
       ["<Up>"] = cmp.mapping.select_prev_item(),
       ["<Down>"] = cmp.mapping.select_next_item(),
     },
   }
-else
-  M.cmp = {}
 end
 
 return M
