@@ -24,7 +24,7 @@ M.nvimtree = {
    },
 }
 
-M.lsp = {
+M.mason = {
     "lua-language-server",
     "stylua",
     "rust-analyzer",
@@ -38,6 +38,18 @@ M.lsp = {
     "typescript-language-server",
     "shfmt",
     "shellcheck",
+}
+
+M.lspconfig = {
+    "sumneko_lua",
+    "rust_analyzer",
+    "gopls",
+    "jdtls",
+    "jsonls",
+    "yamlls",
+    "eslint",
+    "html",
+    "tsserver",
 }
 
 M.cmp = function()

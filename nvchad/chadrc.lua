@@ -16,7 +16,7 @@ M.plugins = {
      ["kyazdani42/nvim-tree.lua"] = plugin_conf.nvimtree,
      ["hrsh7th/nvim-cmp"] = plugin_conf.cmp,
      ["williamboman/mason.nvim"] = {
-       ensure_installed = plugin_conf.lsp
+       ensure_installed = plugin_conf.mason
      },
    },
    user = userPlugins,

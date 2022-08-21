@@ -1,5 +1,5 @@
 return {
-  [ "kdheepak/lazygit.nvim" ] = {},
+  ["kdheepak/lazygit.nvim"] = {},
   ["neovim/nvim-lspconfig"] = {
     config = function()
       require "plugins.configs.lspconfig"
@@ -12,5 +12,7 @@ return {
         require("custom.plugins.null-ls").setup()
       end,
   },
-  ["simrat39/rust-tools.nvim"] = { after = "nvim-lspconfig" },
+  ["simrat39/rust-tools.nvim"] = {
+    after = "nvim-lspconfig",
+  },
 }
