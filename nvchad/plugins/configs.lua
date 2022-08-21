@@ -24,6 +24,22 @@ M.nvimtree = {
    },
 }
 
+M.lsp = {
+    "lua-language-server",
+    "stylua",
+    "rust-analyzer",
+    "gopls",
+    "goimports",
+    "jdtls",
+    "json-lsp",
+    "yaml-language-server",
+    "eslint-lsp",
+    "html-lsp",
+    "typescript-language-server",
+    "shfmt",
+    "shellcheck",
+}
+
 M.cmp = function()
 local cmp = require "cmp"
   return {
