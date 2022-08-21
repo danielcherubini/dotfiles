@@ -25,6 +25,7 @@ local sources = {
 
    -- Go
    b.formatting.gofmt,
+   b.formatting.goimports,
 }
 
 local M = {}
