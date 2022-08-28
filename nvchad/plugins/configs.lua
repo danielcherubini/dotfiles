@@ -38,6 +38,7 @@ M.mason = {
     "typescript-language-server",
     "shfmt",
     "shellcheck",
+    "kotlin-language-server",
 }
 
 M.lspconfig = {
@@ -50,6 +51,7 @@ M.lspconfig = {
     "eslint",
     "html",
     "tsserver",
+    "kotlin_language_server",
 }
 
 M.cmp = function()

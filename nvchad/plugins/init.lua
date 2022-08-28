@@ -1,4 +1,5 @@
 return {
+  ["editorconfig/editorconfig-vim"] = {},
   ["kdheepak/lazygit.nvim"] = {},
   ["neovim/nvim-lspconfig"] = {
     config = function()
