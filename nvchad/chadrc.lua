@@ -15,9 +15,7 @@ M.plugins = {
      ["nvim-treesitter/nvim-treesitter"] = plugin_conf.treesitter,
      ["kyazdani42/nvim-tree.lua"] = plugin_conf.nvimtree,
      ["hrsh7th/nvim-cmp"] = plugin_conf.cmp,
-     ["williamboman/mason.nvim"] = {
-       ensure_installed = plugin_conf.mason
-     },
+     ["williamboman/mason.nvim"] = plugin_conf.mason,
    },
    user = userPlugins,
 }

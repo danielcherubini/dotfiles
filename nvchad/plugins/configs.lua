@@ -3,18 +3,19 @@ local M = {}
 -- overriding default plugin configs!
 M.treesitter = {
    ensure_installed = {
-      "lua",
-      "vim",
-      "html",
-      "css",
-      "javascript",
-      "java",
-      "json",
-      "toml",
-      "markdown",
-      "c",
-      "go",
-      "rust",
+    "lua",
+    "vim",
+    "html",
+    "css",
+    "javascript",
+    "java",
+    "json",
+    "toml",
+    "markdown",
+    "c",
+    "go",
+    "rust",
+    "kotlin",
    },
 }
 
@@ -25,6 +26,7 @@ M.nvimtree = {
 }
 
 M.mason = {
+  ensure_installed = {
     "lua-language-server",
     "stylua",
     "rust-analyzer",
@@ -39,6 +41,8 @@ M.mason = {
     "shfmt",
     "shellcheck",
     "kotlin-language-server",
+    "ktlint",
+  },
 }
 
 M.lspconfig = {

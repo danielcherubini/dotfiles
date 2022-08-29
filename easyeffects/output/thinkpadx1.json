@@ -1,7 +1,16 @@
 {
     "output": {
         "blocklist": [],
+        "convolver": {
+            "autogain": true,
+            "bypass": false,
+            "input-gain": 0.0,
+            "ir-width": 100,
+            "kernel-path": "/home/daniel/.config/easyeffects/irs/Dolby ATMOS ((128K MP3)) 1.Default.irs",
+            "output-gain": 0.0
+        },
         "equalizer": {
+            "bypass": false,
             "input-gain": -0.6,
             "left": {
                 "band0": {
@@ -613,6 +622,7 @@
             "split-channels": false
         },
         "filter": {
+            "bypass": false,
             "frequency": 145.0,
             "inertia": 20.0,
             "input-gain": 0.0,
@@ -626,6 +636,7 @@
             "alr-knee": 0.0,
             "alr-release": 50.0,
             "attack": 2.0,
+            "bypass": false,
             "dithering": "None",
             "external-sidechain": false,
             "gain-boost": true,
@@ -638,6 +649,14 @@
             "sidechain-preamp": 0.0,
             "stereo-link": 100.0,
             "threshold": 0.0
+        },
+        "loudness": {
+            "bypass": false,
+            "fft": "4096",
+            "input-gain": 0.0,
+            "output-gain": 7.0,
+            "std": "ISO226-2003",
+            "volume": 0.0
         },
         "multiband_compressor": {
             "band0": {
@@ -854,6 +873,7 @@
                 "solo": false,
                 "split-frequency": 16000.0
             },
+            "bypass": false,
             "compressor-mode": "Modern",
             "envelope-boost": "None",
             "input-gain": -4.0,
@@ -864,11 +884,14 @@
             "multiband_compressor",
             "stereo_tools",
             "equalizer",
+            "convolver",
+            "loudness",
             "limiter"
         ],
         "stereo_tools": {
             "balance-in": 0.0,
             "balance-out": 0.0,
+            "bypass": false,
             "delay": 0.0,
             "input-gain": 0.0,
             "middle-level": 0.0,
