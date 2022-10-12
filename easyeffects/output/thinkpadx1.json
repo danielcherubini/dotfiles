@@ -3,7 +3,7 @@
         "blocklist": [],
         "convolver": {
             "autogain": true,
-            "bypass": false,
+            "bypass": true,
             "input-gain": 0.0,
             "ir-width": 100,
             "kernel-path": "/home/daniel/.config/easyeffects/irs/Dolby ATMOS ((128K MP3)) 1.Default.irs",
