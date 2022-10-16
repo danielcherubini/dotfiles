@@ -1,9 +1,9 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
-local plugin_conf = require "custom.plugins.configs"
+local plugin_conf = require "custom.plugins.overrides"
 
-local servers = plugin_conf.lspconfig
+local servers = plugin_conf.lspconfig 
 
 for _, server in ipairs(servers) do
   local serverOpts = {
