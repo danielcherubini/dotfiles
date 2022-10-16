@@ -13,7 +13,7 @@ return {
   [ "jose-elias-alvarez/null-ls.nvim" ] = {
       after = "nvim-lspconfig",
       config = function()
-        require("null-ls").setup()
+        require "custom.plugins.null-ls"
       end,
   },
   ["nvim-treesitter/nvim-treesitter"] = plugin_conf.treesitter,
