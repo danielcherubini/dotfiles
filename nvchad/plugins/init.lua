@@ -20,4 +20,5 @@ return {
   ["kyazdani42/nvim-tree.lua"] = plugin_conf.nvimtree,
   ["hrsh7th/nvim-cmp"] = plugin_conf.cmp,
   ["williamboman/mason.nvim"] = plugin_conf.mason,
+  ["cshuaimin/ssr.nvim"] = {},
 }
