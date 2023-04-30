@@ -20,6 +20,7 @@
     ~/.tmux/yank.sh: tmux/yank.sh
     ~/.tmux/dev: tmux/dev
     ~/.config/clight.conf: clight/clight.conf
+    ~/.local/share/java: java
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
 
