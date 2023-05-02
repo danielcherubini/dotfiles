@@ -2,7 +2,7 @@ local plugin_conf = require "custom.overrides"
 
 return {
   { "editorconfig/editorconfig-vim" },
-  { "kdheepak/lazygit.nvim" },
+  { "kdheepak/lazygit.nvim", lazy = false },
   { "simrat39/rust-tools.nvim" },
   { "neovim/nvim-lspconfig",
     dependencies = {
