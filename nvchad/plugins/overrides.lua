@@ -2,7 +2,7 @@ local M = {}
 
 -- overriding default plugin configs!
 M.treesitter = {
-  override_options = {
+  opts = {
     ensure_installed = {
       "lua",
       "vim",
