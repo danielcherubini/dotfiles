@@ -1,7 +1,7 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
-local plugin_conf = require "custom.plugins.overrides"
+local plugin_conf = require "custom.overrides"
 
 local servers = plugin_conf.lspconfig 
 

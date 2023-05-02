@@ -1,30 +1,12 @@
 #!/bin/bash
 
-BREW_INSTALL_THESE="zsh zsh-completions neovim golang ifstat neofetch ripgrep koekeishiya/formulae/skhd koekeishiya/formulae/yabai"
-BREW_CASK_INSTALL_THESE="iterm2 firefox slack"
-
-# Setup Bonclay
-if hash bonclay 2>/dev/null; then
-	bonclay sync mac.yaml
-else
-	sh -c "$(curl -sL git.io/getbonclay)"
-fi
+BREW_INSTALL_THESE="zsh zsh-completions neovim golang neofetch ripgrep"
 
 if hash brew 2>/dev/null; then
 	brew install $BREW_INSTALL_THESE
-	brew cask install $BREW_CASK_INSTALL_THESE
 else
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	brew install $BREW_INSTALL_THESE
-	brew cask install $BREW_CASK_INSTALL_THESE
-fi
-
-# Setup NVM
-if hash nvm 2>/dev/null; then
-	nvm install 8
-else
-	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-	nvm install 8
 fi
 
 chsh -s /bin/zsh
