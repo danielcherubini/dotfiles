@@ -24,7 +24,7 @@ return {
     opts = plugin_conf.nvimtree
   },
   { "hrsh7th/nvim-cmp",
-    opts = plugin_conf.cmp
+    opts = plugin_conf.cmp()
   },
   { "williamboman/mason.nvim",
     opts = plugin_conf.mason
