@@ -42,6 +42,8 @@ M.mason = {
     "shellcheck",
     "kotlin-language-server",
     "ktlint",
+    "checkstyle",
+    "sonarlint-language-server",
   },
 }
 
@@ -56,6 +58,7 @@ M.lspconfig = {
   "html",
   "tsserver",
   "kotlin_language_server",
+  "sonarlint.nvim",
 }
 
 M.cmp = function()

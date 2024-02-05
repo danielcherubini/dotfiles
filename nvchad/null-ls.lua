@@ -25,13 +25,21 @@ local sources = {
     end
   }),
 
-   -- Go
-   b.formatting.gofmt,
-   b.formatting.goimports,
+   -- Javascript
+  -- b.formatting.prettier,
 
-   -- Kotlin
-   b.diagnostics.ktlint,
-   b.formatting.ktlint,
+  -- Go
+  b.formatting.gofmt,
+  b.formatting.goimports,
+
+  -- Kotlin
+  b.diagnostics.ktlint,
+  b.formatting.ktlint,
+
+  -- Java
+  -- b.diagnostics.checkstyle.with({
+  --   extra_args = { "-c", "checkstyle.xml" }, -- or "/sun_checks.xml" or path to self written rules
+  -- }),
 }
 
 null_ls.setup {
