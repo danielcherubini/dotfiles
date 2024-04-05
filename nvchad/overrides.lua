@@ -58,7 +58,6 @@ M.lspconfig = {
   "html",
   "tsserver",
   "kotlin_language_server",
-  "sonarlint.nvim",
 }
 
 M.cmp = function()
