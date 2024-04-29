@@ -1,4 +1,4 @@
-local plugin_conf = require "custom.overrides"
+local plugin_conf = require "configs.overrides"
 
 return {
   { "editorconfig/editorconfig-vim" },
@@ -8,13 +8,13 @@ return {
     dependencies = {
       "jose-elias-alvarez/null-ls.nvim",
         config = function()
-          require "custom.null-ls"
+          require "configs.null-ls"
         end,
     },
 
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.lspconfig"
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
     end,
   },
   { "nvim-treesitter/nvim-treesitter",
