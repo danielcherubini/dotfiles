@@ -43,7 +43,6 @@ M.mason = {
     "kotlin-language-server",
     "ktlint",
     "checkstyle",
-    "sonarlint-language-server",
   },
 }
 
