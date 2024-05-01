@@ -3,6 +3,8 @@
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update
 
+INSTALL_THESE="curl zsh neovim golang python3 python3-pip python2 ruby neofetch ripgrep fzf"
+
 INSTALL_THESE="curl zsh neovim golang python3-pip python2 nodejs neofetch ripgrep fzf"
 sudo apt install $INSTALL_THESE
 

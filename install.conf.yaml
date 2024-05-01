@@ -7,7 +7,7 @@
     ~/.zshenv: zsh/zshenv
     ~/.config/easyeffects: easyeffects
     ~/.config/environment.d: environment.d
-    ~/.config/nvim/lua/custom: nvchad
+    ~/.config/nvim: nvim
     ~/.config/kitty: kitty
     ~/.config/chrome-flags.conf: chrome/chrome-flags.conf
     ~/.config/chromium-flags.conf: chrome/chrome-flags.conf
