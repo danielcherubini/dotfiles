@@ -1,10 +1,27 @@
 #!/bin/bash
 
-INSTALL_THESE="curl zsh neovim golang python python2 ruby neofetch ripgrep fzf"
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt update
 
+INSTALL_THESE="curl zsh neovim golang python3-pip python2 nodejs neofetch ripgrep fzf"
 sudo apt install $INSTALL_THESE
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
-nvm install 10
+sudo apt update 
+sudo apt install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev
+
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+exec $SHELL
+
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+exec $SHELL
+
+rbenv install 2.3.1
+rbenv global 2.3.1
+ruby -v
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"

@@ -21,7 +21,7 @@
     ~/.tmux/dev: tmux/dev
     ~/.config/clight.conf: clight/clight.conf
     ~/.local/share/java: java
-    /mnt/c/Users/danie/AppData/Roaming/alacritty/alacritty.toml: alacritty/windows.toml
+    # /mnt/c/Users/danie/AppData/Roaming/alacritty/alacritty.toml: alacritty/windows.toml
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
 
