@@ -43,6 +43,8 @@ M.mason = {
     "kotlin-language-server",
     "ktlint",
     "checkstyle",
+    "google-java-format",
+    "prettier",
   },
 }
 

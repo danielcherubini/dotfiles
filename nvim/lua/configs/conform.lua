@@ -7,6 +7,7 @@ local options = {
     html = { "prettier" },
     javascript = { "prettier" },
     java = { "google-java-format" },
+    markdown = { "prettier" },
   },
 
   format_on_save = {
