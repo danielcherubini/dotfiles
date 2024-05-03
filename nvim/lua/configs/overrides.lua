@@ -16,6 +16,7 @@ M.treesitter = {
     "go",
     "rust",
     "kotlin",
+    "groovy",
   },
 }
 
@@ -45,6 +46,7 @@ M.mason = {
     "checkstyle",
     "google-java-format",
     "prettier",
+    "groovy-language-server",
   },
 }
 
@@ -59,6 +61,7 @@ M.lspconfig = {
   "html",
   "tsserver",
   "kotlin_language_server",
+  "groovyls",
 }
 
 M.cmp = function()

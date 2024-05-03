@@ -34,6 +34,10 @@ for _, server in ipairs(servers) do
     end
   end
 
+  if server == "groovyls" then
+    serverOpts.cmd = { "groovy-language-server" }
+  end
+
   lspconfig[server].setup(serverOpts)
   ::continue::
 end
