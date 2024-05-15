@@ -1,10 +1,10 @@
 #!/bin/bash
+sudo dnf copr enable atim/starship
 
-INSTALL_THESE="curl zsh neovim golang python python2 ruby neofetch ripgrep fzf"
+INSTALL_THESE="curl zsh neovim golang python python2 ruby neofetch ripgrep fzf starship nodejs npm kitty"
 
 sudo dnf install $INSTALL_THESE -y
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
-nvm install 10
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
