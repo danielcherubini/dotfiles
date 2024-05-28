@@ -1,6 +1,7 @@
 local on_init = require("nvchad.configs.lspconfig").on_init
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local capabilities = require("nvchad.configs.lspconfig").capabilities
+local init_options = require("nvchad.configs.lspconfig").init_options
 
 local lspconfig = require "lspconfig"
 local plugin_conf = require "configs.overrides"
@@ -17,6 +18,7 @@ for _, server in ipairs(servers) do
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
+    init_options = init_options,
   }
   if server == "rust_analyzer" then
     local ok_rt, rust_tools = pcall(require, "rust-tools")
@@ -32,6 +34,19 @@ for _, server in ipairs(servers) do
       -- * https://github.com/simrat39/rust-tools.nvim/issues/177
       goto continue
     end
+  end
+
+  if server == "jdtls" then
+    serverOpts.on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
+
+      require("jdtls").setup_dap { hotcodereplace = "auto" }
+    end
+    serverOpts.init_options = {
+      bundles = {
+        "~/.local/share/java/com.microsoft.java.debug.plugin-0.52.0.jar",
+      },
+    }
   end
 
   if server == "groovyls" then

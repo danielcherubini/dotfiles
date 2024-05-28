@@ -27,6 +27,20 @@ return {
   { "nvim-treesitter/nvim-treesitter", opts = plugin_conf.treesitter },
   { "nvim-tree/nvim-tree.lua", opts = plugin_conf.nvimtree },
   { "hrsh7th/nvim-cmp", opts = plugin_conf.cmp() },
-  { "williamboman/mason.nvim", opts = plugin_conf.mason },
+  { "mfussenegger/nvim-jdtls" },
+  {
+    "williamboman/mason.nvim",
+    opts = plugin_conf.mason,
+  },
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+    },
+    config = function()
+      require "configs.dap"
+    end,
+  },
   { "cshuaimin/ssr.nvim" },
 }
