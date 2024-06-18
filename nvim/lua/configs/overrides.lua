@@ -47,6 +47,7 @@ M.mason = {
     "google-java-format",
     "prettier",
     "groovy-language-server",
+    "gradle-language-server",
   },
 }
 

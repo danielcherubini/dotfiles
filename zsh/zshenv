@@ -5,6 +5,7 @@ export KITTY_DISABLE_WAYLAND=1
 export GOOGLE_API_KEY=""
 export GOOGLE_DEFAULT_CLIENT_ID="77185425430.apps.googleusercontent.com"
 export GOOGLE_DEFAULT_CLIENT_SECRET="OTJgUOQcT7lO7GsGZq2G4IlT"
+export CHROMIUM_USER_FLAGS="--ozone-platform-hint=auto --enable-features=WebUIDarkMode,TouchpadOverscrollHistoryNavigation,WaylandWindowDecorations --force-dark-mode --enable-webrtc-pipewire-capturer"
 . "$HOME/.cargo/env"
-export JDTLS_JVM_ARGS="-javaagent:$HOME/.local/share/java/lombok.jar, $HOME/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-0.50.0.jar"
+# export JDTLS_JVM_ARGS="-javaagent:$HOME/.local/share/java/lombok.jar, $HOME/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-0.50.0.jar"
 export COLORTERM=truecolor

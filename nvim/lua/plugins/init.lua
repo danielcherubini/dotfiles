@@ -43,4 +43,68 @@ return {
     end,
   },
   { "cshuaimin/ssr.nvim" },
+  {
+    "folke/trouble.nvim",
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
+  {
+    "rcasia/neotest-java",
+    init = function()
+      -- override the default keymaps.
+      -- needed until neotest-java is integrated in LazyVim
+      require("which-key").register {
+        ["<leader>tt"] = { "<cmd>lua require('neotest').run.run(vim.fn.expand '%')<cr>", "[Neotest] Run Test File" },
+        ["<leader>tr"] = { "<cmd>lua require('neotest').run.run()<cr>", "[Neotest] Run Nearest Test" },
+        ["<leader>tD"] = { "<cmd>lua require('jdtls.dap').test_class()<cr>", "[Neotest] Debug Test File" },
+        ["<leader>td"] = { "<cmd>lua require('jdtls.dap').test_nearest_method()<cr>", "[Neotest] Debug Nearest File" },
+      }
+    end,
+  },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    adapters = {
+      ["neotest-java"] = {
+        -- config here
+      },
+    },
+  },
 }

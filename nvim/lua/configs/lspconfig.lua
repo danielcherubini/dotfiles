@@ -6,6 +6,8 @@ local init_options = require("nvchad.configs.lspconfig").init_options
 local lspconfig = require "lspconfig"
 local plugin_conf = require "configs.overrides"
 
+local home = os.getenv "HOME"
+
 local servers = plugin_conf.lspconfig
 
 for _, server in ipairs(servers) do
@@ -37,6 +39,7 @@ for _, server in ipairs(servers) do
   end
 
   if server == "jdtls" then
+    -- serverOpts.filetypes = { "java", "groovy" }
     serverOpts.on_attach = function(client, bufnr)
       on_attach(client, bufnr)
 
@@ -44,13 +47,24 @@ for _, server in ipairs(servers) do
     end
     serverOpts.init_options = {
       bundles = {
-        "~/.local/share/java/com.microsoft.java.debug.plugin-0.52.0.jar",
+        home .. "/.local/share/java/com.microsoft.java.debug.plugin-0.52.0.jar",
+        home .. "/.local/share/java/lombok.jar",
+        -- home .. "/.local/share/java/groovy-language-server-all.jar",
       },
     }
   end
 
   if server == "groovyls" then
     serverOpts.cmd = { "groovy-language-server" }
+    -- serverOpts.settings = {
+    --   groovy = {
+    --     classpath = {
+    --       "/lib",
+    --       "/build/libs",
+    --       "/web/build/libs",
+    --     },
+    --   },
+    -- }
   end
 
   lspconfig[server].setup(serverOpts)
