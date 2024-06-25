@@ -17,6 +17,7 @@ M.treesitter = {
     "rust",
     "kotlin",
     "groovy",
+    "python",
   },
 }
 
@@ -48,6 +49,7 @@ M.mason = {
     "prettier",
     "groovy-language-server",
     "gradle-language-server",
+    "python-lsp-server",
   },
 }
 
@@ -63,6 +65,7 @@ M.lspconfig = {
   "tsserver",
   "kotlin_language_server",
   "groovyls",
+  "pylsp",
 }
 
 M.cmp = function()
