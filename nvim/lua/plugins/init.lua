@@ -65,7 +65,7 @@ return {
       },
       {
         "<leader>cl",
-        "<cmd>Trouble lsp toggle focus=false",
+        "<cmd>Trouble lsp toggle focus=false<cr>",
         desc = "LSP Definitions / references / ... (Trouble)",
       },
       {
@@ -85,11 +85,20 @@ return {
     init = function()
       -- override the default keymaps.
       -- needed until neotest-java is integrated in LazyVim
-      require("which-key").register {
-        ["<leader>tt"] = { "<cmd>lua require('neotest').run.run(vim.fn.expand '%')<cr>", "[Neotest] Run Test File" },
-        ["<leader>tr"] = { "<cmd>lua require('neotest').run.run()<cr>", "[Neotest] Run Nearest Test" },
-        ["<leader>tD"] = { "<cmd>lua require('jdtls.dap').test_class()<cr>", "[Neotest] Debug Test File" },
-        ["<leader>td"] = { "<cmd>lua require('jdtls.dap').test_nearest_method()<cr>", "[Neotest] Debug Nearest File" },
+      require("which-key").add {
+        { "<leader>t", group = "test" },
+        { "<leader>tD", "<cmd>lua require('jdtls.dap').test_class()<cr>", desc = "[Neotest] Debug Test File" },
+        {
+          "<leader>td",
+          "<cmd>lua require('jdtls.dap').test_nearest_method()<cr>",
+          desc = "[Neotest] Debug Nearest File",
+        },
+        { "<leader>tr", "<cmd>lua require('neotest').run.run()<cr>", desc = "[Neotest] Run Nearest Test" },
+        {
+          "<leader>tt",
+          "<cmd>lua require('neotest').run.run(vim.fn.expand '%')<cr>",
+          desc = "[Neotest] Run Test File",
+        },
       }
     end,
   },
