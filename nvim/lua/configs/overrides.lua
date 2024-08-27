@@ -52,6 +52,7 @@ M.mason = {
     "gradle-language-server",
     "python-lsp-server",
     "bash-language-server",
+    "sonarlint-language-server",
   },
 }
 
