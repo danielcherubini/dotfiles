@@ -23,7 +23,12 @@ return {
   },
   { "editorconfig/editorconfig-vim" },
   { "kdheepak/lazygit.nvim", lazy = false },
-  { "simrat39/rust-tools.nvim" },
+  -- { "simrat39/rust-tools.nvim" },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^5", -- Recommended
+    lazy = false, -- This plugin is already lazy}
+  },
   { "nvim-treesitter/nvim-treesitter", opts = plugin_conf.treesitter },
   { "nvim-tree/nvim-tree.lua", opts = plugin_conf.nvimtree },
   { "hrsh7th/nvim-cmp", opts = plugin_conf.cmp() },

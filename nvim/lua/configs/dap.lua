@@ -1,8 +1,8 @@
-require("which-key").register {
-  ["<leader>dc"] = { "<cmd>DapContinue<cr>", "[Debugger] Show debug configurations" },
-  ["<leader>dt"] = { "<cmd>DapTerminate<cr>", "[Debugger] Disconnect debug configurations" },
-  ["<leader>db"] = { "<cmd>DapToggleBreakpoint<cr>", "[Debugger] Toggle Breakpoint" },
-  ["<leader>du"] = { "<cmd>lua require('dapui').toggle()<cr>", "[Debugger] Toggle DapUI" },
+require("which-key").add {
+  { "<leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "[Debugger] Toggle Breakpoint" },
+  { "<leader>dc", "<cmd>DapContinue<cr>", desc = "[Debugger] Show debug configurations" },
+  { "<leader>dt", "<cmd>DapTerminate<cr>", desc = "[Debugger] Disconnect debug configurations" },
+  { "<leader>du", "<cmd>lua require('dapui').toggle()<cr>", desc = "[Debugger] Toggle DapUI" },
 }
 
 local dap, dapui = require "dap", require "dapui"

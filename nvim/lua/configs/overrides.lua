@@ -29,7 +29,7 @@ M.nvimtree = {
 }
 
 M.mason = {
-  ensure_installed = {
+  pkgs = {
     "lua-language-server",
     "stylua",
     "rust-analyzer",
@@ -64,7 +64,7 @@ M.lspconfig = {
   "yamlls",
   "eslint",
   "html",
-  "tsserver",
+  "ts_ls",
   "kotlin_language_server",
   "groovyls",
   "pylsp",

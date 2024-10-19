@@ -10,3 +10,4 @@ export CHROMIUM_USER_FLAGS="--ozone-platform-hint=auto --enable-features=WebUIDa
 # export JDTLS_JVM_ARGS="-javaagent:$HOME/.local/share/java/lombok.jar, $HOME/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-0.50.0.jar"
 export COLORTERM=truecolor
 source ~/.localenv
+export PATH="$PATH:/opt/nvim/"

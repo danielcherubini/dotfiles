@@ -22,20 +22,49 @@ for _, server in ipairs(servers) do
     capabilities = capabilities,
     init_options = init_options,
   }
+  -- if server == "rust_analyzer" then
+  --   local ok_rt, rust_tools = pcall(require, "rust-tools")
+  --   if not ok_rt then
+  --     print "Failed to load rust tools, will set up `rust_analyzer` without `rust-tools`."
+  --   else
+  --     rust_tools.setup {
+  --       server = serverOpts,
+  --     }
+  --     -- We don't want to call lspconfig.rust_analyzer.setup() when using
+  --     -- rust-tools. See
+  --     -- * https://github.com/simrat39/rust-tools.nvim/issues/183
+  --     -- * https://github.com/simrat39/rust-tools.nvim/issues/177
+  --     goto continue
+  --   end
+  -- end:want
   if server == "rust_analyzer" then
-    local ok_rt, rust_tools = pcall(require, "rust-tools")
-    if not ok_rt then
-      print "Failed to load rust tools, will set up `rust_analyzer` without `rust-tools`."
-    else
-      rust_tools.setup {
-        server = serverOpts,
-      }
-      -- We don't want to call lspconfig.rust_analyzer.setup() when using
-      -- rust-tools. See
-      -- * https://github.com/simrat39/rust-tools.nvim/issues/183
-      -- * https://github.com/simrat39/rust-tools.nvim/issues/177
-      goto continue
-    end
+    vim.g.rustaceanvim = {
+      -- Plugin configuration
+      tools = {},
+      -- LSP configuration
+      server = {
+        on_attach = on_attach,
+        default_settings = {
+          ["rust-analyzer"] = {
+            displayInlayHints = true,
+            inlayHints = {
+              enable = true,
+            },
+          },
+        },
+      },
+      -- DAP configuration
+      dap = {},
+    }
+    -- serverOpts.settings = {
+    --   ["rust-analyzer"] = {
+    --     displayInlayHints = true,
+    --     inlayHints = {
+    --       enable = true,
+    --     },
+    --   },
+    -- }
+    -- goto continue
   end
 
   if server == "jdtls" then
