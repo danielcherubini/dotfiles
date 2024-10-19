@@ -1,6 +1,8 @@
 local plugin_conf = require "configs.overrides"
 
 return {
+  { "nvchad/volt", lazy = true },
+  { "nvchad/menu", lazy = true },
   {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
