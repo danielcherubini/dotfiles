@@ -14,6 +14,10 @@ return {
       require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
+    dependencies = {
+      "https://gitlab.com/schrieveslaach/sonarlint.nvim",
+      "nvimdev/lspsaga.nvim",
+    },
     -- dependencies = {
     --   "jose-elias-alvarez/null-ls.nvim",
     --     config = function()

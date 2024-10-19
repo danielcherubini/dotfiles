@@ -7,6 +7,7 @@ local lspconfig = require "lspconfig"
 local plugin_conf = require "configs.overrides"
 
 local home = os.getenv "HOME"
+local mason_path = home .. "/.local/share/nvim/mason"
 
 local servers = plugin_conf.lspconfig
 
@@ -99,3 +100,24 @@ for _, server in ipairs(servers) do
   lspconfig[server].setup(serverOpts)
   ::continue::
 end
+
+require("sonarlint").setup {
+  server = {
+    cmd = {
+      "sonarlint-language-server",
+      "-stdio",
+      "-analyzers",
+      vim.fn.expand(mason_path .. "/share/sonarlint-analyzers/sonarpython.jar"),
+      vim.fn.expand(mason_path .. "/share/sonarlint-analyzers/sonarcfamily.jar"),
+      vim.fn.expand(mason_path .. "/share/sonarlint-analyzers/sonarjava.jar"),
+    },
+  },
+  filetypes = {
+    -- Tested and working
+    "python",
+    "cpp",
+    "java",
+  },
+}
+
+require("lspsaga").setup {}
