@@ -5,9 +5,11 @@ local options = {
     rust = { "rustfmt" },
     css = { "prettier" },
     html = { "prettierd", "prettier" },
-    javascript = { "prettier" },
-    java = { "google-java-format" },
+    javascript = { "prettierd", "prettier" },
+    typescript = { "prettierd", "prettier" },
+    -- java = { "google-java-format" },
     markdown = { "prettier" },
+    sql = { "sql_formatter", "sqlfluff" },
   },
 
   format_on_save = {

@@ -91,4 +91,4 @@ require("sonarlint").setup {
   },
 }
 
-require("lspsaga").setup {}
+-- require("lspsaga").setup {}
