@@ -1,8 +1,8 @@
 local M = {}
 
-M.ui = {
-   theme = "chadracula",
-   hl_override = require "configs.highlights",
+M.base46 = {
+  theme = "chadracula",
+  hl_override = require "configs.highlights",
 }
 
 -- M.plugins = "custom.plugins"
