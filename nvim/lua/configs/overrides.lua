@@ -19,6 +19,7 @@ M.treesitter = {
     "groovy",
     "python",
     "bash",
+    "sql",
   },
 }
 
