@@ -114,7 +114,6 @@ require("sonarlint").setup {
   },
   filetypes = {
     -- Tested and working
-    "python",
     "cpp",
     "java",
   },

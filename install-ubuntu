@@ -3,10 +3,10 @@
 sudo add-apt-repository ppa:neovim-ppa/unstable
 sudo apt update
 
-INSTALL_THESE="curl zsh neovim golang python3 python3-pip python2 ruby neofetch ripgrep fzf"
+INSTALL_THESE="curl zsh neovim golang python3 python3-pip python2 ruby neofetch ripgrep fzf direnv unzip"
 sudo apt install $INSTALL_THESE
 
-sudo apt update 
+sudo apt update
 sudo apt install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev
 
 # git clone https://github.com/rbenv/rbenv.git ~/.rbenv
