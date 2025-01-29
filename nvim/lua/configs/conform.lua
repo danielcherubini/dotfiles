@@ -7,7 +7,7 @@ local options = {
     html = { "prettierd", "prettier" },
     javascript = { "prettierd", "prettier" },
     typescript = { "prettierd", "prettier" },
-    -- java = { "google-java-format" },
+    -- java = { "" },
     markdown = { "prettier" },
     sql = { "sql_formatter", "sqlfluff" },
   },
