@@ -52,7 +52,10 @@ M.mason = {
     "groovy-language-server",
     "gradle-language-server",
     "pyright",
+    "basedpyright",
     "ruff-lsp",
+    "isort",
+    "black",
     "ruff",
     "bash-language-server",
     "sonarlint-language-server",
@@ -70,7 +73,7 @@ M.lspconfig = {
   "ts_ls",
   "kotlin_language_server",
   "groovyls",
-  "pyright",
+  "ruff",
   "bashls",
 }
 
