@@ -4,6 +4,13 @@ return {
   { "nvchad/volt", lazy = true },
   { "nvchad/menu", lazy = true },
   {
+    "kiddos/gemini.nvim",
+    lazy = false,
+    config = function()
+      require("gemini").setup()
+    end,
+  },
+  {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
     config = function()
