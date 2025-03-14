@@ -1,4 +1,5 @@
 local plugin_conf = require "configs.overrides"
+local gemini_code = require "configs.geminicode"
 
 return {
   { "nvchad/volt", lazy = true },
@@ -6,9 +7,8 @@ return {
   {
     "kiddos/gemini.nvim",
     lazy = false,
-    config = function()
-      require("gemini").setup()
-    end,
+    config = gemini_code.config,
+    keys = gemini_code.keys,
   },
   {
     "stevearc/conform.nvim",

@@ -2,6 +2,7 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+map("n", "<leader>X", "<cmd>tabclose<CR>", { desc = "Close Tab" })
 map("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "   Lazygit" })
 map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "   HOVER" })
 map("n", "<leader>sr", function()
