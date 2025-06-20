@@ -1,9 +1,15 @@
 local plugin_conf = require "configs.overrides"
 local gemini_code = require "configs.geminicode"
+local copilot_config = require "configs.copilotcode"
 
 return {
   { "nvchad/volt", lazy = true },
   { "nvchad/menu", lazy = true },
+  {
+    "github/copilot.vim",
+    lazy = false,
+    config = copilot_config.config,
+  },
   {
     "kiddos/gemini.nvim",
     lazy = false,
