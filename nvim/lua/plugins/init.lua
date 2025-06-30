@@ -2,20 +2,10 @@ local plugin_conf = require "configs.overrides"
 local gemini_code = require "configs.geminicode"
 local copilot_config = require "configs.copilotcode"
 
-return {
+local plugins = {
   { "nvchad/volt", lazy = true },
   { "nvchad/menu", lazy = true },
-  {
-    "github/copilot.vim",
-    lazy = false,
-    config = copilot_config.config,
-  },
-  {
-    "kiddos/gemini.nvim",
-    lazy = false,
-    config = gemini_code.config,
-    keys = gemini_code.keys,
-  },
+
   {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
@@ -141,3 +131,20 @@ return {
     },
   },
 }
+
+if os.getenv "GEMINI_API_KEY" then
+  table.insert(plugins, {
+    "kiddos/gemini.nvim",
+    lazy = false,
+    config = gemini_code.config,
+    keys = gemini_code.keys,
+  })
+else
+  table.insert(plugins, {
+    "github/copilot.vim",
+    lazy = false,
+    config = copilot_config.config,
+  })
+end
+
+return plugins
