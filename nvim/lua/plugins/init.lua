@@ -2,10 +2,25 @@ local plugin_conf = require "configs.overrides"
 local gemini_code = require "configs.geminicode"
 local copilot_config = require "configs.copilotcode"
 
-local plugins = {
+-- Determine the 'lazy' status for gemini.nvim based on GEMINI_API_KEY
+local is_gemini_api_key_present = not (os.getenv "GEMINI_API_KEY" == nil or os.getenv "GEMINI_API_KEY" == "")
+
+return {
   { "nvchad/volt", lazy = true },
   { "nvchad/menu", lazy = true },
-
+  {
+    "github/copilot.vim",
+    enabled = not is_gemini_api_key_present,
+    lazy = false,
+    config = copilot_config.config,
+  },
+  {
+    "kiddos/gemini.nvim",
+    enabled = is_gemini_api_key_present,
+    lazy = false,
+    config = gemini_code.config,
+    keys = gemini_code.keys,
+  },
   {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
@@ -24,10 +39,10 @@ local plugins = {
       "nvimdev/lspsaga.nvim",
     },
     -- dependencies = {
-    --   "jose-elias-alvarez/null-ls.nvim",
-    --     config = function()
-    --       require "configs.null-ls"
-    --     end,
+    --    "jose-elias-alvarez/null-ls.nvim",
+    --      config = function()
+    --        require "configs.null-ls"
+    --      end,
     -- },
   },
   { "editorconfig/editorconfig-vim" },
@@ -131,20 +146,3 @@ local plugins = {
     },
   },
 }
-
-if os.getenv "GEMINI_API_KEY" then
-  table.insert(plugins, {
-    "kiddos/gemini.nvim",
-    lazy = false,
-    config = gemini_code.config,
-    keys = gemini_code.keys,
-  })
-else
-  table.insert(plugins, {
-    "github/copilot.vim",
-    lazy = false,
-    config = copilot_config.config,
-  })
-end
-
-return plugins
