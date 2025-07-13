@@ -52,7 +52,7 @@ M.mason = {
     "groovy-language-server",
     "gradle-language-server",
     "pyright",
-    "ruff-lsp",
+    "ruff",
     "isort",
     "ruff",
     "bash-language-server",

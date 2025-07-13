@@ -97,6 +97,57 @@ for _, server in ipairs(servers) do
     -- }
   end
 
+  if server == "pyright" then
+    serverOpts.on_attach = function(client, _)
+      -- Disable all capabilities except hoverProvider
+      -- client.server_capabilities.completionProvider = false
+      -- client.server_capabilities.definitionProvider = false
+      -- client.server_capabilities.typeDefinitionProvider = false
+      -- client.server_capabilities.implementationProvider = false
+      -- client.server_capabilities.referencesProvider = false
+      -- client.server_capabilities.documentSymbolProvider = false
+      -- client.server_capabilities.workspaceSymbolProvider = false
+      -- client.server_capabilities.codeActionProvider = false
+      -- client.server_capabilities.documentFormattingProvider = false
+      -- client.server_capabilities.documentRangeFormattingProvider = false
+      -- client.server_capabilities.renameProvider = false
+      -- client.server_capabilities.signatureHelpProvider = false
+      -- client.server_capabilities.documentHighlightProvider = false
+      -- client.server_capabilities.foldingRangeProvider = false
+      -- client.server_capabilities.semanticTokensProvider = false
+      -- client.server_capabilities.declarationProvider = false
+      -- client.server_capabilities.callHierarchyProvider = false
+      -- client.server_capabilities.diagnosticProvider = false
+
+      -- Enable hoverProvider
+      client.server_capabilities.hoverProvider = true
+    end
+    serverOpts.capabilities = (function()
+      capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+      return capabilities
+    end)()
+    serverOpts.settings = {
+      python = {
+        analysis = {
+          ignore = { "*" },
+        },
+      },
+    }
+  end
+
+  if server == "ruff" then
+    serverOpts.on_attach = function(client, _)
+      if client.name == "ruff" then
+        -- disable hover in favor of pyright
+        client.server_capabilities.hoverProvider = false
+      end
+    end
+
+    serverOpts.settings = {
+      configurationPreference = "filesystemFirst",
+    }
+  end
+
   lspconfig[server].setup(serverOpts)
   ::continue::
 end
