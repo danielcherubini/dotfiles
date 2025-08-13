@@ -140,6 +140,10 @@ for _, server in ipairs(servers) do
       if client.name == "ruff" then
         -- disable hover in favor of pyright
         client.server_capabilities.hoverProvider = false
+        client.server_capabilities.diagnosticProvider = {
+          interFileDependencies = false,
+          workspaceDiagnostics = true,
+        }
       end
     end
 

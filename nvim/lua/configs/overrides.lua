@@ -54,7 +54,6 @@ M.mason = {
     "pyright",
     "ruff",
     "isort",
-    "ruff",
     "bash-language-server",
     "sonarlint-language-server",
   },
