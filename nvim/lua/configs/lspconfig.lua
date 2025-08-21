@@ -69,7 +69,7 @@ for _, server in ipairs(servers) do
   end
 
   if server == "jdtls" then
-    -- serverOpts.filetypes = { "java", "groovy" }
+    serverOpts.filetypes = { "java", "groovy" }
     serverOpts.on_attach = function(client, bufnr)
       on_attach(client, bufnr)
 
@@ -77,24 +77,36 @@ for _, server in ipairs(servers) do
     end
     serverOpts.init_options = {
       bundles = {
-        home .. "/.local/share/java/com.microsoft.java.debug.plugin-0.52.0.jar",
-        home .. "/.local/share/java/lombok.jar",
-        -- home .. "/.local/share/java/groovy-language-server-all.jar",
+        vim.fn.expand(home .. "/dotfiles/java/com.microsoft.java.debug.plugin-0.52.0.jar"),
+        vim.fn.expand(home .. "/dotfiles/java/lombok.jar"),
       },
     }
-  end
 
-  if server == "groovyls" then
-    serverOpts.cmd = { "groovy-language-server" }
-    -- serverOpts.settings = {
-    --   groovy = {
-    --     classpath = {
-    --       "/lib",
-    --       "/build/libs",
-    --       "/web/build/libs",
-    --     },
-    --   },
-    -- }
+    local jdtls_path = mason_path .. "/packages/jdtls"
+    local lombok_path = home .. "/dotfiles/java/lombok.jar"
+    local workspace_path = home .. "/.cache/jdtls/workspace"
+
+    serverOpts.cmd = {
+      "java",
+      "-javaagent:" .. lombok_path,
+      "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+      "-Dosgi.bundles.defaultStartLevel=4",
+      "-Declipse.product=org.eclipse.jdt.ls.core.product",
+      "-Dlog.protocol=true",
+      "-Dlog.level=ALL",
+      "-Xms1g",
+      "--add-modules=ALL-SYSTEM",
+      "--add-opens",
+      "java.base/java.util=ALL-UNNAMED",
+      "--add-opens",
+      "java.base/java.lang=ALL-UNNAMED",
+      "-jar",
+      vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
+      "-configuration",
+      jdtls_path .. "/config_linux",
+      "-data",
+      workspace_path,
+    }
   end
 
   if server == "pyright" then
