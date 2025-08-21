@@ -1,16 +1,16 @@
 local options = {
-  formatters = {
-    ruff_organize_imports = {
-      command = "ruff",
-      args = { "check", "--select", "I", "--fix", "--stdin-filename", "$FILENAME" },
-      stdin = true,
-    },
-    ruff_format = {
-      command = "ruff",
-      args = { "format", "--stdin-filename", "$FILENAME" },
-      stdin = true,
-    },
-  },
+  -- formatters = {
+  --   ruff_organize_imports = {
+  --     command = "ruff",
+  --     args = { "check", "--select", "I", "--fix", "--stdin-filename", "$FILENAME" },
+  --     stdin = true,
+  --   },
+  --   ruff_format = {
+  --     command = "ruff",
+  --     args = { "format", "--stdin-filename", "$FILENAME" },
+  --     stdin = true,
+  --   },
+  -- },
   formatters_by_ft = {
     lua = { "stylua" },
     go = { "gofmt" },
@@ -20,7 +20,7 @@ local options = {
     javascript = { "prettierd", "prettier" },
     typescript = { "prettierd", "prettier" },
     json = { "prettierd", "prettier" },
-    python = { "ruff_organize_imports", "ruff_format" },
+    python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
     java = { "prettierd", "prettier" },
     markdown = { "prettierd" },
     sql = { "sql_formatter", "sqlfluff" },
