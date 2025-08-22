@@ -1,9 +1,9 @@
 #!/bin/bash
 sudo dnf copr enable atim/starship
+sudo dnf copr enable dejan/lazygit
+INSTALL_THESE="curl zsh neovim golang python ruby fastfetch ripgrep fzf starship nodejs npm kitty lazygit direnv"
 
-INSTALL_THESE="curl zsh neovim golang python python2 ruby neofetch ripgrep fzf starship nodejs npm kitty"
-
-sudo dnf install $INSTALL_THESE -y
+sudo dnf install "$INSTALL_THESE" -y
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
