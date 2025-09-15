@@ -1,8 +1,14 @@
 local plugin_conf = require "configs.overrides"
+local copilot_config = require "configs.copilotcode"
 
 return {
   { "nvchad/volt", lazy = true },
   { "nvchad/menu", lazy = true },
+  {
+    "github/copilot.vim",
+    lazy = false,
+    config = copilot_config.config,
+  },
   {
     "olimorris/codecompanion.nvim",
     lazy = false,
@@ -11,7 +17,13 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     opts = {
-      -- NOTE: The log_level is in `opts.opts`
+      strategies = {
+        -- Change the default chat adapter and model
+        chat = {
+          adapter = "copilot",
+          model = "claude-sonnet-4-20250514",
+        },
+      }, -- NOTE: The log_level is in `opts.opts`
       opts = {
         log_level = "DEBUG", -- or "TRACE"
       },

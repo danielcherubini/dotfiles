@@ -9,6 +9,7 @@
     ~/.config/environment.d: environment.d
     ~/.config/nvim: nvim
     ~/.config/kitty: kitty
+    ~/.config/alacritty: alacritty
     ~/.config/chrome-flags.conf: chrome/chrome-flags.conf
     ~/.config/chromium-flags.conf: chrome/chrome-flags.conf
     ~/.config/fusuma: fusuma
@@ -22,4 +23,3 @@
     # /mnt/c/Users/danie/AppData/Roaming/alacritty/alacritty.toml: alacritty/windows.toml
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-

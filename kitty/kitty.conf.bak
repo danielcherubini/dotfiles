@@ -1,3 +1,5 @@
+include dracula.conf
+
 font_family      FiraCode Nerd Font
 bold_font        auto
 italic_font      Operator Mono Book Italic
@@ -20,11 +22,11 @@ initial_window_height 400
 draw_minimal_borders yes
 # active_border_color #000000
 hide_window_decorations yes
-window_padding_width 0
+window_padding_width 4
 
-tab_bar_min_tabs 1
+ tab_bar_min_tabs 1
 tab_bar_style powerline
-tab_powerline_style round
+tab_powerline_style angled
 tab_bar_edge top
 tab_title_template "{fmt.fg.red}{bell_symbol}{activity_symbol}{fmt.fg.tab}{index} {"/".join(tab.active_wd.split("/")[-2:])}"
 # background #1e1f28
@@ -35,12 +37,11 @@ map alt+shift+up resize_window taller 3
 map alt+shift+down resize_window shorter 3
 # reset all windows in the tab to default sizes
 map ctrl+home resize_window reset
-map alt+shift+enter launch --cwd=current --location=split
+map alt+shift+enter launch --cwd=current --location=hsplit
 map ctrl+shift+enter launch --cwd=current --location=vsplit
-# map alt+shift+l next_layout
-map alt+shift+l layout_action rotate
-map ctrl+alt+z toggle_layout splits
-enabled_layouts splits
+map alt+shift+l next_layout
+map ctrl+alt+z toggle_layout stack
+enabled_layouts tall:bias=50;full_size=1;mirrored=false,fat:bias=70;full_size=1;mirrored=false,splits
 #enabled_layouts vertical,horizontal
 
 map ctrl+left neighboring_window left
@@ -49,9 +50,9 @@ map ctrl+up neighboring_window up
 map ctrl+down neighboring_window down
 
 # vim: ft=dosini cms=#%s
-map shift+enter send_text all \n
+
 
 # BEGIN_KITTY_THEME
-# Dracula
+# Rosé Pine
 include current-theme.conf
 # END_KITTY_THEME
