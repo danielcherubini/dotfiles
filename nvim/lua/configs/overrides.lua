@@ -13,6 +13,7 @@ M.treesitter = {
     "toml",
     "markdown",
     "c",
+    "cpp",
     "go",
     "rust",
     "kotlin",
@@ -20,6 +21,7 @@ M.treesitter = {
     "python",
     "bash",
     "sql",
+    "cmake",
   },
 }
 
@@ -53,9 +55,11 @@ M.mason = {
     "gradle-language-server",
     "pyright",
     "ruff",
+    "ty",
     "isort",
     "bash-language-server",
     "sonarlint-language-server",
+    "clang-format",
   },
 }
 
@@ -70,9 +74,10 @@ M.lspconfig = {
   "ts_ls",
   "kotlin_language_server",
   "groovyls",
-  "ruff",
-  "pyright",
+  "ty",
+  -- "pyright",
   "bashls",
+  "clangd", -- Added for ESP32/C++ development
 }
 
 M.cmp = function()

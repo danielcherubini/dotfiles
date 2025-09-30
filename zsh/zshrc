@@ -50,3 +50,7 @@ zstyle ':completion:*:make:*:targets' call-command true
 zstyle ':completion:*:make:*' tag-order targets
 export ZED_ALLOW_EMULATED_GPU=1
 alias zed="WAYLAND_DISPLAY= zed"
+alias get_idf=". $HOME/esp-idf/export.sh"
+eval "$(direnv hook zsh)"
+
+. "$HOME/.local/bin/env"

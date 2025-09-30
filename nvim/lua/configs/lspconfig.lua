@@ -3,7 +3,7 @@ local on_attach = require("nvchad.configs.lspconfig").on_attach
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 local init_options = require("nvchad.configs.lspconfig").init_options
 
-local lspconfig = require "lspconfig"
+-- local lspconfig = require "lspconfig"
 local plugin_conf = require "configs.overrides"
 
 local home = os.getenv "HOME"
@@ -164,7 +164,28 @@ for _, server in ipairs(servers) do
     }
   end
 
-  lspconfig[server].setup(serverOpts)
+  -- ESP32-specific clangd configuration
+  if server == "clangd" then
+    serverOpts.cmd = {
+      "clangd", -- Use system clangd
+      "--background-index",
+      "--clang-tidy",
+      "--header-insertion=iwyu",
+      "--completion-style=detailed",
+      "--function-arg-placeholders",
+      "--fallback-style=llvm",
+    }
+    serverOpts.init_options = {
+      usePlaceholders = true,
+      completeUnimported = true,
+      clangdFileStatus = true,
+    }
+    serverOpts.root_dir =
+      require("lspconfig.util").root_pattern("compile_commands.json", ".clangd", ".git", "CMakeLists.txt")
+  end
+
+  vim.lsp.config(server, serverOpts)
+  vim.lsp.enable(server)
   ::continue::
 end
 
@@ -174,14 +195,14 @@ require("sonarlint").setup {
       "sonarlint-language-server",
       "-stdio",
       "-analyzers",
-      vim.fn.expand(mason_path .. "/share/sonarlint-analyzers/sonarpython.jar"),
-      vim.fn.expand(mason_path .. "/share/sonarlint-analyzers/sonarcfamily.jar"),
+      -- vim.fn.expand(mason_path .. "/share/sonarlint-analyzers/sonarpython.jar"),
+      -- vim.fn.expand(mason_path .. "/share/sonarlint-analyzers/sonarcfamily.jar"),
       vim.fn.expand(mason_path .. "/share/sonarlint-analyzers/sonarjava.jar"),
     },
   },
   filetypes = {
     -- Tested and working
-    "cpp",
+    -- "cpp",
     "java",
   },
 }

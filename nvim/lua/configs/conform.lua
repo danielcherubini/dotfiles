@@ -24,6 +24,8 @@ local options = {
     java = { "prettierd", "prettier" },
     markdown = { "prettierd" },
     sql = { "sql_formatter", "sqlfluff" },
+    c = { "clang_format" },      -- Added for C formatting
+    cpp = { "clang_format" },    -- Added for C++ formatting
   },
 
   format_on_save = {

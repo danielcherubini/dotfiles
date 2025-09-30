@@ -10,6 +10,19 @@ map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 map("n", "<leader>sr", function()
   require("ssr").open()
 end)
+
+-- ESP32 Development mappings (only active in ESP32 projects)
+local function is_esp32_project()
+  return vim.fn.filereadable("compile_commands.json") == 1 and vim.fn.filereadable(".clangd") == 1
+end
+
+if is_esp32_project() then
+  map("n", "<leader>eb", "<cmd>!make build<CR>", { desc = "ESP32 Build" })
+  map("n", "<leader>ef", "<cmd>!make flash<CR>", { desc = "ESP32 Flash" })
+  map("n", "<leader>em", "<cmd>!make monitor<CR>", { desc = "ESP32 Monitor" })
+  map("n", "<leader>ec", "<cmd>!make clean<CR>", { desc = "ESP32 Clean" })
+  map("n", "<leader>es", "<cmd>!make setup<CR>", { desc = "ESP32 Setup" })
+end
 -- Keyboard users
 map("n", "<C-t>", function()
   require("menu").open "default"

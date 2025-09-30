@@ -11,6 +11,18 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     opts = {
+      strategies = {
+        --NOTE: Change the adapter as required
+        chat = { adapter = "claude_code" },
+        inline = { adapter = "claude_code" },
+      },
+      adapters = {
+        acp = {
+          claude_code = function()
+            return require("codecompanion.adapters").extend "claude_code"
+          end,
+        },
+      },
       -- NOTE: The log_level is in `opts.opts`
       opts = {
         log_level = "DEBUG", -- or "TRACE"
