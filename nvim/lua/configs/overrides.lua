@@ -55,7 +55,6 @@ M.mason = {
     "gradle-language-server",
     "pyright",
     "ruff",
-    "ty",
     "isort",
     "bash-language-server",
     "sonarlint-language-server",
@@ -74,8 +73,8 @@ M.lspconfig = {
   "ts_ls",
   "kotlin_language_server",
   "groovyls",
-  "ty",
-  -- "pyright",
+  "ruff",
+  "pyright",
   "bashls",
   "clangd", -- Added for ESP32/C++ development
 }
