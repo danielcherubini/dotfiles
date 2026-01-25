@@ -75,6 +75,9 @@ esac
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+# Default terminal
+export TERMINAL='kitty'
+
 # Aliases
 alias l="ls -lah"
 export ZED_ALLOW_EMULATED_GPU=1

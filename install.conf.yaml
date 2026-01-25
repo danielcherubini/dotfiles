@@ -19,6 +19,7 @@
     ~/.tmux/yank.sh: tmux/yank.sh
     ~/.tmux/dev: tmux/dev
     ~/.config/clight.conf: clight/clight.conf
+    ~/.config/xdg-terminals.list: xdg-terminal-exec/xdg-terminals.list
     ~/.local/share/java: java
     # /mnt/c/Users/danie/AppData/Roaming/alacritty/alacritty.toml: alacritty/windows.toml
 - shell:

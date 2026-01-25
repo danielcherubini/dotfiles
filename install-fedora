@@ -8,3 +8,9 @@ sudo dnf install $INSTALL_THESE -y
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# libinput-config for scroll speed adjustment on Wayland
+sudo dnf install -y meson ninja-build libinput-devel
+git clone https://gitlab.com/warningnonpotablewater/libinput-config.git ~/libinput-config
+cd ~/libinput-config && meson build && cd build && ninja && sudo ninja install
+sudo cp "$(dirname "$0")/libinput-config/libinput.conf" /etc/libinput.conf
