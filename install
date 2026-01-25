@@ -2,14 +2,217 @@
 
 set -e
 
-CONFIG="install.conf.yaml"
-DOTBOT_DIR="dotbot"
-
-DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
 cd "${BASEDIR}"
-git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive "${DOTBOT_DIR}"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+info() { echo -e "${BLUE}==>${NC} $1"; }
+success() { echo -e "${GREEN}==>${NC} $1"; }
+warn() { echo -e "${YELLOW}==>${NC} $1"; }
+error() { echo -e "${RED}==>${NC} $1"; exit 1; }
+
+# Detect OS/Distro
+detect_distro() {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "macos"
+    elif [[ -f /etc/os-release ]]; then
+        . /etc/os-release
+        case "$ID" in
+            fedora) echo "fedora" ;;
+            arch|endeavouros|manjaro) echo "arch" ;;
+            ubuntu|debian|pop|linuxmint) echo "ubuntu" ;;
+            *) echo "unknown" ;;
+        esac
+    else
+        echo "unknown"
+    fi
+}
+
+# Install packages based on distro
+install_packages() {
+    local distro="$1"
+    info "Installing packages for ${distro}..."
+
+    case "$distro" in
+        fedora)
+            sudo dnf copr enable -y atim/starship 2>/dev/null || true
+            sudo dnf copr enable -y dejan/lazygit 2>/dev/null || true
+            sudo dnf install -y curl zsh neovim golang python ruby fastfetch ripgrep fzf starship nodejs npm kitty lazygit direnv git
+            # Rust
+            if ! command -v rustup &> /dev/null; then
+                info "Installing Rust..."
+                curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+            fi
+            ;;
+        arch)
+            sudo pacman -Sy --noconfirm kitty kitty-terminfo zsh neovim go python ruby neofetch ripgrep fzf noto-fonts-emoji powerline-fonts git curl
+            # Install yay if not present
+            if ! command -v yay &> /dev/null; then
+                info "Installing yay..."
+                git clone https://aur.archlinux.org/yay.git /tmp/yay
+                (cd /tmp/yay && makepkg -si --noconfirm)
+                rm -rf /tmp/yay
+            fi
+            yay -S --noconfirm nvm ttf-fira-code ttf-fira-sans ttf-fira-mono ttf-fira-go 2>/dev/null || true
+            ;;
+        ubuntu)
+            sudo add-apt-repository -y ppa:neovim-ppa/unstable 2>/dev/null || true
+            sudo apt update
+            sudo apt install -y curl zsh neovim golang python3 python3-pip ruby neofetch ripgrep fzf direnv unzip git
+            sudo apt install -y git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt1-dev libcurl4-openssl-dev libffi-dev 2>/dev/null || true
+            # Rust
+            if ! command -v rustup &> /dev/null; then
+                info "Installing Rust..."
+                curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+            fi
+            ;;
+        macos)
+            # Install Homebrew if not present
+            if ! command -v brew &> /dev/null; then
+                info "Installing Homebrew..."
+                /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+            fi
+            brew install zsh zsh-completions neovim golang neofetch ripgrep fzf git curl
+            ;;
+        *)
+            warn "Unknown distro - skipping package installation"
+            warn "You may need to manually install: zsh, neovim, git, curl, ripgrep, fzf"
+            ;;
+    esac
+    success "Packages installed!"
+}
+
+# Run dotbot for symlinks
+run_dotbot() {
+    info "Setting up symlinks with dotbot..."
+
+    CONFIG="install.conf.yaml"
+    DOTBOT_DIR="dotbot"
+    DOTBOT_BIN="bin/dotbot"
+
+    git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+    git submodule update --init --recursive "${DOTBOT_DIR}"
+
+    "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+    success "Symlinks created!"
+}
+
+# Install zsh plugins (no oh-my-zsh needed)
+install_zsh_plugins() {
+    info "Installing zsh plugins..."
+
+    local plugin_dir="$HOME/.zsh/plugins"
+    mkdir -p "$plugin_dir"
+
+    # zsh-syntax-highlighting
+    if [[ ! -d "$plugin_dir/zsh-syntax-highlighting" ]]; then
+        git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git "$plugin_dir/zsh-syntax-highlighting"
+    else
+        warn "zsh-syntax-highlighting already installed"
+    fi
+
+    # zsh-autosuggestions
+    if [[ ! -d "$plugin_dir/zsh-autosuggestions" ]]; then
+        git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$plugin_dir/zsh-autosuggestions"
+    else
+        warn "zsh-autosuggestions already installed"
+    fi
+
+    success "Zsh plugins installed!"
+}
+
+# Install fonts (Linux only)
+install_fonts() {
+    local distro="$1"
+
+    if [[ "$distro" == "macos" ]]; then
+        warn "Skipping font installation on macOS (install manually to ~/Library/Fonts)"
+        return
+    fi
+
+    info "Installing fonts..."
+
+    # Operator Mono
+    if [[ -d "$BASEDIR/Operator-Mono" ]]; then
+        "$BASEDIR/Operator-Mono/install.sh"
+    fi
+
+    # Other custom fonts
+    if [[ -d "$BASEDIR/fonts/Dank" ]]; then
+        sudo mkdir -p /usr/share/fonts/dank
+        sudo install -m 644 "$BASEDIR/fonts/Dank"/* /usr/share/fonts/dank/ 2>/dev/null || true
+    fi
+
+    if [[ -d "$BASEDIR/fonts/icomoon" ]]; then
+        sudo mkdir -p /usr/share/fonts/icomoon
+        sudo install -m 644 "$BASEDIR/fonts/icomoon"/* /usr/share/fonts/icomoon/ 2>/dev/null || true
+    fi
+
+    # Refresh font cache
+    sudo fc-cache -f
+
+    success "Fonts installed!"
+}
+
+# Change default shell to zsh
+set_zsh_shell() {
+    if [[ "$SHELL" == *"zsh"* ]]; then
+        warn "Already using zsh as default shell"
+        return
+    fi
+
+    info "Setting zsh as default shell..."
+    local zsh_path
+    zsh_path=$(which zsh)
+
+    # Add zsh to /etc/shells if not present
+    if ! grep -q "$zsh_path" /etc/shells 2>/dev/null; then
+        echo "$zsh_path" | sudo tee -a /etc/shells
+    fi
+
+    chsh -s "$zsh_path"
+    success "Default shell changed to zsh!"
+}
+
+# Main installation flow
+main() {
+    echo ""
+    echo -e "${GREEN}╔═══════════════════════════════════════╗${NC}"
+    echo -e "${GREEN}║     Dotfiles Roadwarrior Installer    ║${NC}"
+    echo -e "${GREEN}╚═══════════════════════════════════════╝${NC}"
+    echo ""
+
+    local distro
+    distro=$(detect_distro)
+    info "Detected: ${distro}"
+
+    # Step 1: Install packages
+    install_packages "$distro"
+
+    # Step 2: Dotbot symlinks
+    run_dotbot "$@"
+
+    # Step 3: Zsh plugins
+    install_zsh_plugins
+
+    # Step 4: Install fonts
+    install_fonts "$distro"
+
+    # Step 5: Set zsh as default shell
+    set_zsh_shell
+
+    echo ""
+    echo -e "${GREEN}╔═══════════════════════════════════════╗${NC}"
+    echo -e "${GREEN}║            Setup Complete!            ║${NC}"
+    echo -e "${GREEN}╚═══════════════════════════════════════╝${NC}"
+    echo ""
+    info "Log out and back in (or run 'zsh') to start using your new shell!"
+}
+
+main "$@"
