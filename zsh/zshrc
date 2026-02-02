@@ -86,3 +86,13 @@ alias get_idf=". $HOME/esp-idf/export.sh"
 
 # Local environment (not committed)
 [ -f ~/.localenv ] && source ~/.localenv
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Add Android SDK platform-tools to PATH if it exists
+if [ -d "$HOME/Android/Sdk/platform-tools" ] ; then
+  export PATH="$PATH:$HOME/Android/Sdk/platform-tools"
+fi
+
+# opencode
+export PATH=/home/daniel/.opencode/bin:$PATH
