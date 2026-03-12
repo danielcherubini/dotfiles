@@ -21,6 +21,7 @@
     ~/.config/clight.conf: clight/clight.conf
     ~/.config/xdg-terminals.list: xdg-terminal-exec/xdg-terminals.list
     ~/.local/share/java: java
+    ~/.config/opencode: opencode
     # /mnt/c/Users/danie/AppData/Roaming/alacritty/alacritty.toml: alacritty/windows.toml
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
