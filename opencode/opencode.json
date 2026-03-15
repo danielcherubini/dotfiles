@@ -5,15 +5,9 @@
       "disabled": true
     }
   },
+  "plugin": ["opencode-lmstudio@latest"],
   "provider": {
     "lmstudio": {
-      "models": {
-        "omnicoder-9b": {
-          "name": "omnicoder-9b",
-          "tools": true,
-          "limit": { "context": 100352, "output": 16384 }
-        }
-      },
       "name": "LMStudio",
       "npm": "@ai-sdk/openai-compatible",
       "options": {
