@@ -1,16 +1,4 @@
 local options = {
-  -- formatters = {
-  --   ruff_organize_imports = {
-  --     command = "ruff",
-  --     args = { "check", "--select", "I", "--fix", "--stdin-filename", "$FILENAME" },
-  --     stdin = true,
-  --   },
-  --   ruff_format = {
-  --     command = "ruff",
-  --     args = { "format", "--stdin-filename", "$FILENAME" },
-  --     stdin = true,
-  --   },
-  -- },
   formatters_by_ft = {
     lua = { "stylua" },
     go = { "gofmt" },
@@ -18,21 +6,19 @@ local options = {
     css = { "prettierd" },
     html = { "prettierd", "prettier" },
     javascript = { "prettierd", "prettier" },
-    -- typescript = { "prettierd", "prettier" },
-    json = { "prettierd", "prettier" },
-    python = { "ruff_fix", "ruff_format", "ruff_organize_imports" },
+    json = { "prettierd" },
+    python = { "ruff_fix", "ruff_format" },
     java = { "prettierd", "prettier" },
     markdown = { "prettierd" },
     sql = { "sql_formatter", "sqlfluff" },
-    c = { "clang_format" },      -- Added for C formatting
-    cpp = { "clang_format" },    -- Added for C++ formatting
+    c = { "clang_format" },
+    cpp = { "clang_format" },
   },
 
   format_on_save = {
-    -- These options will be passed to conform.format()
     timeout_ms = 500,
     lsp_fallback = true,
   },
 }
 
-require("conform").setup(options)
+return options

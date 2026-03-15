@@ -1,9 +1,7 @@
-local on_init = require("nvchad.configs.lspconfig").on_init
 local on_attach = require("nvchad.configs.lspconfig").on_attach
+local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
-local init_options = require("nvchad.configs.lspconfig").init_options
 
--- local lspconfig = require "lspconfig"
 local plugin_conf = require "configs.overrides"
 
 local home = os.getenv "HOME"
@@ -13,36 +11,15 @@ local servers = plugin_conf.lspconfig
 
 for _, server in ipairs(servers) do
   local serverOpts = {
-    -- on_attach = function(client, bufnr)
-    --   client.server_capabilities.documentFormattingProvider = false
-    --   client.server_capabilities.documentRangeFormattingProvider = false
-    --   on_attach(client, bufnr)
-    -- end,
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
-    init_options = init_options,
   }
-  -- if server == "rust_analyzer" then
-  --   local ok_rt, rust_tools = pcall(require, "rust-tools")
-  --   if not ok_rt then
-  --     print "Failed to load rust tools, will set up `rust_analyzer` without `rust-tools`."
-  --   else
-  --     rust_tools.setup {
-  --       server = serverOpts,
-  --     }
-  --     -- We don't want to call lspconfig.rust_analyzer.setup() when using
-  --     -- rust-tools. See
-  --     -- * https://github.com/simrat39/rust-tools.nvim/issues/183
-  --     -- * https://github.com/simrat39/rust-tools.nvim/issues/177
-  --     goto continue
-  --   end
-  -- end:want
+
+  -- rustaceanvim handles rust_analyzer setup itself
   if server == "rust_analyzer" then
     vim.g.rustaceanvim = {
-      -- Plugin configuration
       tools = {},
-      -- LSP configuration
       server = {
         on_attach = on_attach,
         default_settings = {
@@ -54,25 +31,15 @@ for _, server in ipairs(servers) do
           },
         },
       },
-      -- DAP configuration
       dap = {},
     }
-    -- serverOpts.settings = {
-    --   ["rust-analyzer"] = {
-    --     displayInlayHints = true,
-    --     inlayHints = {
-    --       enable = true,
-    --     },
-    --   },
-    -- }
-    -- goto continue
+    goto continue
   end
 
   if server == "jdtls" then
     serverOpts.filetypes = { "java", "groovy" }
     serverOpts.on_attach = function(client, bufnr)
       on_attach(client, bufnr)
-
       require("jdtls").setup_dap { hotcodereplace = "auto" }
     end
     serverOpts.init_options = {
@@ -111,27 +78,6 @@ for _, server in ipairs(servers) do
 
   if server == "pyright" then
     serverOpts.on_attach = function(client, _)
-      -- Disable all capabilities except hoverProvider
-      -- client.server_capabilities.completionProvider = false
-      -- client.server_capabilities.definitionProvider = false
-      -- client.server_capabilities.typeDefinitionProvider = false
-      -- client.server_capabilities.implementationProvider = false
-      -- client.server_capabilities.referencesProvider = false
-      -- client.server_capabilities.documentSymbolProvider = false
-      -- client.server_capabilities.workspaceSymbolProvider = false
-      -- client.server_capabilities.codeActionProvider = false
-      -- client.server_capabilities.documentFormattingProvider = false
-      -- client.server_capabilities.documentRangeFormattingProvider = false
-      -- client.server_capabilities.renameProvider = false
-      -- client.server_capabilities.signatureHelpProvider = false
-      -- client.server_capabilities.documentHighlightProvider = false
-      -- client.server_capabilities.foldingRangeProvider = false
-      -- client.server_capabilities.semanticTokensProvider = false
-      -- client.server_capabilities.declarationProvider = false
-      -- client.server_capabilities.callHierarchyProvider = false
-      -- client.server_capabilities.diagnosticProvider = false
-
-      -- Enable hoverProvider
       client.server_capabilities.hoverProvider = true
     end
     serverOpts.capabilities = (function()
@@ -158,16 +104,14 @@ for _, server in ipairs(servers) do
         }
       end
     end
-
     serverOpts.settings = {
       configurationPreference = "filesystemFirst",
     }
   end
 
-  -- ESP32-specific clangd configuration
   if server == "clangd" then
     serverOpts.cmd = {
-      "clangd", -- Use system clangd
+      "clangd",
       "--background-index",
       "--clang-tidy",
       "--header-insertion=iwyu",
@@ -180,8 +124,7 @@ for _, server in ipairs(servers) do
       completeUnimported = true,
       clangdFileStatus = true,
     }
-    serverOpts.root_dir =
-      require("lspconfig.util").root_pattern("compile_commands.json", ".clangd", ".git", "CMakeLists.txt")
+    serverOpts.root_markers = { "compile_commands.json", ".clangd", ".git", "CMakeLists.txt" }
   end
 
   vim.lsp.config(server, serverOpts)
@@ -195,16 +138,8 @@ require("sonarlint").setup {
       "sonarlint-language-server",
       "-stdio",
       "-analyzers",
-      -- vim.fn.expand(mason_path .. "/share/sonarlint-analyzers/sonarpython.jar"),
-      -- vim.fn.expand(mason_path .. "/share/sonarlint-analyzers/sonarcfamily.jar"),
       vim.fn.expand(mason_path .. "/share/sonarlint-analyzers/sonarjava.jar"),
     },
   },
-  filetypes = {
-    -- Tested and working
-    -- "cpp",
-    "java",
-  },
+  filetypes = { "java" },
 }
-
--- require("lspsaga").setup {}

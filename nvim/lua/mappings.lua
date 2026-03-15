@@ -3,13 +3,13 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 
 map("n", "<leader>X", "<cmd>tabclose<CR>", { desc = "Close Tab" })
-map("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "   Lazygit" })
-map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "   HOVER" })
+map("n", "<leader>lg", "<cmd>LazyGit<CR>", { desc = "Lazygit" })
+map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", { desc = "LSP Hover" })
 
 map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
 map("n", "<leader>sr", function()
   require("ssr").open()
-end)
+end, { desc = "Structural Search & Replace" })
 
 -- ESP32 Development mappings (only active in ESP32 projects)
 local function is_esp32_project()
@@ -23,6 +23,7 @@ if is_esp32_project() then
   map("n", "<leader>ec", "<cmd>!make clean<CR>", { desc = "ESP32 Clean" })
   map("n", "<leader>es", "<cmd>!make setup<CR>", { desc = "ESP32 Setup" })
 end
+
 -- Keyboard users
 map("n", "<C-t>", function()
   require("menu").open "default"
@@ -35,7 +36,7 @@ map({ "n", "t" }, "<A-v>", function()
     id = "vertTerm",
     size = 0.5,
   }
-end, { desc = "terminal toggle vertical term" })
+end, { desc = "Toggle vertical terminal" })
 map({ "n", "t" }, "<A-i>", function()
   require("nvchad.term").toggle {
     pos = "float",
@@ -47,12 +48,11 @@ map({ "n", "t" }, "<A-i>", function()
       height = 0.9,
     },
   }
-end, { desc = "terminal toggle floating term" })
---
--- mouse users + nvimtree users!
+end, { desc = "Toggle floating terminal" })
+
+-- Mouse users + nvimtree users
 map("n", "<RightMouse>", function()
   vim.cmd.exec '"normal! \\<RightMouse>"'
-
   local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
   require("menu").open(options, { mouse = true })
 end, {})

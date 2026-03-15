@@ -1,9 +1,9 @@
 return {
   Type = { italic = true },
-  SpecialComment = { italic = true },
-  TSAttribute = { italic = true },
-  TSParameter = { italic = true },
-  TSLabel = { italic = true },
-  TSVariableBuiltin = { italic = true },
-  TSTagAttribute = { italic = true },
+  ["@comment"] = { italic = true },
+  ["@attribute"] = { italic = true },
+  ["@variable.parameter"] = { italic = true },
+  ["@label"] = { italic = true },
+  ["@variable.builtin"] = { italic = true },
+  ["@tag.attribute"] = { italic = true },
 }

@@ -12,29 +12,23 @@ return {
     },
     opts = {
       strategies = {
-        --NOTE: Change the adapter as required
         chat = { adapter = "claude_code" },
         inline = { adapter = "claude_code" },
       },
       adapters = {
-        acp = {
-          claude_code = function()
-            return require("codecompanion.adapters").extend "claude_code"
-          end,
-        },
+        claude_code = function()
+          return require("codecompanion.adapters").extend "claude_code"
+        end,
       },
-      -- NOTE: The log_level is in `opts.opts`
       opts = {
-        log_level = "DEBUG", -- or "TRACE"
+        log_level = "ERROR",
       },
     },
   },
   {
     "stevearc/conform.nvim",
-    event = "BufWritePre", -- uncomment for format on save
-    config = function()
-      require "configs.conform"
-    end,
+    event = "BufWritePre",
+    opts = require "configs.conform",
   },
   {
     "neovim/nvim-lspconfig",
@@ -42,24 +36,18 @@ return {
       require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
-    dependencies = {
-      "https://gitlab.com/schrieveslaach/sonarlint.nvim",
-      "nvimdev/lspsaga.nvim",
-    },
-    -- dependencies = {
-    --    "jose-elias-alvarez/null-ls.nvim",
-    --      config = function()
-    --        require "configs.null-ls"
-    --      end,
-    -- },
   },
-  { "editorconfig/editorconfig-vim" },
+  {
+    "schrieveslaach/sonarlint.nvim",
+    url = "https://gitlab.com/schrieveslaach/sonarlint.nvim",
+    lazy = false,
+  },
+  { "nvimdev/lspsaga.nvim", lazy = true },
   { "kdheepak/lazygit.nvim", lazy = false },
-  -- { "simrat39/rust-tools.nvim" },
   {
     "mrcjkb/rustaceanvim",
-    version = "^5", -- Recommended
-    lazy = false, -- This plugin is already lazy}
+    version = "^5",
+    lazy = false,
   },
   { "nvim-treesitter/nvim-treesitter", opts = plugin_conf.treesitter },
   { "nvim-tree/nvim-tree.lua", opts = plugin_conf.nvimtree },
@@ -82,7 +70,7 @@ return {
   { "cshuaimin/ssr.nvim" },
   {
     "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    opts = {},
     cmd = "Trouble",
     keys = {
       {
@@ -120,8 +108,6 @@ return {
   {
     "rcasia/neotest-java",
     init = function()
-      -- override the default keymaps.
-      -- needed until neotest-java is integrated in LazyVim
       require("which-key").add {
         { "<leader>t", group = "test" },
         { "<leader>tD", "<cmd>lua require('jdtls.dap').test_class()<cr>", desc = "[Neotest] Debug Test File" },
@@ -148,9 +134,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     adapters = {
-      ["neotest-java"] = {
-        -- config here
-      },
+      ["neotest-java"] = {},
     },
   },
 }

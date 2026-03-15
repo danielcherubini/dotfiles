@@ -1,14 +1,9 @@
 require "nvchad.options"
 
--- add yours here!
-
--- local o = vim.o
--- o.cursorlineopt ='both' -- to enable cursorline!
-
 vim.opt.clipboard = "unnamedplus"
 
 -- Only use OSC 52 when in SSH session, otherwise use native clipboard
-if os.getenv("SSH_TTY") then
+if os.getenv "SSH_TTY" then
   vim.g.clipboard = {
     name = "OSC 52",
     copy = {
