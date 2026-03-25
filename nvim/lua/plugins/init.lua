@@ -4,6 +4,23 @@ return {
   { "nvchad/volt", lazy = true },
   { "nvchad/menu", lazy = true },
   {
+    "yetone/avante.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      provider = "opencode",
+      acp_providers = {
+        ["opencode"] = {
+          command = "opencode",
+          args = { "acp" },
+        },
+      },
+    },
+  },
+  {
     "olimorris/codecompanion.nvim",
     lazy = false,
     dependencies = {

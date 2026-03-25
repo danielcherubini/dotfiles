@@ -117,3 +117,10 @@ unset __conda_setup
 export PATH="$PATH:/home/daniel/.lmstudio/bin"
 # End of LM Studio CLI section
 
+
+# bun completions
+[ -s "/home/daniel/.bun/_bun" ] && source "/home/daniel/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

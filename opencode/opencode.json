@@ -5,56 +5,103 @@
       "disabled": true
     }
   },
-  "plugin": ["opencode-lmstudio@latest"],
+  "plugin": ["opencode-gemini-auth@latest", "opencode-claude-auth"],
+  "disabled_providers": [
+    "github-copilot",
+    "github-copilot-enterprise",
+    "github-models"
+  ],
   "provider": {
-    "lmstudio": {
-      "name": "LMStudio",
-      "npm": "@ai-sdk/openai-compatible",
-      "options": {
-        "baseURL": "http://romulus:1234/v1"
-      }
-    },
-    "ollama": {
-      "models": {
-        "carstenuhlig/omnicoder-9b": {
-          "name": "omnicoder",
-          "limit": { "context": 100352, "output": 16384 }
-        },
-        "llama3.1-64k": {
-          "name": "Llama 3.1",
-          "limit": { "context": 262144, "output": 16384 }
-        },
-        "omnicoder-98k": {
-          "name": "OmniCoder",
-          "tools": true,
-          "limit": {
-            "context": 100352,
-            "output": 16384
-          }
-        }
-      },
-      "name": "Ollama (romulus)",
+    "romulus": {
+      "name": "Romulus",
       "npm": "@ai-sdk/openai-compatible",
       "options": {
         "baseURL": "http://romulus:11434/v1"
+      },
+      "models": {
+        "omnicoder": {
+          "name": "Omnicoder 9b",
+          "tools": true,
+          "reasoning": false,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 163840,
+            "output": 32768
+          },
+          "steps": 25,
+          "permission": {
+            "doom_loop": "deny"
+          }
+        },
+        "deltacoder": {
+          "name": "deltacoder",
+          "tools": true,
+          "reasoning": false,
+          "temperature": true,
+          "tool_call": true,
+          "limit": {
+            "context": 131072,
+            "output": 32768
+          },
+          "steps": 25,
+          "permission": {
+            "doom_loop": "deny"
+          }
+        }
       }
     }
   },
-  "mode": {
+  "agent": {
     "build": {
-      "model": "lmstudio/omnicoder-9b"
+      "mode": "primary",
+      "model": "romulus/deltacoder",
+      "permission": {
+        "*": "allow",
+        "task": "allow"
+      }
     },
     "plan": {
-      "model": "anthropic/claude-opus-4-6"
+      "mode": "primary",
+      "model": "anthropic/claude-opus-4-6",
+      "permission": {
+        "edit": {
+          "*": "ask",
+          "docs/*": "allow",
+          "TODO.md": "allow"
+        },
+        "bash": "allow",
+        "task": "allow"
+      }
     },
-    "default": {
-      "model": "lmstudio/omnicoder-9b"
+    "general": {
+      "mode": "subagent",
+      "model": "google/gemini-2.5-flash",
+      "description": "General-purpose subagent for implementing tasks, research, and multi-step work"
+    },
+    "explore": {
+      "mode": "subagent",
+      "model": "google/gemini-2.5-flash",
+      "description": "Fast read-only agent for codebase exploration and search"
+    },
+    "reviewer": {
+      "mode": "subagent",
+      "model": "google/gemini-2.5-flash",
+      "description": "Reviews code, specs, and plans for quality, correctness, and completeness. Used for spec compliance, code quality, and final implementation reviews.",
+      "permission": {
+        "edit": "deny",
+        "bash": "allow",
+        "read": "allow",
+        "grep": "allow",
+        "glob": "allow",
+        "list": "allow",
+        "task": "deny"
+      }
     }
   },
-  "command": {
-    "coderabbit": {
-      "template": "!coderabbit review --prompt-only\n\nFix all issues reported above.",
-      "description": "Reviews code with CodeRabbit and fixes issues"
+  "experimental": {
+    "bash": {
+      "timeout_ms": 600000
     }
   }
 }
