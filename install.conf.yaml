@@ -22,6 +22,8 @@
     ~/.config/xdg-terminals.list: xdg-terminal-exec/xdg-terminals.list
     ~/.local/share/java: java
     ~/.config/opencode: opencode
+    ~/.config/opencode/agents: agents
+    ~/.pi/agent/agents: agents
     ~/.agents/skills: skills
     ~/.claude/skills: skills
     # /mnt/c/Users/danie/AppData/Roaming/alacritty/alacritty.toml: alacritty/windows.toml

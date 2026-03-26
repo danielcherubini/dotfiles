@@ -76,18 +76,15 @@
     },
     "general": {
       "mode": "subagent",
-      "model": "google/gemini-2.5-flash",
-      "description": "General-purpose subagent for implementing tasks, research, and multi-step work"
+      "model": "romulus/deltacoder"
     },
     "explore": {
       "mode": "subagent",
-      "model": "google/gemini-2.5-flash",
-      "description": "Fast read-only agent for codebase exploration and search"
+      "model": "romulus/deltacoder"
     },
     "reviewer": {
       "mode": "subagent",
-      "model": "google/gemini-2.5-flash",
-      "description": "Reviews code, specs, and plans for quality, correctness, and completeness. Used for spec compliance, code quality, and final implementation reviews.",
+      "model": "anthropic/claude-opus-4-6",
       "permission": {
         "edit": "deny",
         "bash": "allow",
