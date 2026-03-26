@@ -68,8 +68,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-# Homebrew libpq (macOS)
-[ -d "/opt/homebrew/opt/libpq/bin" ] && export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
 
 # Default editor
 export EDITOR="nvim"

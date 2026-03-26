@@ -19,9 +19,7 @@ error() { echo -e "${RED}==>${NC} $1"; exit 1; }
 
 # Detect OS/Distro
 detect_distro() {
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        echo "macos"
-    elif [[ -f /etc/os-release ]]; then
+    if [[ -f /etc/os-release ]]; then
         . /etc/os-release
         case "$ID" in
             fedora) echo "fedora" ;;
@@ -72,14 +70,7 @@ install_packages() {
                 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
             fi
             ;;
-        macos)
-            # Install Homebrew if not present
-            if ! command -v brew &> /dev/null; then
-                info "Installing Homebrew..."
-                /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-            fi
-            brew install zsh zsh-completions neovim golang neofetch ripgrep fzf git curl
-            ;;
+
         *)
             warn "Unknown distro - skipping package installation"
             warn "You may need to manually install: zsh, neovim, git, curl, ripgrep, fzf"
@@ -127,14 +118,9 @@ install_zsh_plugins() {
     success "Zsh plugins installed!"
 }
 
-# Install fonts (Linux only)
+# Install fonts
 install_fonts() {
     local distro="$1"
-
-    if [[ "$distro" == "macos" ]]; then
-        warn "Skipping font installation on macOS (install manually to ~/Library/Fonts)"
-        return
-    fi
 
     info "Installing fonts..."
 
