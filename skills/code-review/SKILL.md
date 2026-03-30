@@ -64,13 +64,13 @@ Data handling: the CLI sends code diffs to the CodeRabbit API for analysis. Befo
 Use `--prompt-only` for minimal output optimized for AI agents:
 
 ```bash
-timeout 600 coderabbit review --prompt-only
+coderabbit review --prompt-only
 ```
 
 Or use `--plain` for detailed feedback with fix suggestions:
 
 ```bash
-timeout 600 coderabbit review --plain
+coderabbit review --plain
 ```
 
 **Options:**
@@ -88,7 +88,7 @@ timeout 600 coderabbit review --plain
 **Shorthand:** `cr` is an alias for `coderabbit`:
 
 ```bash
-timeout 600 cr review --prompt-only
+cr review --prompt-only
 ```
 
 ### 3. Present Results
@@ -106,30 +106,30 @@ Create a task list for issues found that need to be addressed.
 When user requests implementation + review:
 
 1. Implement the requested feature
-2. Run `timeout 600 coderabbit review --prompt-only`
+2. Run `coderabbit review --prompt-only`
 3. Create task list from findings
-4. Fix critical and warning issues systematically
-5. Re-run review to verify fixes
-6. Repeat until clean or only info-level issues remain
+4. Fix critical and warning issues **one at a time** — wait for each fix to complete before starting the next
+5. Re-run review **once** after all fixes are applied
+6. If critical/warning issues remain after one re-run, escalate to the user — do not loop
 
 ### 5. Review Specific Changes
 
 **Review only uncommitted changes:**
 
 ```bash
-timeout 600 cr review --prompt-only -t uncommitted
+cr review --prompt-only -t uncommitted
 ```
 
 **Review against a branch:**
 
 ```bash
-timeout 600 cr review --prompt-only --base main
+cr review --prompt-only --base main
 ```
 
 **Review a specific commit range:**
 
 ```bash
-timeout 600 cr review --prompt-only --base-commit abc123
+cr review --prompt-only --base-commit abc123
 ```
 
 ## Security

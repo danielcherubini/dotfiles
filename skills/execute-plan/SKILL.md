@@ -33,7 +33,12 @@ Subagent prompt template:
     ## Instructions
     - Implement exactly what the task specifies
     - Write tests (TDD: failing test first, then implementation)
-    - Run tests to verify
+    - Validate your work by running each step **independently and in order** — wait for each to finish before starting the next:
+      1. Formatting (e.g. `cargo fmt`, `prettier`, etc.)
+      2. Build / compile (e.g. `cargo build`, `npm run build`, etc.)
+      3. Tests (e.g. `cargo test`, `npm test`, etc.)
+    - If any step fails: **STOP. Do not re-run it yet.** Read the error output, read the relevant source files, then use Edit/Write tools to fix the root cause. Only re-run after you have made file changes.
+    - **Loop-break rule:** If you run a step and it fails, and you have made no file edits since the last time it failed, you are looping. Stop immediately and report back with status BLOCKED — describe the error and what you tried.
     - Commit your work with a descriptive message
     - Work from: [directory]
 
@@ -63,18 +68,23 @@ Run: git log --oneline [base-branch]..HEAD
 Check:
 - Does the implementation match the plan?
 - Are there bugs, missing error handling, or quality issues?
-- Do all tests pass? (run the test suite)
+- Validate by running each step **independently and in order** — wait for each to finish before starting the next:
+  1. Formatting (e.g. `cargo fmt --check`, `prettier --check`, etc.)
+  2. Build / compile (e.g. `cargo build`, `npm run build`, etc.)
+  3. Tests (e.g. `cargo test`, `npm test`, etc.)
+- Run each step, wait for output, then decide whether to proceed. Do not batch them.
+- Report any failures per step
 
 Report: list of issues by severity (critical/warning/info), or approval
 ```
 
-Fix any critical/warning issues by dispatching **general** subagent, then re-review.
+Fix any critical/warning issues by dispatching **general** subagent — **one issue at a time**, then re-review. **Maximum 2 fix attempts per issue.** If the same issue persists after 2 attempts, stop and escalate to the user with a clear description of what was tried and what failed. Do not loop.
 
 ### 4. CodeRabbit review
 ```bash
 timeout 600 coderabbit review --prompt-only --base [base-branch]
 ```
-Fix critical and warning issues. Re-run until clean or only info-level remains.
+Fix critical and warning issues — **one at a time**, waiting for each fix to complete before starting the next. Re-run only once after all fixes are applied. Do not re-run after every individual fix.
 
 ### 5. Open PR
 ```bash

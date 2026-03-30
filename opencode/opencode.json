@@ -5,7 +5,7 @@
       "disabled": true
     }
   },
-  "plugin": ["opencode-gemini-auth@latest", "opencode-claude-auth"],
+  "plugin": ["opencode-claude-auth"],
   "disabled_providers": [
     "github-copilot",
     "github-copilot-enterprise",
@@ -47,6 +47,18 @@
           "steps": 25,
           "permission": {
             "doom_loop": "deny"
+          },
+          "variants": {
+            "medium": {
+              "temperature": 0.6,
+              "think": true,
+              "thinking_budget": 4096
+            },
+            "high": {
+              "temperature": 1.0,
+              "think": true,
+              "thinking_budget": 16384
+            }
           }
         }
       }
@@ -56,6 +68,7 @@
     "build": {
       "mode": "primary",
       "model": "romulus/deltacoder",
+      "steps": 12,
       "permission": {
         "*": "allow",
         "task": "allow"
@@ -76,7 +89,8 @@
     },
     "general": {
       "mode": "subagent",
-      "model": "romulus/deltacoder"
+      "model": "romulus/deltacoder",
+      "steps": 12
     },
     "explore": {
       "mode": "subagent",
