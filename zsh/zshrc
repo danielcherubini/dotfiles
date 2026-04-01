@@ -68,6 +68,8 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+# kitty
+# [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
 
 
 # Default editor
