@@ -69,7 +69,7 @@ case ":$PATH:" in
 esac
 
 # kitty
-# [ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+[ "$TERM" = "xterm-kitty" ] && alias sssh="kitty +kitten ssh"
 
 
 # Default editor

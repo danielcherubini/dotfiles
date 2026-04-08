@@ -17,7 +17,7 @@ Turn ideas into designs through collaborative dialogue before writing any code.
 4. **Present design** — section by section, get approval after each
 5. **Write spec** — save to `docs/plans/YYYY-MM-DD-<topic>-spec.md`, commit
 6. **Review** — dispatch **reviewer** subagent on the spec, fix issues
-7. **User approves spec** — then transition to `create-plan` skill
+7. **User approves spec** — then transition to `create-plan` skill by invoking it.
 
 ## Principles
 
