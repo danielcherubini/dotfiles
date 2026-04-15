@@ -4,14 +4,14 @@
   "defaultModel": "unsloth/gemma-4-31b-it-gguf",
   "packages": [
     "npm:pi-manage-todo-list",
-    "npm:pi-tool-display",
     "npm:pi-web-access",
     "npm:pi-ask-tool-extension",
     "npm:pi-updater",
-    "npm:pi-koji",
     "git:github.com/visua1hue/pi-pane",
     "git:github.com/skyfallsin/pi-vertex-anthropic",
-    "git:github.com/danielcherubini/pi-subagents@feat/agent-enabled-flag"
+    "git:github.com/danielcherubini/pi-subagents@feat/agent-enabled-flag",
+    "npm:pi-koji",
+    "npm:@heyhuynhgiabuu/pi-diff"
   ],
   "defaultThinkingLevel": "medium",
   "theme": "dracula",
