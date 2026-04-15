@@ -11,7 +11,7 @@
     "npm:pi-koji",
     "git:github.com/visua1hue/pi-pane",
     "git:github.com/skyfallsin/pi-vertex-anthropic",
-    "npm:pi-subagents"
+    "git:github.com/danielcherubini/pi-subagents@feat/agent-enabled-flag"
   ],
   "defaultThinkingLevel": "medium",
   "theme": "dracula",
