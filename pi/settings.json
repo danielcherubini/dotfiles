@@ -11,7 +11,8 @@
     "git:github.com/skyfallsin/pi-vertex-anthropic",
     "git:github.com/danielcherubini/pi-subagents@feat/agent-enabled-flag",
     "npm:pi-koji",
-    "npm:@heyhuynhgiabuu/pi-diff"
+    "npm:@heyhuynhgiabuu/pi-diff",
+    "npm:pi-dracula"
   ],
   "defaultThinkingLevel": "medium",
   "theme": "dracula",
