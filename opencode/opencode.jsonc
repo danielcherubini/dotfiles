@@ -1,0 +1,41 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": ["npm:opencode-koji"],
+  "provider": {
+    "koji": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Koji",
+      "options": {
+        "baseURL": "http://koji:11434/v1",
+      },
+    },
+  },
+  "agent": {
+    "build": {
+      "mode": "primary",
+      //      "model": "koji/unsloth/gemma-4-31b-it-gguf",
+    },
+    "plan": {
+      "mode": "primary",
+      "model": "openrouter/minimax/minimax-m2.7",
+    },
+    "explore": {
+      "mode": "primary",
+      "model": "openrouter/qwen/qwen3.5-flash-02-23",
+    },
+    "researcher": {
+      "mode": "subagent",
+      "model": "openrouter/minimax/minimax-m2.7",
+      "hidden": true,
+    },
+    "reviewer": {
+      "mode": "subagent",
+      "model": "openrouter/xiaomi/mimo-v2-pro",
+      "hidden": true,
+    },
+    "general": {
+      "mode": "subagent",
+      //     "model": "koji/unsloth/gemma-4-31b-it-gguf",
+    },
+  },
+}
