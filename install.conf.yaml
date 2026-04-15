@@ -24,6 +24,8 @@
     ~/.config/opencode: opencode
     ~/.config/opencode/agents: agents
     ~/.pi/agent/agents: agents
+    ~/.pi/agent/settings.json: pi/settings.json
+    ~/.pi/agent/themes: pi/themes
     ~/.agents/skills: skills
     ~/.claude/skills: skills
     # /mnt/c/Users/danie/AppData/Roaming/alacritty/alacritty.toml: alacritty/windows.toml
