@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.67.2",
   "defaultProvider": "koji",
-  "defaultModel": "unsloth/gemma-4-31b-it-gguf",
+  "defaultModel": "unsloth/gemma-4-26b-a4b-it-gguf",
   "packages": [
     "npm:pi-manage-todo-list",
     "npm:pi-web-access",
@@ -12,7 +12,8 @@
     "git:github.com/danielcherubini/pi-subagents@feat/agent-enabled-flag",
     "npm:pi-koji",
     "npm:@heyhuynhgiabuu/pi-diff",
-    "npm:pi-dracula"
+    "npm:pi-dracula",
+    "npm:pi-thinking"
   ],
   "defaultThinkingLevel": "medium",
   "theme": "dracula",

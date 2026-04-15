@@ -63,9 +63,9 @@ ask({
     id: "next-step",
     question: "All tasks complete. What would you like to do next?",
     options: [
-      { label: "Code review then PR" },
+      { label: "Coderabbit review then PR" },
       { label: "Open PR only" },
-      { label: "Code review only" },
+      { label: "Coderabbit review only" },
       { label: "Finish plan" }
     ]
   }]
@@ -74,21 +74,21 @@ ask({
 
 Then follow the user's choice immediately — do NOT ask for additional confirmation.
 
-### Code Review then PR
+### Coderabbit review then PR
 
 1. Dispatch the **reviewer subagent** with: "Review the implementation against the plan at `docs/plans/YYYY-MM-DD-<feature>.md`. Check that all acceptance criteria are met and no planned work was missed."
 2. Fix any critical/major issues from reviewer verdict
-3. Load the `code-review` skill to run CodeRabbit review
+3. Load the `coderabbit` skill to run CodeRabbit review
 4. Fix critical/warning issues ONE AT A TIME
 5. Re-run CodeRabbit review once after all fixes
 6. If issues persist, escalate to user
 7. Then proceed to **Open PR** below
 
-### Code Review only
+### Coderabbit review only
 
 1. Dispatch the **reviewer subagent** with: "Review the implementation against the plan at `docs/plans/YYYY-MM-DD-<feature>.md`. Check that all acceptance criteria are met and no planned work was missed."
 2. Fix any critical/major issues from reviewer verdict
-3. Load the `code-review` skill to run CodeRabbit review
+3. Load the `coderabbit` skill to run CodeRabbit review
 4. Fix critical/warning issues ONE AT A TIME
 5. Re-run CodeRabbit review once after all fixes
 6. If issues persist, escalate to user
