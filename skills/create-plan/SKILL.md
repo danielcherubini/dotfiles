@@ -5,9 +5,7 @@ description: Use when a feature or change needs an implementation plan with conc
 
 # Create Plan
 
-## Overview
-
-Turn an agreed-upon design into a structured implementation plan with independent, commitable tasks. Each task specifies exact files and follows TDD steps.
+Turn an approved design into a structured implementation plan with independent, commitable tasks.
 
 **Write for a dumb agent.** The executing agent has no memory of your conversation, no knowledge of intent, and no ability to infer what you meant. Every task must be self-contained and complete enough that a capable but context-free agent can execute it without guessing. If something is ambiguous, spell it out. If something could be done multiple ways, specify which way. Leave nothing to interpretation.
 
@@ -15,26 +13,19 @@ Turn an agreed-upon design into a structured implementation plan with independen
 
 - After brainstorming/design is complete and user has approved the approach
 - When work is large enough to benefit from task breakdown (2+ tasks)
-- When you need to hand off to `execute-plan`
 
 **Don't use when:**
 - Idea isn't fleshed out yet — use `brainstorming` first
 - Change is small enough to implement directly (single file, obvious fix)
 
-## Process
+## Input
 
-### 1. Understand the idea
-- Check project context (files, docs, recent commits)
-- Ask clarifying questions one at a time
-- Propose 2-3 approaches with trade-offs and your recommendation
+This skill expects an approved design spec. The spec comes from the conversation — it was already presented and approved during brainstorming. Do NOT read from a file unless one was explicitly saved earlier.
 
-### 2. Write the plan
-- Once the design is agreed, write to `docs/plans/YYYY-MM-DD-<feature>.md`
-- Dispatch the **reviewer** subagent to review the plan
-- Fix issues, re-dispatch until approved (max 3 rounds)
-- Ask user to review the plan before proceeding
+## Plan Format
 
-**Plan format:**
+Write to `docs/plans/YYYY-MM-DD-<feature>.md`:
+
 ```markdown
 # [Feature] Plan
 
@@ -81,8 +72,18 @@ A precise description of the change. Include:
 
 Each task must be independently commitable. The agent executing it has no context beyond what is written here — be exhaustive.
 
-### 3. Handoff
-"Plan saved to `<path>`. Ready to execute with `execute-plan`?"
+## After Plan is Written
+
+Dispatch the **reviewer subagent** to review the plan (use review type: "plan"). Fix issues (max 3 rounds).
+
+Then update `docs/plans/README.md`:
+1. Add the new plan to the appropriate category table with status 🚧 IN PROGRESS
+2. Increment the Total Plans count in Quick Stats
+3. If this plan supersedes an older one, move the old entry to the Superseded Plans section
+
+Then tell the user the plan is ready and ask them to say when they're ready to start implementing:
+
+> "The implementation plan is ready. When you're ready to start implementing, just say the word and I'll load the `execute-plan` skill."
 
 ## Common Mistakes
 

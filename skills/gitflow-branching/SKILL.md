@@ -3,34 +3,47 @@ name: gitflow-branching
 description: Use when starting any new work that requires creating a git branch
 ---
 
-# GitFlow Branching
+# Git Branching
+
+Trunk-based development: `main → feature branch → main`
 
 ## Branch types
 
 | Branch | Purpose | From | Merges to |
 |--------|---------|------|-----------|
 | `main` | Production-ready | - | - |
-| `develop` | Integration | `main` | - |
-| `feature/*` | New features | `develop` | `develop` |
-| `release/*` | Release prep | `develop` | `main` + `develop` |
-| `hotfix/*` | Prod bug fixes | `main` | `main` + `develop` |
+| `feature/*` | New features | `main` | `main` |
+| `bugfix/*` | Bug fixes | `main` | `main` |
 
 ## Naming
 
 - `feature/<ticket-id>-<description>`
-- `release/<version>`
-- `hotfix/<version>-<description>`
+- `bugfix/<ticket-id>-<description>`
 
 ## Starting a feature
 
 ```bash
-git checkout develop && git pull origin develop
+git checkout main && git pull origin main
 git checkout -b feature/<ticket-id>-<description>
 ```
 
-## Finishing a feature
+## Starting a bugfix
+
+```bash
+git checkout main && git pull origin main
+git checkout -b bugfix/<ticket-id>-<description>
+```
+
+## Finishing a feature or bugfix
 
 ```bash
 git push -u origin feature/<ticket-id>-<description>
-# Create PR to develop
+# Create PR to main
 ```
+
+## Rules
+
+- **Always branch from `main`** — never from another feature branch
+- **Always PR back to `main`** — never to `develop` or other branches
+- **Never create a `develop` branch** — it does not exist in this workflow
+- Keep branches short-lived — merge back to main frequently
