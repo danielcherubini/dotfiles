@@ -1,0 +1,46 @@
+{
+  "lastChangelogVersion": "0.67.2",
+  "defaultProvider": "koji",
+  "defaultModel": "unsloth/gemma-4-31b-it-gguf",
+  "packages": [
+    "npm:pi-manage-todo-list",
+    "npm:pi-tool-display",
+    "npm:pi-web-access",
+    "npm:pi-ask-tool-extension",
+    "npm:pi-updater",
+    "npm:pi-koji",
+    "git:github.com/visua1hue/pi-pane"
+  ],
+  "defaultThinkingLevel": "medium",
+  "enabledModels": [
+    "anthropic/claude-opus-4-6",
+    "anthropic/claude-sonnet-4-6",
+    "openrouter/z-ai/glm-5.1",
+    "openrouter/qwen/qwen3.5-flash-02-23",
+    "openrouter/qwen/qwen3.5-27b",
+    "opencode-go/minimax-m2.7",
+    "koji/unsloth/gemma-4-31b-it-gguf",
+    "koji/unsloth/gemma-4-26b-a4b-it-gguf",
+    "koji/unsloth/qwen3.5-27b-gguf"
+  ],
+  "theme": "dracula",
+  "hideThinkingBlock": false,
+  "quietStartup": false,
+  "pi-koji": {
+    "url": "http://koji:11434"
+  },
+  "subagents": {
+    "agents": {
+      "plan": {
+        "model": "openrouter/minimax/minimax-m2.7"
+      },
+      "reviewer": {
+        "model": "openrouter/anthropic/claude-opus-4-6"
+      },
+      "explore": {
+        "model": "openrouter/qwen/qwen3.5-flash-02-23"
+      }
+    },
+    "disableBuiltins": true
+  }
+}
