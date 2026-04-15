@@ -143,3 +143,4 @@ export PATH="$PATH:/home/daniel/.lmstudio/bin"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+fpath=(~/.zsh/completions $fpath)
