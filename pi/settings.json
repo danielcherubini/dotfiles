@@ -19,5 +19,19 @@
   "quietStartup": false,
   "pi-koji": {
     "url": "http://koji:11434"
+  },
+  "subagents": {
+    "agentOverrides": {
+      "plan": {
+        "model": "openrouter/minimax/minimax-m2.7"
+      },
+      "reviewer": {
+        "model": "openrouter/anthropic/claude-opus-4-6"
+      },
+      "explore": {
+        "model": "openrouter/qwen/qwen3.5-flash-02-23"
+      }
+    },
+    "disableBuiltins": true
   }
 }
