@@ -132,6 +132,17 @@ cr review --prompt-only --base main
 cr review --prompt-only --base-commit abc123
 ```
 
+## When to Use This Skill vs Reviewer Subagent
+
+- **Reviewer subagent**: Reviews specs, plans, and code for architecture/correctness/completeness
+  - Dispatched by plan agent (spec/plan review) or build agent (code-branch review)
+  - Returns structured JSON verdict (pass/fail/pass_with_issues)
+  - Focuses on: logical errors, design issues, architectural alignment, plan completeness
+- **CodeRabbit (this skill)**: Automated lint, security, and style analysis
+  - Runs after reviewer subagent as a final quality gate
+  - Part of the execute-plan workflow
+  - Focuses on: bugs, security vulnerabilities, style issues, anti-patterns
+
 ## Security
 
 - **Installation**: install the CLI via a package manager or verified binary. Do not pipe remote scripts to a shell.

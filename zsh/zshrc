@@ -22,6 +22,18 @@ zstyle ':completion:*:make:*' tag-order targets
 # Vim keybindings (optional - comment out if you prefer emacs mode)
 # bindkey -v
 
+# Key bindings for special keys (kitty + common terminals)
+# PageUp/PageDown - history search
+bindkey '^[[5~' history-beginning-search-backward   # PageUp
+bindkey '^[[6~' history-beginning-search-forward    # PageDown
+# Home/End
+bindkey '^[[H'  beginning-of-line                   # Home (kitty/xterm)
+bindkey '^[[F'  end-of-line                         # End (kitty/xterm)
+bindkey '^[[1~' beginning-of-line                   # Home (rxvt)
+bindkey '^[[4~' end-of-line                         # End (rxvt)
+bindkey '^[[1;5H' beginning-of-line                  # Ctrl+Home
+bindkey '^[[1;5F' end-of-line                       # Ctrl+End
+
 # Starship prompt
 eval "$(starship init zsh)"
 
@@ -97,6 +109,12 @@ fi
 
 # opencode
 export PATH=/home/daniel/.opencode/bin:$PATH
+export OPENCODE_ENABLE_EXA=1
+export OPENCODE_EXPERIMENTAL=1
+export OPENCODE_EXPERIMENTAL_PLAN_MODE=1
+export OPENCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS=94748364
+export OPENCODE_EXPERIMENTAL_BASH_MAX_OUTPUT_LENGTH=94748364
+export OPENCODE_ENABLE_EXPERIMENTAL_MODELS=1
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

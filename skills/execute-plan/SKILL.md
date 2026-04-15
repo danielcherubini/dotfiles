@@ -5,18 +5,15 @@ description: Use when you have a written implementation plan to execute
 
 # Execute Plan
 
-Read the plan, create a feature branch, dispatch subagents per task, review the branch, run coderabbit, open a PR.
+Read the plan, create a feature branch, dispatch subagents per task, review the branch, open a PR.
 
-## Process
+## Branch Setup
+- Create feature branch using gitflow conventions (load `gitflow-branching` skill if needed)
+- Create a todo list with `manage_todo_list` with all tasks from the plan
 
-### 1. Load plan
-- Read the plan file
-- Raise concerns with user if any
-- Create a feature branch using gitflow conventions
-- Create a TodoWrite with all tasks from the plan
+## Task Dispatch Protocol
 
-### 2. Execute tasks with subagents
-For each task in the plan, dispatch a **general** subagent:
+For each task, dispatch a `general` subagent (sequentially, not parallel):
 
 ```
 Subagent prompt template:
@@ -50,43 +47,54 @@ Subagent prompt template:
 ```
 
 **Handle subagent responses:**
-- **DONE:** Mark task complete in TodoWrite, move to next task
+- **DONE:** Mark task complete in todo list, move to next task
 - **NEEDS_CONTEXT:** Provide missing info, re-dispatch
 - **BLOCKED:** Assess blocker, provide help or escalate to user
 
 **Important:** Dispatch tasks sequentially (not in parallel) to avoid file conflicts.
 
-### 3. Review the branch
-After all tasks complete, dispatch the **reviewer** subagent:
+## After All Tasks Complete
+
+Once all tasks are done, ask the user what to do next:
 
 ```
-Review the feature branch [branch-name] against [base-branch].
-
-Run: git diff [base-branch]...HEAD
-Run: git log --oneline [base-branch]..HEAD
-
-Check:
-- Does the implementation match the plan?
-- Are there bugs, missing error handling, or quality issues?
-- Validate by running each step **independently and in order** — wait for each to finish before starting the next:
-  1. Formatting (e.g. `cargo fmt --check`, `prettier --check`, etc.)
-  2. Build / compile (e.g. `cargo build`, `npm run build`, etc.)
-  3. Tests (e.g. `cargo test`, `npm test`, etc.)
-- Run each step, wait for output, then decide whether to proceed. Do not batch them.
-- Report any failures per step
-
-Report: list of issues by severity (critical/warning/info), or approval
+ask({
+  questions: [{
+    id: "next-step",
+    question: "All tasks complete. What would you like to do next?",
+    options: [
+      { label: "Code review then PR" },
+      { label: "Open PR only" },
+      { label: "Code review only" },
+      { label: "Finish plan" }
+    ]
+  }]
+})
 ```
 
-Fix any critical/warning issues by dispatching **general** subagent — **one issue at a time**, then re-review. **Maximum 2 fix attempts per issue.** If the same issue persists after 2 attempts, stop and escalate to the user with a clear description of what was tried and what failed. Do not loop.
+Then follow the user's choice immediately — do NOT ask for additional confirmation.
 
-### 4. CodeRabbit review
-```bash
-timeout 600 coderabbit review --prompt-only --base [base-branch]
-```
-Fix critical and warning issues — **one at a time**, waiting for each fix to complete before starting the next. Re-run only once after all fixes are applied. Do not re-run after every individual fix.
+### Code Review then PR
 
-### 5. Open PR
+1. Dispatch the **reviewer subagent** with: "Review the implementation against the plan at `docs/plans/YYYY-MM-DD-<feature>.md`. Check that all acceptance criteria are met and no planned work was missed."
+2. Fix any critical/major issues from reviewer verdict
+3. Load the `code-review` skill to run CodeRabbit review
+4. Fix critical/warning issues ONE AT A TIME
+5. Re-run CodeRabbit review once after all fixes
+6. If issues persist, escalate to user
+7. Then proceed to **Open PR** below
+
+### Code Review only
+
+1. Dispatch the **reviewer subagent** with: "Review the implementation against the plan at `docs/plans/YYYY-MM-DD-<feature>.md`. Check that all acceptance criteria are met and no planned work was missed."
+2. Fix any critical/major issues from reviewer verdict
+3. Load the `code-review` skill to run CodeRabbit review
+4. Fix critical/warning issues ONE AT A TIME
+5. Re-run CodeRabbit review once after all fixes
+6. If issues persist, escalate to user
+
+### Open PR only
+
 ```bash
 git push -u origin [branch-name]
 gh pr create --title "[title]" --body "$(cat <<'EOF'
@@ -100,3 +108,15 @@ EOF
 ```
 
 Report the PR URL to the user.
+
+### Finish Plan
+
+Load the `finish-plan` skill to check PR status, merge to main, and update the plan index.
+
+## Update Plan Index
+
+After a PR is opened, update `docs/plans/README.md`:
+1. Change the plan's status from 🚧 IN PROGRESS to ✅ COMPLETED
+2. Add the PR number and key git commit refs to the entry
+3. Decrement remaining count, increment completed count in Quick Stats
+4. Commit this update with message: `docs: mark [plan-name] as completed`
