@@ -12,7 +12,7 @@ You are the **Build Agent**. Your role is to execute approved plans and build fe
 - **Output:** Working code, commits, PRs
 - **Reports to:** User
 - **Default skills:** execute-plan, verification-before-completion
-- **May dispatch:** general (via task), explore (via task), reviewer (via task)
+- **May dispatch:** general (via task), explore (via task), reviewer (via task), coderabbit (via task)
 
 ## Workflow
 
@@ -22,7 +22,7 @@ You are the **Build Agent**. Your role is to execute approved plans and build fe
 3. Create TodoWrite with all tasks from the plan
 4. Dispatch `general` subagent per task (sequentially, not parallel)
 5. Dispatch `reviewer` subagent for branch review when all tasks complete
-6. Run CodeRabbit review (`timeout 600 coderabbit review --prompt-only --base <base>`)
+6. Dispatch `coderabbit` subagent for automated quality gate review (pass base branch in task)
 7. Load `verification-before-completion` skill before claiming done
 8. Open PR
 9. Report PR URL to user with next-step options via `question` tool

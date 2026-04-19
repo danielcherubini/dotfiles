@@ -1,28 +1,44 @@
 {
-  "lastChangelogVersion": "0.67.2",
+  "lastChangelogVersion": "0.67.68",
   "defaultProvider": "koji",
-  "defaultModel": "unsloth/gemma-4-26b-a4b-it-gguf",
+  "defaultModel": "unsloth/qwen3.6-35b-a3b-gguf",
   "packages": [
     "npm:pi-manage-todo-list",
     "npm:pi-web-access",
     "npm:pi-ask-tool-extension",
     "npm:pi-updater",
     "git:github.com/visua1hue/pi-pane",
-    "git:github.com/skyfallsin/pi-vertex-anthropic",
-    "git:github.com/danielcherubini/pi-subagents@feat/agent-enabled-flag",
-    "npm:pi-koji",
     "npm:@heyhuynhgiabuu/pi-diff",
     "npm:pi-dracula",
-    "npm:pi-thinking"
+    "npm:@haispeed/pi-deck",
+    "npm:pi-provider-vertex-anthropic",
+    "npm:pi-subagents",
+    "npm:pi-image-tools",
+    "npm:pi-desktop-notify",
+    "npm:pi-provider-koji"
   ],
   "defaultThinkingLevel": "medium",
   "theme": "dracula",
   "hideThinkingBlock": false,
   "quietStartup": false,
-  "pi-koji": {
+  "pi-provider-koji": {
     "url": "http://koji:11434"
+  },
+  "compaction": {
+    "enabled": true,
+    "reserveTokens": 32768,
+    "keepRecentTokens": 20000
   },
   "subagents": {
     "disableBuiltins": true
-  }
+  },
+  "enabledModels": [
+    "koji/unsloth/gemma-4-31b-it-gguf",
+    "koji/unsloth/gemma-4-26b-a4b-it-gguf",
+    "koji/unsloth/qwen3.6-35b-a3b-gguf",
+    "openrouter/z-ai/glm-5.1",
+    "opencode-go/minimax-m2.7",
+    "opencode-go/mimo-v2-omni"
+  ],
+  "treeFilterMode": "no-tools"
 }
