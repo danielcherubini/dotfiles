@@ -1,10 +1,10 @@
 # Java Code Review Guide
 
-Java review focus: Java 17/21 features, Spring Boot 3 best practices, concurrency (virtual threads), JPA performance optimization, and code maintainability.
+Java review focus: Java 21/25 features, Spring Boot 4 best practices, concurrency (virtual threads), JPA performance optimization, and code maintainability.
 
 ## Table of Contents
 
-- [Modern Java Features (17/21+)](#modern-java-features-1721)
+- [Modern Java Features (21/25+)](#modern-java-features-2125)
 - [Stream API & Optional](#stream-api--optional)
 - [Spring Boot Best Practices](#spring-boot-best-practices)
 - [JPA & Database Performance](#jpa--database-performance)
@@ -16,7 +16,7 @@ Java review focus: Java 17/21 features, Spring Boot 3 best practices, concurrenc
 
 ---
 
-## Modern Java Features (17/21+)
+## Modern Java Features (21/25+)
 
 ### Records
 
@@ -65,7 +65,72 @@ String type = switch (obj) {
     case null      -> "null value"; // Java 21 handles null
     default        -> "unknown";
 };
+
+// ✅ Pattern matching with when clauses (Java 21+, finalized in Java 25)
+// When clauses allow complex conditions directly in the pattern
+String result = switch (obj) {
+    case Integer i when i > 0 -> "positive integer";
+    case Integer i when i < 0 -> "negative integer";
+    case Integer i           -> "zero";
+    case String s when !s.isBlank() -> "non-empty string: " + s;
+    case null, default -> "unknown";
+};
 ```
+
+### Primitive Types in Pattern Matching (Java 25)
+
+JEP 507 allows `instanceof` and `switch` patterns to match primitive types directly — no more autoboxing!
+
+```java
+// ❌ Autoboxing required for primitive type checks
+public boolean isPositive(Object value) {
+    if (value instanceof Integer i) {
+        return i > 0; // auto-unboxes, but creates Integer object
+    }
+    return false;
+}
+
+// ✅ Primitive type patterns (Java 25): direct matching without boxing
+public boolean isPositive(Object value) {
+    return switch (value) {
+        case int i when i > 0 -> true;   // matches int directly, no boxing!
+        default                -> false;
+    };
+}
+
+// ✅ Primitive patterns in switch with type narrowing
+int compute(Object input) {
+    return switch (input) {
+        case byte b  -> b;
+        case short s -> s;
+        case int i   -> i;
+        case long l  -> (int) l;
+        default      -> throw new IllegalArgumentException("Not a number");
+    };
+}
+```
+
+### Module Import Declarations (Java 25 Preview)
+
+JEP 511 introduces `module-import` for cleaner module declarations:
+
+```java
+// ❌ Traditional module-info.java: Verbose requires + exports
+module com.example.app {
+    requires java.logging;
+    requires java.sql;
+    exports com.example.api;
+}
+
+// ✅ Module imports (Java 25 Preview): concise, auto-resolves transitive deps
+module com.example.app {
+    import java.logging;   // Auto-requires + re-exports transitively
+    import java.sql;
+    exports com.example.api;
+}
+```
+
+> 💡 This is a preview feature. Use `--enable-preview` to compile and test it.
 
 ### Text Blocks
 
@@ -83,6 +148,12 @@ String json = """
       "age": 20
     }
     """;
+
+// ✅ Text blocks with .formatted() for dynamic content (Java 25+)
+String sql = """
+    INSERT INTO users (name, email)
+    VALUES (%s, %s)
+    """.formatted(name, email);
 ```
 
 ---
@@ -169,6 +240,27 @@ public class UserService {
 // 💡 Tip: Combined with Lombok @RequiredArgsConstructor for simpler code, but watch for circular dependencies
 ```
 
+### REST API Versioning (Spring Boot 4 / Spring Framework 7)
+
+Spring Boot 4 introduces first-class support for REST API versioning via `@RestControllerVersioned`:
+
+```java
+// ✅ Spring Boot 4: Built-in API versioning with @RestControllerVersioned
+@RestControllerVersioned(path = "/api/users", versions = {"v1", "v2"})
+public class UserController {
+
+    // Methods in v1 controller
+    @GetMapping("/users/{id}")
+    public UserDto getUserV1(@PathVariable Long id) { ... }
+}
+
+// ✅ Versioning strategies supported:
+// - URI path:   /api/users/v1/...
+// - Header:     Accept-Version: v2
+// - Parameter:  /api/users?version=v2
+// - Media type: Accept: application/vnd.app.v2+json
+```
+
 ### Configuration Management
 
 ```java
@@ -186,6 +278,27 @@ private String apiKey;
 @ConfigurationProperties(prefix = "app.payment")
 public record PaymentProperties(String apiKey, int timeout, String url) {}
 ```
+
+### Jackson 3 Migration (Spring Boot 4)
+
+Spring Boot 4 defaults to **Jackson 3** (`tools.jackson.*` namespace). Review annotations and configurations:
+
+```java
+// ❌ Jackson 2 annotations (still works but deprecated in SB 4)
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+// ✅ Jackson 3 annotations (Spring Boot 4 default)
+import tools.jackson.annotation.JsonProperty;
+import tools.jackson.databind.json.JsonMapper;
+
+// ✅ @JsonComponent renamed to @JacksonComponent (SB 4)
+// @JsonComponent → @JacksonComponent
+// @JsonMixin → @JacksonMixin
+// ObjectMapper → JsonMapper
+```
+
+> 💡 Use `spring-boot-properties-migrator` during migration to catch property name changes. Set `spring.jackson.use-jackson2-defaults=true` temporarily if needed.
 
 ---
 
@@ -277,7 +390,7 @@ public class User {
 ExecutorService executor = Executors.newFixedThreadPool(100);
 
 // ✅ Use virtual threads for I/O-intensive tasks (high throughput)
-// Spring Boot 3.2+: Enable with spring.threads.virtual.enabled=true
+// Spring Boot 3.2+ / 4.x: Enable with spring.threads.virtual.enabled=true
 ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
 
 // In virtual threads, blocking operations (DB queries, HTTP requests) consume almost no OS thread resources
@@ -354,7 +467,7 @@ try {
     // return null; // Swallows exception, upper layers don't know what happened
 }
 
-// ✅ Custom exceptions + @ControllerAdvice (Spring Boot 3 ProblemDetail)
+// ✅ Custom exceptions + @ControllerAdvice (Spring Boot 4 ProblemDetail)
 public class UserNotFoundException extends RuntimeException { ... }
 
 @RestControllerAdvice
@@ -402,14 +515,18 @@ class UserRepositoryTest {
 ## Review Checklist
 
 ### Basics and Conventions
-- [ ] Follows Java 17/21 features (Switch expressions, Records, text blocks)
+- [ ] Follows Java 21/25 features (Switch expressions, Records, text blocks, primitive type patterns)
 - [ ] Avoids deprecated classes (Date, Calendar, SimpleDateFormat)
-- [ ] Do collection operations prefer Stream API or Collections methods?
+- [ ] Stream API used appropriately (not overused for simple loops)?
 - [ ] Optional used only for return values, not for fields or parameters
 
-### Spring Boot
+### Spring Boot 4 Specific
 - [ ] Constructor injection used instead of @Autowired field injection
 - [ ] Configuration properties use @ConfigurationProperties
+- [ ] REST API versioning uses @RestControllerVersioned (Spring Boot 4)
+- [ ] Jackson 3 annotations (`tools.jackson.*`) used instead of Jackson 2 (`com.fasterxml.jackson.*`)
+- [ ] Correct Spring Boot 4 starters used (`spring-boot-starter-webmvc` not `spring-boot-starter-web`)
+- [ ] Undertow NOT used (removed in Spring Boot 4; use Tomcat/Jetty/Reactor Netty)
 - [ ] Controller responsibilities are single, business logic pushed to Service
 - [ ] Global exception handling uses @ControllerAdvice / ProblemDetail
 

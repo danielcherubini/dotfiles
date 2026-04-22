@@ -118,11 +118,24 @@ For each file, check:
 - **Performance** - N+1 queries, unnecessary loops, memory leaks
 - **Maintainability** - Clear names, single responsibility, comments
 
-### Phase 4: PRESENT FINDINGS AND ASK WHAT TO FIX (REQUIRED — DO NOT SKIP)
+### Phase 4: PRESENT FINDINGS AND ASK WHAT TO FIX (REQUIRED — HARD STOP)
 
-> ⚠️ **MANDATORY STEP:** You MUST call `ask()` after completing the review. Never proceed directly to fixing issues. Never present findings and then start fixing without user input.
-
-**YOU MUST call `ask()` after completing the review.** Do NOT proceed to fixes without user input.
+> 🛑 **HARD STOP POINT — READ THIS FIRST**
+>
+> This is the **ONLY** place in the entire review process where you must pause and wait for user input. After presenting findings, your job is DONE until the user responds.
+>
+> **❌ NEVER do any of these:**
+> - Present findings and then immediately start fixing issues
+> - Say "What would you like to do?" in plain text instead of using `ask()`
+> - Begin Phase 5 fixes before receiving a response from `ask()`
+> - Assume the user wants everything fixed — let them choose
+>
+> **✅ ALWAYS do this:**
+> 1. Present the summary
+> 2. Call `ask()` with the question
+> 3. STOP. Wait for the user's response.
+>
+> **This is a hard break in your execution flow.** You must not proceed to Phase 5 until `ask()` returns with a user answer.
 
 #### Step 1: Count and categorize all findings
 
@@ -172,11 +185,15 @@ ask({
 })
 ```
 
-#### Step 4: WAIT for user response — DO NOT proceed until answered
+#### Step 4: STOP and WAIT for user response
+
+After calling `ask()`, your review is complete. Do nothing else. Do not start fixing. Do not suggest fixes. Wait for the user to respond, then proceed to Phase 5 based on their answer.
+
+**If you skip this step or bypass ask(), you have violated a core rule of the review process.**
 
 ### Phase 5: Fix Issues (Based on User Choice)
 
-**ONLY proceed after receiving user's answer from `ask()`.**
+**⚠️ You may ONLY enter this phase after `ask()` has returned a user response.** If you are here without having called `ask()` first, you have made an error — go back to Phase 4.
 
 Fix issues ONE AT A TIME based on user's selection. For each issue:
 1. Explain the problem clearly
@@ -236,7 +253,7 @@ When reviewing code in a specific language/framework, consult the corresponding 
 | **Rust** | [Rust Guide](languages/lang-rust.md) | Ownership/Borrowing, Unsafe Review, Async Code, Error Handling |
 | **TypeScript** | [TypeScript Guide](languages/lang-typescript.md) | Type Safety, async/await, Immutability |
 | **Python** | [Python Guide](languages/lang-python.md) | Mutable Default Args, Exception Handling, Class Attributes |
-| **Java** | [Java Guide](languages/lang-java.md) | Java 17/21 Features, Spring Boot 3, Virtual Threads, Stream/Optional |
+| **Java** | [Java Guide](languages/lang-java.md) | Java 21/25 Features, Spring Boot 4, Virtual Threads, Stream/Optional |
 | **Go** | [Go Guide](languages/lang-go.md) | Error Handling, goroutine/channel, context, Interface Design |
 | **C** | [C Guide](languages/lang-c.md) | Pointers/Buffers, Memory Safety, UB, Error Handling |
 | **C++** | [C++ Guide](languages/lang-cpp.md) | RAII, Lifetime, Rule of 0/3/5, Exception Safety |
