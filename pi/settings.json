@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.67.68",
+  "lastChangelogVersion": "0.68.0",
   "defaultProvider": "koji",
   "defaultModel": "unsloth/qwen3.6-35b-a3b-gguf",
   "packages": [
@@ -14,8 +14,8 @@
     "npm:pi-provider-vertex-anthropic",
     "npm:pi-subagents",
     "npm:pi-image-tools",
-    "npm:pi-desktop-notify",
-    "npm:pi-provider-koji"
+    "npm:pi-provider-koji",
+    "npm:pi-desktop-notify"
   ],
   "defaultThinkingLevel": "medium",
   "theme": "dracula",
@@ -32,12 +32,5 @@
   "subagents": {
     "disableBuiltins": true
   },
-  "enabledModels": [
-    "koji/unsloth/qwen3.6-35b-a3b-gguf",
-    "koji/mudler/qwen3.6-35b-a3b-apex-gguf",
-    "openrouter/z-ai/glm-5.1",
-    "opencode-go/minimax-m2.7",
-    "opencode-go/mimo-v2-omni"
-  ],
   "treeFilterMode": "no-tools"
 }

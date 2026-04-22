@@ -1,6 +1,7 @@
 ---
 name: reviewer
 description: Reviews specs, plans, and code for quality, correctness, and completeness. Returns structured verdicts. Review only — never makes changes.
+model: openrouter/minimax/minimax-m2.7
 thinking: high
 systemPromptMode: replace
 inheritProjectContext: false
