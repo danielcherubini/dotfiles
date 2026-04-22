@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.68.0",
+  "lastChangelogVersion": "0.68.1",
   "defaultProvider": "koji",
   "defaultModel": "unsloth/qwen3.6-35b-a3b-gguf",
   "packages": [
@@ -15,7 +15,8 @@
     "npm:pi-subagents",
     "npm:pi-image-tools",
     "npm:pi-provider-koji",
-    "npm:pi-desktop-notify"
+    "npm:pi-desktop-notify",
+    "npm:pi-thinking"
   ],
   "defaultThinkingLevel": "medium",
   "theme": "dracula",
