@@ -1,19 +1,19 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["npm:opencode-koji"],
+  "plugin": ["npm:opencode-tama"],
   "provider": {
-    "koji": {
+    "tama": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "Koji",
+      "name": "Tama",
       "options": {
-        "baseURL": "http://koji:11434/v1",
+        "baseURL": "http://tama:11434/v1",
       },
     },
   },
   "agent": {
     "build": {
       "mode": "primary",
-      //      "model": "koji/unsloth/gemma-4-31b-it-gguf",
+      //      "model": "tama/unsloth/gemma-4-31b-it-gguf",
     },
     "plan": {
       "mode": "primary",
@@ -35,7 +35,7 @@
     },
     "general": {
       "mode": "subagent",
-      //     "model": "koji/unsloth/gemma-4-31b-it-gguf",
+      //     "model": "tama/unsloth/gemma-4-31b-it-gguf",
     },
   },
 }

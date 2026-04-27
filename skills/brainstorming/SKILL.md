@@ -14,16 +14,18 @@ Do NOT write code or invoke implementation skills until design is approved.
 ## Process
 
 1. Explore context — check files, docs, recent commits
-2. Ask clarifying questions — one at a time, prefer multiple choice
-3. Propose 2-3 approaches with trade-offs and your recommendation
-4. Present design section by section, get approval after each
+2. Ask clarifying questions — one at a time, use the `ask` tool with multiple-choice options
+3. Propose 2-3 approaches with trade-offs and your recommendation, use the `ask` tool
+4. Present design section by section, use the `ask` tool to get approval after each section
 5. Once approved, present the final spec in full
+
+> **Always use the `ask` tool** for steps 2–4. Do not present a section and then continue to the next — wait for the user's explicit approval via `ask` before moving forward.
 
 ## After Approval
 
 Once the design is approved by the user, present the complete spec in your response — do NOT write it to disk. The spec stays in the conversation and flows directly into the next step.
 
-Use the `question` tool to ask what happens next:
+Use the `ask` tool to ask what happens next:
 
 ```
 ask({
@@ -52,6 +54,8 @@ If the user chooses "Create implementation plan", respond:
 
 When the user confirms, load the `create-plan` skill and invoke it — do not start planning on your own. The `create-plan` skill handles the entire planning process.
 
+**Clear the todo list** — use `manage_todo_list` to remove all entries now that brainstorming is complete.
+
 If the user chooses "Save spec for later", THEN:
 1. Write it to `docs/plans/YYYY-MM-DD-<topic>-spec.md`
 2. Add the new spec to `docs/plans/README.md` in the appropriate category with status 📋 DRAFT
@@ -59,7 +63,9 @@ If the user chooses "Save spec for later", THEN:
 
 ## Principles
 
-- One question per message
+- Always use the `ask` tool for every decision point — clarifying questions, approach selection, section approval, and post-approval next steps
+- One question per `ask` call
+- Never skip ahead to the next section without explicit user approval via `ask`
 - YAGNI — remove unnecessary features
 - Design for clear boundaries and single responsibilities
 - In existing codebases, follow established patterns

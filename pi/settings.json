@@ -1,7 +1,7 @@
 {
-  "lastChangelogVersion": "0.68.1",
-  "defaultProvider": "koji",
-  "defaultModel": "unsloth/qwen3.6-35b-a3b-gguf",
+  "lastChangelogVersion": "0.70.2",
+  "defaultProvider": "tama",
+  "defaultModel": "unsloth/qwen3.6-27b-gguf",
   "packages": [
     "npm:pi-manage-todo-list",
     "npm:pi-web-access",
@@ -10,28 +10,43 @@
     "git:github.com/visua1hue/pi-pane",
     "npm:@heyhuynhgiabuu/pi-diff",
     "npm:pi-dracula",
-    "npm:@haispeed/pi-deck",
     "npm:pi-provider-vertex-anthropic",
     "npm:pi-subagents",
     "npm:pi-image-tools",
-    "npm:pi-provider-koji",
     "npm:pi-desktop-notify",
-    "npm:pi-thinking"
+    "npm:pi-thinking",
+    "npm:pi-provider-tama",
+    "npm:pi-easy-footer"
   ],
   "defaultThinkingLevel": "medium",
   "theme": "dracula",
   "hideThinkingBlock": false,
   "quietStartup": false,
-  "pi-provider-koji": {
-    "url": "http://koji:11434"
-  },
   "compaction": {
     "enabled": true,
-    "reserveTokens": 32768,
+    "reserveTokens": 16384,
     "keepRecentTokens": 20000
   },
   "subagents": {
     "disableBuiltins": true
   },
-  "treeFilterMode": "no-tools"
+  "treeFilterMode": "no-tools",
+  "terminal": {
+    "showTerminalProgress": false
+  },
+  "enabledModels": [
+    "tama/unsloth/gemma-4-26b-a4b-it-gguf",
+    "tama/unsloth/gemma-4-e4b-it-gguf",
+    "tama/unsloth/qwen3.6-35b-a3b-gguf",
+    "tama/unsloth/gemma-4-31b-it-gguf",
+    "tama/unsloth/qwen3.6-27b-gguf",
+    "openrouter/z-ai/glm-5.1",
+    "openrouter/xiaomi/mimo-v2-pro",
+    "openrouter/xiaomi/mimo-v2-omni",
+    "openrouter/qwen/qwen3.6-plus",
+    "openrouter/minimax/minimax-m2.7",
+    "openrouter/deepseek/deepseek-v4-flash",
+    "openrouter/deepseek/deepseek-v4-pro"
+  ]
 }
+

@@ -1,5 +1,5 @@
 ---
-name: koji-review
+name: review
 description: |
   Provides comprehensive code review guidance for React 19, Vue 3, Rust, TypeScript, Java, Python, and C/C++.
   Helps catch bugs, improve code quality, and give constructive feedback.
@@ -124,18 +124,35 @@ For each file, check:
 >
 > This is the **ONLY** place in the entire review process where you must pause and wait for user input. After presenting findings, your job is DONE until the user responds.
 >
+> **EXECUTION FLOW (MUST follow this exact sequence):**
+> ```
+> Phase 3 (Line-by-line review) → Present Summary → call ask() → [STOP — WAIT] → (user responds) → Phase 5
+>                                                              ↑
+>                                                              └── YOU MUST STOP HERE. NOTHING ELSE.
+> ```
+>
+> **PRE-FLIGHT CHECKLIST (Complete ALL before proceeding):**
+> - [ ] I have presented the summary of findings ✅
+> - [ ] I have called `ask()` with the fix-priority question ✅
+> - [ ] I am NOT about to fix, suggest, or modify any code ✅
+> - [ ] I am waiting for user input before doing anything else ✅
+>
 > **❌ NEVER do any of these:**
 > - Present findings and then immediately start fixing issues
 > - Say "What would you like to do?" in plain text instead of using `ask()`
 > - Begin Phase 5 fixes before receiving a response from `ask()`
 > - Assume the user wants everything fixed — let them choose
+> - Continue reading code after presenting findings
+> - Suggest fixes without waiting for user selection
 >
-> **✅ ALWAYS do this:**
-> 1. Present the summary
-> 2. Call `ask()` with the question
+> **✅ ALWAYS do this — IN EXACT ORDER:**
+> 1. Present the summary (count and categorize all findings)
+> 2. Call `ask()` with the exact question format shown below
 > 3. STOP. Wait for the user's response.
 >
 > **This is a hard break in your execution flow.** You must not proceed to Phase 5 until `ask()` returns with a user answer.
+>
+> **VIOLATION DETECTION:** If you find yourself about to fix, suggest, or modify code after presenting findings, you have violated this rule. Go back and call `ask()` first.
 
 #### Step 1: Count and categorize all findings
 

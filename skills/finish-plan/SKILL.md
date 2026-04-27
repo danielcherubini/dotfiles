@@ -32,7 +32,56 @@ Verify all of:
 - **Reviews**: Approved (or no review required)
 - **Mergeable**: `MERGEABLE`
 
-If any check fails, **stop and report**. Do not force-merge.
+If any check fails, go to [Step 1a: Fix PR Issues](#1a-fix-pr-issues).
+
+### 1a. Fix PR Issues
+
+Before merging, check for outstanding issues on the PR:
+
+**A. Check for review comments / conversations:**
+```bash
+gh pr view [PR-NUMBER] --json comments,reviews
+```
+Look for:
+- Comments with `isMinimized: false` (active, not resolved)
+- Reviews with `state: "COMMENTED"` or `state: "CHANGES_REQUESTED"`
+
+**B. Check for CI failures:**
+```bash
+gh pr checks [PR-NUMBER]
+```
+Look for any checks with `status: "COMPLETED"` and `conclusion: "FAILURE"`.
+
+**C. If issues are found, fix them in a loop:**
+
+1. **Read each comment/issue** — understand what needs to change
+2. **Fix on the feature branch:**
+   ```bash
+   git checkout [feature-branch]
+   # Make the fix
+   git add -A && git commit -m "fix: address review comment — [summary]"
+   git push origin [feature-branch]
+   ```
+3. **Respond to the comment:**
+   ```bash
+   gh pr comment [PR-NUMBER] --body "Fixed — [explanation of what changed]"
+   ```
+4. **Re-check PR status** — re-run Step 1 from the top
+5. **Loop until all issues are resolved** — repeat steps A–D until:
+   - All review comments are addressed
+   - All CI checks pass
+   - Review decision is `APPROVED` (or no review required)
+   - PR is `MERGEABLE`
+
+**D. If a comment doesn't require a code change** (e.g., "nice work", general feedback):
+- Reply with `gh pr comment` acknowledging the feedback
+- Move on to next comment
+
+**E. If you're blocked** (can't reproduce an issue, need clarification):
+- Comment on the PR asking for clarification
+- Report back to the user and stop
+
+> **CRITICAL:** Do NOT skip unresolved review comments or failing CI. Loop until everything is green.
 
 ### 2. Merge the PR
 
@@ -78,7 +127,9 @@ Tell the user:
 | Issue | Action |
 |-------|--------|
 | CI still running | Wait and re-check, or ask user if they want to proceed |
-| Review requested but not approved | Ask user if they want to merge anyway |
+| CI failing | Fix on feature branch, push, re-check (loop until green) |
+| Review comments unresolved | Fix each issue, push, reply to comment, re-check (loop until resolved) |
+| Review requested but not approved | Ask reviewer, or ask user if they want to merge anyway |
 | Merge conflicts on PR | Do NOT merge locally. Ask user to resolve on the branch. |
 | PR already merged | Skip merge step, sync main, update index |
 | Plan not in README.md | Add it as ✅ COMPLETED with the PR number |

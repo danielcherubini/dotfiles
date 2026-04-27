@@ -78,7 +78,7 @@ Then follow the user's choice immediately — do NOT ask for additional confirma
 
 1. Dispatch the **reviewer subagent** with: "Review the implementation against the plan at `docs/plans/YYYY-MM-DD-<feature>.md`. Check that all acceptance criteria are met and no planned work was missed."
 2. Fix any critical/major issues from reviewer verdict
-3. Load the `koji-review` skill to conduct a thorough code review
+3. Load the `review` skill to conduct a thorough code review
 4. **Clear the todo list** — remove all old task entries
 5. **Create new todos** for each finding from the review:
    - One todo per issue found (blocking, important, nit, suggestion)
@@ -91,7 +91,7 @@ Then follow the user's choice immediately — do NOT ask for additional confirma
    ```
    subagent({
      agent: "general",
-     task: "You are fixing a code review finding in [project].\n\n## Issue to Fix\n[FULL TEXT from the todo item]\n\n## Instructions\n- Load the `koji-review` skill for guidance on best practices\n- Fix the issue exactly as described\n- Validate your fix by running tests/linting/build\n- Update the corresponding todo in the todo list to \"completed\" using manage_todo_list\n- Commit your fix with a descriptive message\n- Work from: [directory]\n\n## Report back with:\n- Status: DONE | BLOCKED\n- What you fixed\n- Files changed",
+     task: "You are fixing a code review finding in [project].\n\n## Issue to Fix\n[FULL TEXT from the todo item]\n\n## Instructions\n- Load the `review` skill for guidance on best practices\n- Fix the issue exactly as described\n- Validate your fix by running tests/linting/build\n- Update the corresponding todo in the todo list to \"completed\" using manage_todo_list\n- Commit your fix with a descriptive message\n- Work from: [directory]\n\n## Report back with:\n- Status: DONE | BLOCKED\n- What you fixed\n- Files changed",
      description: "Fix: [severity] <brief description>"
    })
    ```
@@ -105,7 +105,7 @@ Then follow the user's choice immediately — do NOT ask for additional confirma
 
 1. Dispatch the **reviewer subagent** with: "Review the implementation against the plan at `docs/plans/YYYY-MM-DD-<feature>.md`. Check that all acceptance criteria are met and no planned work was missed."
 2. Fix any critical/major issues from reviewer verdict
-3. Load the `koji-review` skill to conduct a thorough code review
+3. Load the `review` skill to conduct a thorough code review
 4. **Clear the todo list** — remove all old task entries
 5. **Create new todos** for each finding from the review:
    - One todo per issue found (blocking, important, nit, suggestion)
@@ -118,7 +118,7 @@ Then follow the user's choice immediately — do NOT ask for additional confirma
    ```
    subagent({
      agent: "general",
-     task: "You are fixing a code review finding in [project].\n\n## Issue to Fix\n[FULL TEXT from the todo item]\n\n## Instructions\n- Load the `koji-review` skill for guidance on best practices\n- Fix the issue exactly as described\n- Validate your fix by running tests/linting/build\n- Update the corresponding todo in the todo list to \"completed\" using manage_todo_list\n- Commit your fix with a descriptive message\n- Work from: [directory]\n\n## Report back with:\n- Status: DONE | BLOCKED\n- What you fixed\n- Files changed",
+     task: "You are fixing a code review finding in [project].\n\n## Issue to Fix\n[FULL TEXT from the todo item]\n\n## Instructions\n- Load the `review` skill for guidance on best practices\n- Fix the issue exactly as described\n- Validate your fix by running tests/linting/build\n- Update the corresponding todo in the todo list to \"completed\" using manage_todo_list\n- Commit your fix with a descriptive message\n- Work from: [directory]\n\n## Report back with:\n- Status: DONE | BLOCKED\n- What you fixed\n- Files changed",
      description: "Fix: [severity] <brief description>"
    })
    ```
@@ -143,9 +143,12 @@ EOF
 
 Report the PR URL to the user.
 
+**Clear the todo list** — remove all remaining entries now that execution is complete.
+
 ### Finish Plan
 
-Load the `finish-plan` skill to check PR status, merge to main, and update the plan index.
+1. **Clear the todo list** — remove all remaining entries
+2. Load the `finish-plan` skill to check PR status, merge to main, and update the plan index
 
 ## Update Plan Index
 
@@ -154,3 +157,4 @@ After a PR is opened, update `docs/plans/README.md`:
 2. Add the PR number and key git commit refs to the entry
 3. Decrement remaining count, increment completed count in Quick Stats
 4. Commit this update with message: `docs: mark [plan-name] as completed`
+5. **Clear the todo list** — remove all remaining entries

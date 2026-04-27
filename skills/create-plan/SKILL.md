@@ -87,6 +87,8 @@ Then tell the user the plan is ready and ask them to say when they're ready to s
 
 > "The implementation plan is ready. When you're ready to start implementing, just say the word and I'll load the `execute-plan` skill."
 
+**Clear the todo list** — use `manage_todo_list` to remove all entries now that planning is complete.
+
 ## Common Mistakes
 
 | Mistake | Fix |

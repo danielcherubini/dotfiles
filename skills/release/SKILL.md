@@ -34,9 +34,9 @@ digraph release_flow {
 }
 ```
 
-## Step 1 — Read `agents.md`
+## Step 1 — Read `AGENTS.md`
 
-Look for `.agents/agents.md` in the project root. If it exists, read it fully. Extract any release-related instructions (e.g., "run tests before releasing", "update CHANGELOG.md", "notify Slack"). These are **additional steps** to apply after bumping but before tagging.
+Look for `AGENTS.md` in the project root; if not found, look for `CLAUDE.md`. If either exists, read it fully. Extract any release-related instructions (e.g., "run tests before releasing", "update CHANGELOG.md", "notify Slack"). These are **additional steps** to apply after bumping but before tagging.
 
 ## Step 2 — Detect Project Type(s)
 
@@ -182,7 +182,7 @@ git push
 |---------|-----|
 | Skipping GitHub Actions check | Always check — a red build means don't release |
 | Bumping only one file when multiple exist | Detect ALL ecosystem files and bump all |
-| Not reading `agents.md` before releasing | It may contain required custom steps |
+| Not reading `AGENTS.md` or `CLAUDE.md` before releasing | They may contain required custom steps |
 | Creating tag without `-a` (annotated) | Use `git tag -a` for proper releases |
 | Forgetting to push the tag after pushing commits | Push both: `git push origin "$TAG"` then `git push` |
 
