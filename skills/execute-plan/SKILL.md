@@ -19,7 +19,16 @@ For each task, dispatch a `general` subagent (sequentially, not parallel):
 Subagent prompt template:
   description: "Implement Task N: [task name]"
   prompt: |
-    You are implementing a task in [project].
+    You are BUILDING code in [project]. DO NOT PLAN — write actual file edits using the Edit and Write tools.
+
+    ## CRITICAL INSTRUCTIONS
+    1. READ the files listed below first to understand the existing patterns
+    2. USE the Edit tool to modify existing files — do NOT rewrite entire files
+    3. USE the Write tool to create new files
+    4. RUN `cargo fmt --all`, then `cargo check --workspace`, then `cargo test --workspace` to validate
+    5. COMMIT your work with: `git commit -am "[commit message]"`
+    6. If cargo check fails, READ the error, READ the relevant source file, FIX the code with Edit tool, then re-run check
+    7. DO NOT output planning text — output actual file changes
 
     ## Task
     [FULL TEXT of task from plan - paste it, don't make subagent read file]
@@ -91,7 +100,7 @@ Then follow the user's choice immediately — do NOT ask for additional confirma
    ```
    subagent({
      agent: "general",
-     task: "You are fixing a code review finding in [project].\n\n## Issue to Fix\n[FULL TEXT from the todo item]\n\n## Instructions\n- Load the `review` skill for guidance on best practices\n- Fix the issue exactly as described\n- Validate your fix by running tests/linting/build\n- Update the corresponding todo in the todo list to \"completed\" using manage_todo_list\n- Commit your fix with a descriptive message\n- Work from: [directory]\n\n## Report back with:\n- Status: DONE | BLOCKED\n- What you fixed\n- Files changed",
+     task: "You are BUILDING code in [project]. DO NOT PLAN — write actual file edits using the Edit and Write tools.\n\n## CRITICAL INSTRUCTIONS\n1. READ the files listed below first to understand the existing patterns\n2. USE the Edit tool to modify existing files — do NOT rewrite entire files\n3. RUN `cargo fmt --all`, then `cargo check --workspace`, then `cargo test --workspace` to validate\n4. COMMIT your work with: `git commit -am \"[commit message]\"`\n5. If cargo check fails, READ the error, READ the relevant source file, FIX the code with Edit tool, then re-run check\n6. DO NOT output planning text — output actual file changes\n\n## Issue to Fix\n[FULL TEXT from the todo item]\n\n## Instructions\n- Load the `review` skill for guidance on best practices\n- Fix the issue exactly as described\n- Validate your fix by running tests/linting/build\n- Update the corresponding todo in the todo list to \"completed\" using manage_todo_list\n- Commit your fix with a descriptive message\n- Work from: [directory]\n\n## Report back with:\n- Status: DONE | BLOCKED\n- What you fixed\n- Files changed",
      description: "Fix: [severity] <brief description>"
    })
    ```
@@ -118,7 +127,7 @@ Then follow the user's choice immediately — do NOT ask for additional confirma
    ```
    subagent({
      agent: "general",
-     task: "You are fixing a code review finding in [project].\n\n## Issue to Fix\n[FULL TEXT from the todo item]\n\n## Instructions\n- Load the `review` skill for guidance on best practices\n- Fix the issue exactly as described\n- Validate your fix by running tests/linting/build\n- Update the corresponding todo in the todo list to \"completed\" using manage_todo_list\n- Commit your fix with a descriptive message\n- Work from: [directory]\n\n## Report back with:\n- Status: DONE | BLOCKED\n- What you fixed\n- Files changed",
+     task: "You are BUILDING code in [project]. DO NOT PLAN — write actual file edits using the Edit and Write tools.\n\n## CRITICAL INSTRUCTIONS\n1. READ the files listed below first to understand the existing patterns\n2. USE the Edit tool to modify existing files — do NOT rewrite entire files\n3. RUN `cargo fmt --all`, then `cargo check --workspace`, then `cargo test --workspace` to validate\n4. COMMIT your work with: `git commit -am \"[commit message]\"`\n5. If cargo check fails, READ the error, READ the relevant source file, FIX the code with Edit tool, then re-run check\n6. DO NOT output planning text — output actual file changes\n\n## Issue to Fix\n[FULL TEXT from the todo item]\n\n## Instructions\n- Load the `review` skill for guidance on best practices\n- Fix the issue exactly as described\n- Validate your fix by running tests/linting/build\n- Update the corresponding todo in the todo list to \"completed\" using manage_todo_list\n- Commit your fix with a descriptive message\n- Work from: [directory]\n\n## Report back with:\n- Status: DONE | BLOCKED\n- What you fixed\n- Files changed",
      description: "Fix: [severity] <brief description>"
    })
    ```

@@ -12,6 +12,9 @@
 - [Error Handling](#error-handling)
 - [Performance](#performance)
 - [Trait Design](#trait-design)
+- [Testing](#testing)
+- [Macros](#macros)
+- [Common Anti-Patterns](#common-anti-patterns)
 - [Review Checklist](#rust-review-checklist)
 
 ---
@@ -759,6 +762,259 @@ fn create_handler() -> impl Handler {
 
 ---
 
+## Testing
+
+### Test Organization
+
+```rust
+// ✅ Group related tests with clear naming
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_parse_valid_json() {
+        // ...
+    }
+
+    #[test]
+    fn test_parse_invalid_json_returns_error() {
+        // ...
+    }
+
+    /// Edge case: empty input should return default, not panic
+    #[test]
+    fn test_parse_empty_input_returns_default() {
+        // ...
+    }
+}
+```
+
+### Property-Based Testing
+
+```rust
+// ✅ Use proptest for property-based testing
+use proptest::prelude::*;
+
+proptest! {
+    #[test]
+    fn test_roundtrip_serialize_deserialize(
+        data in any::<MyStruct>()
+    ) {
+        let serialized = serde_json::to_string(&data).unwrap();
+        let deserialized: MyStruct = serde_json::from_str(&serialized).unwrap();
+        assert_eq!(data, deserialized);
+    }
+}
+```
+
+### Integration Tests
+
+```rust
+// ✅ Integration tests in tests/ directory
+// tests/integration_test.rs
+
+use tama_core::*;
+
+#[test]
+fn test_full_workflow() {
+    let config = Config::default();
+    let mut system = System::new(config);
+    system.load_model("test-model").unwrap();
+    let result = system.infer("test input").unwrap();
+    assert!(!result.is_empty());
+}
+```
+
+### Mock Testing
+
+```rust
+// ✅ Use mockall for mocking
+use mockall::*;
+
+mock! {
+    pub trait Database {
+        fn get_user(&self, id: i64) -> Option<User>;
+        fn save_user(&self, user: &User) -> Result<()>;
+    }
+}
+
+#[test]
+fn test_user_service() {
+    let mut mock_db = MockDatabase::new();
+    mock_db
+        .expect_get_user()
+        .with(eq(42))
+        .once()
+        .returning(|id| Some(User { id, name: "Alice".into() }));
+
+    let service = UserService::new(mock_db);
+    let user = service.get_user(42).unwrap();
+    assert_eq!(user.name, "Alice");
+}
+```
+
+---
+
+## Macros
+
+### Hygiene
+
+```rust
+// ✅ Macro variables are hygienic — they don't leak
+macro_rules! log_and_return {
+    ($expr:expr) => {{
+        let result = $expr;
+        log::info!("Result: {:?}", result);
+        result
+    }};
+}
+
+// ✅ Use ident!() for identifier hygiene
+macro_rules! create_struct {
+    ($name:ident) => {
+        struct $name {
+            value: i32,
+        }
+    };
+}
+```
+
+### Debugging Macros
+
+```rust
+// ✅ Use debug assertions for debug-only checks
+macro_rules! debug_check {
+    ($cond:expr, $msg:expr) => {
+        debug_assert!($cond, $msg);
+    };
+}
+
+// ✅ Use eprintln! for debugging (stripped in release)
+fn process(data: &[u8]) {
+    eprintln!("Processing {} bytes", data.len());
+    // ...
+}
+```
+
+---
+
+## Common Anti-Patterns
+
+### Overuse of unwrap()
+
+```rust
+// ❌ unwrap() in production code — panics on error
+fn bad_process(path: &str) -> String {
+    let data = std::fs::read_to_string(path).unwrap();
+    data.to_uppercase()
+}
+
+// ✅ Use proper error handling
+fn good_process(path: &str) -> Result<String, std::io::Error> {
+    let data = std::fs::read_to_string(path)?;
+    Ok(data.to_uppercase())
+}
+
+// ✅ Use expect() with a helpful message if unwrap is truly justified
+fn good_expect() -> String {
+    let config = CONFIG.as_ref().expect("CONFIG must be initialized");
+    config.name.clone()
+}
+```
+
+### String Overuse
+
+```rust
+// ❌ Returning owned Strings when &str would suffice
+fn bad_get_name(user: &User) -> String {
+    user.name.clone()
+}
+
+// ✅ Return references when possible
+fn good_get_name(user: &User) -> &str {
+    &user.name
+}
+
+// ✅ Use Cow when you sometimes need to allocate
+fn maybe_transform(s: &str) -> Cow<str> {
+    if s.contains(' ') {
+        Cow::Owned(s.replace(' ', "_"))
+    } else {
+        Cow::Borrowed(s)
+    }
+}
+```
+
+### Mutex Overuse
+
+```rust
+// ❌ Using Mutex for everything
+struct BadState {
+    data: Mutex<HashMap<String, i32>>,
+}
+
+// ✅ Use RwLock for read-heavy workloads
+use std::sync::RwLock;
+
+struct GoodState {
+    data: RwLock<HashMap<String, i32>>,
+}
+
+// ✅ Use atomic types for simple counters
+use std::sync::atomic::{AtomicUsize, Ordering};
+
+struct Counter {
+    count: AtomicUsize,
+}
+```
+
+### N+1 Queries
+
+```rust
+// ❌ Fetching related data in a loop
+async fn bad_get_users_with_posts(db: &Db) -> Vec<UserWithPosts> {
+    let users = db.get_all_users().await?;
+    let mut result = Vec::new();
+    for user in users {
+        let posts = db.get_posts_for_user(user.id).await?;  // N queries!
+        result.push(UserWithPosts { user, posts });
+    }
+    Ok(result)
+}
+
+// ✅ Batch fetch with JOIN or IN clause
+async fn good_get_users_with_posts(db: &Db) -> Result<Vec<UserWithPosts>> {
+    let users = db.get_all_users().await?;
+    let user_ids: Vec<i64> = users.iter().map(|u| u.id).collect();
+    let posts = db.get_posts_for_users(&user_ids).await?;  // 1 query!
+    Ok(merge_users_and_posts(users, posts))
+}
+```
+
+### Ignoring must_use
+
+```rust
+// ❌ Ignoring Result return values
+fn bad_ignore_result() {
+    some_function_that_returns_result();  // Result is ignored!
+}
+
+// ✅ Handle or explicitly ignore with _
+fn good_handle_result() {
+    match some_function_that_returns_result() {
+        Ok(_) => {},
+        Err(e) => log::error!("Error: {}", e),
+    }
+}
+
+fn good_explicit_ignore() {
+    let _ = some_function_that_returns_result();  // Explicitly ignored
+}
+```
+
+---
+
 ## Rust Review Checklist
 
 ### What the Compiler Can't Catch
@@ -831,6 +1087,30 @@ fn create_handler() -> impl Handler {
 - [ ] impl Trait vs Box<dyn Trait> choice appropriate
 - [ ] Hot paths avoid allocations
 - [ ] Consider using Cow to reduce clones
+
+### Testing
+
+- [ ] Unit tests for pure functions
+- [ ] Integration tests for workflows
+- [ ] Edge cases tested (empty, boundary, error)
+- [ ] Property-based tests for roundtrip/invariants
+- [ ] Mocks used appropriately (not overused)
+- [ ] Tests are deterministic (no randomness)
+
+### Macros
+
+- [ ] Macro variables are hygienic
+- [ ] Macros have doc comments explaining usage
+- [ ] Debug assertions used for debug-only checks
+- [ ] Macros don't leak identifiers
+
+### Anti-Patterns
+
+- [ ] No unwrap() in production code (use expect() with message if justified)
+- [ ] No string overuse (use &str, Cow where appropriate)
+- [ ] No mutex overuse (use RwLock, atomics where appropriate)
+- [ ] No N+1 queries (batch fetches)
+- [ ] No ignored must_use values
 
 ### Code Quality
 
