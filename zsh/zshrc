@@ -107,8 +107,6 @@ if [ -d "$HOME/Android/Sdk/platform-tools" ] ; then
   export PATH="$PATH:$HOME/Android/Sdk/platform-tools"
 fi
 
-# opencode
-export PATH=/home/daniel/.opencode/bin:$PATH
 export OPENCODE_ENABLE_EXA=1
 export OPENCODE_EXPERIMENTAL=1
 export OPENCODE_EXPERIMENTAL_PLAN_MODE=1
@@ -144,3 +142,5 @@ export PATH="$PATH:/home/daniel/.lmstudio/bin"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 fpath=(~/.zsh/completions $fpath)
+
+export PATH="$HOME/.opencode/bin:$PATH"
