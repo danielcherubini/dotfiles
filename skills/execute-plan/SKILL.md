@@ -6,7 +6,6 @@ description: Use when you have a written implementation plan to execute
 # Execute Plan
 
 Read the plan, create a feature branch, dispatch subagents per task, review the branch, open a PR.
-
 ## Branch Setup
 - Create feature branch using gitflow conventions (load `gitflow-branching` skill if needed)
 - Create a todo list with `manage_todo_list` with all tasks from the plan

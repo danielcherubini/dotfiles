@@ -85,7 +85,9 @@ Then update `docs/plans/README.md`:
 
 Then tell the user the plan is ready and ask them to say when they're ready to start implementing:
 
-> "The implementation plan is ready. When you're ready to start implementing, just say the word and I'll load the `execute-plan` skill."
+> "The implementation plan is ready. When you're ready, just say the word and I'll load the `execute-plan` skill to turn this spec into an implementation plan."
+
+When the user confirms, load the `execute-plan` skill and invoke it — do not start planning on your own. The `execute-plan` skill handles the entire planning process.
 
 **Clear the todo list** — use `manage_todo_list` to remove all entries now that planning is complete.
 
