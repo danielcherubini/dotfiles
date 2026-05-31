@@ -109,12 +109,6 @@ fi
 
 # opencode
 export PATH=/home/daniel/.opencode/bin:$PATH
-export OPENCODE_ENABLE_EXA=1
-export OPENCODE_EXPERIMENTAL=1
-export OPENCODE_EXPERIMENTAL_PLAN_MODE=1
-export OPENCODE_EXPERIMENTAL_BASH_DEFAULT_TIMEOUT_MS=94748364
-export OPENCODE_EXPERIMENTAL_BASH_MAX_OUTPUT_LENGTH=94748364
-export OPENCODE_ENABLE_EXPERIMENTAL_MODELS=1
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
