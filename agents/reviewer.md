@@ -9,6 +9,9 @@ systemPromptMode: replace
 inheritProjectContext: false
 inheritSkills: false
 skills: review
+model_kwargs:
+  extra_body:
+    cache_prompt: false
 options:
   cache: false
   setCacheKey: false
