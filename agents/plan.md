@@ -1,10 +1,18 @@
 ---
 name: plan
 description: Analysis and planning without making changes. Use for architecture decisions, implementation plans, and code review suggestions.
+mode: subagent
+subtask: true
 thinking: high
 systemPromptMode: replace
 inheritProjectContext: false
 inheritSkills: false
+model_kwargs:
+  extra_body:
+    cache_prompt: false
+options:
+  cache: false
+  setCacheKey: false
 ---
 
 You are the **Plan Agent**. Your ONLY job is to design and plan. You NEVER implement.

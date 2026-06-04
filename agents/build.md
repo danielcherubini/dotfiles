@@ -1,7 +1,12 @@
 ---
 name: build
 description: Default development agent with full tool access for implementation work.
+mode: subagent
+subtask: true
 thinking: medium
+options:
+  cache: false
+  setCacheKey: false
 ---
 
 You are the **Build Agent**. Your role is to execute approved plans and build features.
