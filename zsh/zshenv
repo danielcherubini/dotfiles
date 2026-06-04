@@ -1,13 +1,54 @@
+# Browser
 export MOZ_DBUS_REMOTE=1
 export MOZ_ENABLE_WAYLAND=1
 export MOZ_USE_XINPUT2=1
 export KITTY_DISABLE_WAYLAND=1
-export GOOGLE_API_KEY=""
-# export GOOGLE_DEFAULT_CLIENT_ID="77185425430.apps.googleusercontent.com"
-# export GOOGLE_DEFAULT_CLIENT_SECRET="OTJgUOQcT7lO7GsGZq2G4IlT"
 export CHROMIUM_USER_FLAGS="--ozone-platform-hint=auto --enable-features=WebUIDarkMode,TouchpadOverscrollHistoryNavigation,WaylandWindowDecorations --force-dark-mode --enable-webrtc-pipewire-capturer"
-. "$HOME/.cargo/env"
-# export JDTLS_JVM_ARGS="-javaagent:$HOME/.local/share/java/lombok.jar, $HOME/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-0.50.0.jar"
+
+# General
 export COLORTERM=truecolor
-source ~/.localenv
+export EDITOR="nvim"
+export VISUAL="nvim"
+export TERMINAL='kitty'
+
+# Go
+export GOPATH="$HOME/.go"
+
+# Rust
+. "$HOME/.cargo/env"
+
+# Node/JS tools
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+export SDKMAN_DIR="$HOME/.sdkman"
+export VOLTA_HOME="$HOME/.volta"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export BUN_INSTALL="$HOME/.bun"
+
+# PATH
+export PATH="$HOME/.go/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$VOLTA_HOME/bin:$PATH"
+export PATH="$PNPM_HOME:$PATH"
+export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$PATH:/opt/nvim/"
+export PATH="$PATH:/home/daniel/.lmstudio/bin"
+export PATH="$HOME/.opencode/bin:$PATH"
+
+# ZED
+export ZED_ALLOW_EMULATED_GPU=1
+
+# Google
+export GOOGLE_API_KEY=""
+
+# Android SDK (if installed)
+if [ -d "$HOME/Android/Sdk/platform-tools" ]; then
+    export PATH="$PATH:$HOME/Android/Sdk/platform-tools"
+fi
+
+# Local environment (secrets, machine-specific config — not committed)
+[ -f ~/.localenv ] && source ~/.localenv
+
+# Added by protector CLI
+[ -f ~/.protector/env ] && source ~/.protector/env
