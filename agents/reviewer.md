@@ -1,7 +1,7 @@
 ---
 name: reviewer
 description: Reviews specs, plans, and code for quality, correctness, and completeness. Returns structured verdicts. Review only — never makes changes.
-model: openrouter/z-ai/glm-5.1
+model: openrouter/deepseek/deepseek-v4-flash
 thinking: high
 systemPromptMode: replace
 inheritProjectContext: false
@@ -70,11 +70,13 @@ Return your review as a markdown report:
 ```
 
 Rules for severity:
+
 - **Critical (🔴)**: Blocking — must be fixed before merge. Security holes, data loss, broken build.
 - **Major (🟠)**: Should be fixed — real bugs, missing tests on critical paths, regression risks.
 - **Minor (🟡)** | Nit — style inconsistencies, typos, minor improvements, low-value suggestions.
 
 If no issues found:
+
 ```
 ### Verdict: ✅ Pass
 

@@ -62,7 +62,45 @@ command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 [ -s "/home/daniel/.bun/_bun" ] && source "/home/daniel/.bun/_bun"
 fpath=(~/.zsh/completions $fpath)
 
-# Conda
+# pnpm
+export PNPM_HOME="/home/daniel/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# kitty
+[ "$TERM" = "xterm-kitty" ] && alias sssh="kitty +kitten ssh"
+
+
+# Default editor
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# Default terminal
+export TERMINAL='kitty'
+
+# Aliases
+alias l="ls -lah"
+export ZED_ALLOW_EMULATED_GPU=1
+alias zed="WAYLAND_DISPLAY= zed"
+alias get_idf=". $HOME/esp-idf/export.sh"
+
+# Local environment (not committed)
+[ -f ~/.localenv ] && source ~/.localenv
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Add Android SDK platform-tools to PATH if it exists
+if [ -d "$HOME/Android/Sdk/platform-tools" ] ; then
+  export PATH="$PATH:$HOME/Android/Sdk/platform-tools"
+fi
+
+# opencode
+export PATH=/home/daniel/.opencode/bin:$PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/daniel/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
