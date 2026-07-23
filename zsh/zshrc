@@ -11,9 +11,13 @@ setopt AUTO_CD              # cd by typing directory name
 setopt INTERACTIVE_COMMENTS # allow comments in interactive shell
 setopt CORRECT              # command correction
 
-# Completion
+# Completion — cached (only full compinit once per day)
 autoload -Uz compinit
-compinit
+if [[ -n ~/.zcompdump(#qNmh-24) ]]; then
+  compinit -C
+else
+  compinit
+fi
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-Za-z}' # case insensitive
 zstyle ':completion:*:make:*:targets' call-command true
@@ -31,10 +35,10 @@ bindkey '^[[4~' end-of-line                         # End (rxvt)
 bindkey '^[[1;5H' beginning-of-line                  # Ctrl+Home
 bindkey '^[[1;5F' end-of-line                       # Ctrl+End
 
-# Starship prompt
+# Starship prompt (fast, ~10ms init)
 eval "$(starship init zsh)"
 
-# FZF
+# FZF (fast, keep eager)
 [ -f /usr/share/fzf/shell/key-bindings.zsh ] && source /usr/share/fzf/shell/key-bindings.zsh
 [ -f /usr/share/fzf/shell/completion.zsh ] && source /usr/share/fzf/shell/completion.zsh
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
@@ -42,36 +46,39 @@ export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
 --color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7'
 
-# Plugins
+# Plugins (fast, keep eager)
 [ -f ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && \
     source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && \
     source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Direnv
+# Direnv (fast, keep eager)
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 
-# NVM
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# SDKMAN — lazy-loaded (saves ~13ms on startup)
+export SDKMAN_DIR="$HOME/.sdkman"
+sdk() {
+  unset -f sdk
+  [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+  sdk "$@"
+}
 
-# SDKMAN
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# Bun — lazy-loaded (PATH already set in .zprofile)
+bun() {
+  unset -f bun
+  [ -s "/home/daniel/.bun/_bun" ] && source "/home/daniel/.bun/_bun"
+  bun "$@"
+}
 
-# Bun
-[ -s "/home/daniel/.bun/_bun" ] && source "/home/daniel/.bun/_bun"
+# Conda — lazy-loaded (saves subshell fork on startup)
+conda() {
+  unset -f conda
+  . "$HOME/miniconda3/etc/profile.d/conda.sh"
+  conda "$@"
+}
+
+# Custom completions
 fpath=(~/.zsh/completions $fpath)
-
-# pnpm
-export PNPM_HOME="/home/daniel/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
-# kitty
-[ "$TERM" = "xterm-kitty" ] && alias sssh="kitty +kitten ssh"
-
 
 # Default editor
 export EDITOR="nvim"
@@ -82,39 +89,12 @@ export TERMINAL='kitty'
 
 # Aliases
 alias l="ls -lah"
-export ZED_ALLOW_EMULATED_GPU=1
-alias zed="WAYLAND_DISPLAY= zed"
-alias get_idf=". $HOME/esp-idf/export.sh"
-
-# Local environment (not committed)
-[ -f ~/.localenv ] && source ~/.localenv
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
-# Add Android SDK platform-tools to PATH if it exists
-if [ -d "$HOME/Android/Sdk/platform-tools" ] ; then
-  export PATH="$PATH:$HOME/Android/Sdk/platform-tools"
-fi
-
-# opencode
-export PATH=/home/daniel/.opencode/bin:$PATH
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/daniel/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/daniel/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/daniel/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/daniel/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-# Aliases
-alias l="ls -lah"
 alias zed="WAYLAND_DISPLAY= zed"
 alias get_idf=". $HOME/esp-idf/export.sh"
 [ "$TERM" = "xterm-kitty" ] && alias sssh="kitty +kitten ssh"
+
+# Local environment (not committed)
+[ -f ~/.localenv ] && source ~/.localenv
+
+# Added by protector CLI
+[ -f ~/.protector/env ] && source ~/.protector/env

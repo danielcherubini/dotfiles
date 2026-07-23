@@ -21,6 +21,11 @@
     ~/.config/clight.conf: clight/clight.conf
     ~/.config/xdg-terminals.list: xdg-terminal-exec/xdg-terminals.list
     ~/.local/share/java: java
+    ~/.pi/agent/settings.json: pi/settings.json
+    ~/.claude/settings.local.json: claude/settings.local.json
+    ~/.config/opencode/opencode.json: opencode/opencode.jsonc
+    ~/.config/opencode/dcp.jsonc: opencode/dcp.jsonc
+    ~/.config/opencode/package.json: opencode/package.json
 
     # /mnt/c/Users/danie/AppData/Roaming/alacritty/alacritty.toml: alacritty/windows.toml
 - shell:
