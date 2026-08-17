@@ -105,7 +105,8 @@ Comment[vi]=Truy cập Internet
 Comment[zh_CN]=访问互联网
 Comment[zh_HK]=連線到網際網路
 Comment[zh_TW]=連線到網際網路
-Exec=/usr/bin/google-chrome-stable --ozone-platform-hint=auto --force-dark-mode --enable-features=WebRTCPipeWireCapturer,WebUIDarkMode,UseOzonePlatform --enable-webrtc-pipewire-capturer %U
+Exec=/usr/bin/google-chrome-stable --ozone-platform=wayland --force-dark-mode --enable-features=TouchpadOverscrollHistoryNavigation,WaylandWindowDecorations,WebUIDarkMode,WebRTCPipeWireCapturer,UseOzonePlatform --enable-webrtc-pipewire-capturer %U
+StartupWMClass=google-chrome
 StartupNotify=true
 Terminal=false
 Icon=google-chrome
@@ -165,7 +166,7 @@ Name[uk]=Нове вікно
 Name[vi]=Cửa sổ Mới
 Name[zh_CN]=新建窗口
 Name[zh_TW]=開新視窗
-Exec=/usr/bin/google-chrome-stable --ozone-platform-hint=auto --force-dark-mode --enable-features=WebRTCPipeWireCapturer,WebUIDarkMode,UseOzonePlatform --enable-webrtc-pipewire-capturer
+Exec=/usr/bin/google-chrome-stable --ozone-platform=wayland --force-dark-mode --enable-features=TouchpadOverscrollHistoryNavigation,WaylandWindowDecorations,WebUIDarkMode,WebRTCPipeWireCapturer,UseOzonePlatform --enable-webrtc-pipewire-capturer
 
 [Desktop Action new-private-window]
 Name=New Incognito Window
@@ -217,5 +218,6 @@ Name[uk]=Нове вікно в режимі анонімного перегля
 Name[vi]=Cửa sổ ẩn danh mới
 Name[zh_CN]=新建隐身窗口
 Name[zh_TW]=新增無痕式視窗
-Exec=/usr/bin/google-chrome-stable --incognito --ozone-platform-hint=auto --force-dark-mode --enable-features=WebRTCPipeWireCapturer,WebUIDarkMode --enable-webrtc-pipewire-capturer
-MimeType=x-scheme-handler/webcal;application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;
+Exec=/usr/bin/google-chrome-stable --ozone-platform=wayland --force-dark-mode --enable-features=TouchpadOverscrollHistoryNavigation,WaylandWindowDecorations,WebUIDarkMode,WebRTCPipeWireCapturer,UseOzonePlatform --enable-webrtc-pipewire-capturer --incognito
+
+MimeType=x-scheme-handler/mailto;application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/google-chrome;

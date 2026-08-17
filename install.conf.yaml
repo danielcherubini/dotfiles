@@ -12,6 +12,7 @@
     ~/.config/alacritty: alacritty
     ~/.config/chrome-flags.conf: chrome/chrome-flags.conf
     ~/.config/chromium-flags.conf: chrome/chrome-flags.conf
+    ~/.local/share/applications/google-chrome.desktop: chrome/google-chrome.desktop
     ~/.config/fusuma: fusuma
     # ~/.config/libinput-gestures.conf: libinput/libinput-gestures.conf
     ~/.tmux.conf: tmux/tmux.conf

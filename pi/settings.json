@@ -1,7 +1,7 @@
 {
-  "lastChangelogVersion": "0.81.1",
+  "lastChangelogVersion": "0.84.2",
   "defaultProvider": "tama",
-  "defaultModel": "laguna-s-2.1",
+  "defaultModel": "Qwen/Qwen3.8-27B",
   "packages": [
     "npm:pi-web-access",
     "npm:pi-updater",
@@ -22,15 +22,17 @@
     "showTerminalProgress": false
   },
   "enabledModels": [
-    "openrouter/minimax/minimax-m3",
-    "openrouter/z-ai/glm-5.2",
-    "tama/laguna-s-2.1",
-    "openrouter/openrouter/free"
+    "openrouter/openrouter/free",
+    "openrouter/moonshotai/kimi-k3",
+    "openrouter/deepseek/deepseek-v4-flash-0731",
+    "tama/Qwen/Qwen3.8-27B"
   ],
   "archimedes.notify": {
     "enabled": true,
     "notifyOnAgentEnd": true,
     "notifyOnQuestion": true,
     "delayMs": 30000
-  }
+  },
+  "tuiMode": "fullscreen",
+  "fullscreenScrollbar": "auto"
 }
