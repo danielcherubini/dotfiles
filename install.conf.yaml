@@ -14,7 +14,6 @@
     ~/.config/chromium-flags.conf: chrome/chrome-flags.conf
     ~/.local/share/applications/google-chrome.desktop: chrome/google-chrome.desktop
     ~/.config/fusuma: fusuma
-    # ~/.config/libinput-gestures.conf: libinput/libinput-gestures.conf
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux/tmux.remote.conf: tmux/tmux.remote.conf
     ~/.tmux/yank.sh: tmux/yank.sh
@@ -27,7 +26,6 @@
     ~/.config/opencode/opencode.json: opencode/opencode.jsonc
     ~/.config/opencode/dcp.jsonc: opencode/dcp.jsonc
     ~/.config/opencode/package.json: opencode/package.json
-
-    # /mnt/c/Users/danie/AppData/Roaming/alacritty/alacritty.toml: alacritty/windows.toml
+    ~/.config/ghostty: ghostty
 - shell:
     - [git submodule update --init --recursive, Installing submodules]

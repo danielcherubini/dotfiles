@@ -1,0 +1,84 @@
+# ============================================================
+# Ghostty config — migrated from ~/.config/kitty/kitty.conf
+# ============================================================
+
+# --- Theme ---
+# Ghostty has a built-in Dracula theme. Use it instead of manual palette.
+# If you prefer your custom Gogh Dracula colors, comment this out and
+# uncomment the palette block below.
+theme = Dracula
+
+# --- Custom Dracula palette (from colors.conf) ---
+# Uncomment these if you want your Gogh colors instead of the built-in theme:
+# palette = index:0=#262626
+# palette = index:1=#E64747
+# palette = index:2=#42E66C
+# palette = index:3=#E4F34A
+# palette = index:4=#9B6BDF
+# palette = index:5=#E356A7
+# palette = index:6=#75D7EC
+# palette = index:7=#F8F8F2
+# palette = index:8=#7A7A7A
+# palette = index:9=#FF5555
+# palette = index:10=#50FA7B
+# palette = index:11=#F1FA8C
+# palette = index:12=#BD93F9
+# palette = index:13=#FF79C6
+# palette = index:14=#8BE9FD
+# palette = index:15=#F9F9FB
+# background = #282A36
+# foreground = #F8F8F2
+# cursor-color = #F8F8F2
+
+# --- Fonts ---
+font-family = "FiraCode Nerd Font"
+font-family-italic = "Operator Mono Book"
+font-family-bold-italic = "Operator Mono Medium"
+font-size = 12
+
+# Prevent ghostty from synthetically slanting the font instead of using our italic font
+font-synthetic-style = no-italic
+
+# --- Window ---
+maximize = true
+window-decoration = false
+window-padding-x = 0
+window-padding-y = 0
+
+# --- Scrollback ---
+scrollback-limit = 2000
+
+# --- Misc ---
+# Bell is disabled by default (bell-features = no-audio).
+# Uncomment to explicitly control bell behavior:
+# bell-features = no-system,no-audio,attention,title,no-border
+
+# --- Keybindings ---
+
+# Resize splits (alt+shift+arrow)
+keybind = alt+shift+left=resize_split:left,3
+keybind = alt+shift+right=resize_split:right,3
+keybind = alt+shift+up=resize_split:up,3
+keybind = alt+shift+down=resize_split:down,3
+
+# Reset window size
+keybind = ctrl+home=reset_window_size
+
+# Create splits — auto picks the larger direction (alternates vert/horiz)
+keybind = alt+shift+enter=new_split:auto
+keybind = ctrl+shift+enter=new_split:auto
+
+# Toggle split zoom (closest to kitty's "rotate" layout action)
+keybind = alt+shift+l=toggle_split_zoom
+
+# Navigate between splits (ctrl+arrow)
+keybind = ctrl+left=goto_split:left
+keybind = ctrl+right=goto_split:right
+keybind = ctrl+up=goto_split:up
+keybind = ctrl+down=goto_split:down
+
+# Send literal newline on shift+enter
+keybind = shift+enter=text:\n
+
+# Reload config (default is ctrl+shift+, on Linux)
+# keybind = ctrl+shift+comma=reload_config
