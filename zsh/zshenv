@@ -10,6 +10,7 @@ export COLORTERM=truecolor
 export EDITOR="nvim"
 export VISUAL="nvim"
 export TERMINAL='kitty'
+export PI_IMAGE_PROTOCOL='kitty'
 
 # Go
 export GOPATH="$HOME/.go"
